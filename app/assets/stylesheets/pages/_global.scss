@@ -1,0 +1,27 @@
+html, body, .dashboard-container {
+  width: 100vw;
+}
+
+.dashboard-container {
+  display: flex;
+  background-color: $dashboard-bg;
+}
+
+.dashboard-left {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: $white;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 6px 0px 18px rgba(0, 0, 0, 0.06);
+}
+
+.dashboard-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  margin-left: $left-nav-width;
+}
