@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :company
-  has_many :company_licenses, foreign_key: 'owner_id'
+  has_many :license_transactions, foreign_key: 'owner_id'
 end

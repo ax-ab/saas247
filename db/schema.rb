@@ -30,20 +30,20 @@ ActiveRecord::Schema.define(version: 2019_11_18_164347) do
   create_table "company_licenses", force: :cascade do |t|
     t.bigint "license_id"
     t.bigint "company_id"
-    t.bigint "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_company_licenses_on_company_id"
     t.index ["license_id"], name: "index_company_licenses_on_license_id"
-    t.index ["owner_id"], name: "index_company_licenses_on_owner_id"
   end
 
   create_table "license_transactions", force: :cascade do |t|
     t.integer "purchase_price"
     t.bigint "company_license_id"
+    t.bigint "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_license_id"], name: "index_license_transactions_on_company_license_id"
+    t.index ["owner_id"], name: "index_license_transactions_on_owner_id"
   end
 
   create_table "licenses", force: :cascade do |t|
@@ -78,8 +78,8 @@ ActiveRecord::Schema.define(version: 2019_11_18_164347) do
 
   add_foreign_key "company_licenses", "companies"
   add_foreign_key "company_licenses", "licenses"
-  add_foreign_key "company_licenses", "users", column: "owner_id"
   add_foreign_key "license_transactions", "company_licenses"
+  add_foreign_key "license_transactions", "users", column: "owner_id"
   add_foreign_key "licenses", "categories"
   add_foreign_key "licenses", "vendors"
   add_foreign_key "users", "companies"

@@ -78,8 +78,8 @@ puts "Finished creating licenses..."
 
 
 company_licenses = [
-  {license: License.all.sample, company: Company.all.sample, owner: User.all.sample},
-  {license: License.all.sample, company: Company.all.sample, owner: User.all.sample}
+  {license: License.all.sample, company: Company.all.sample},
+  {license: License.all.sample, company: Company.all.sample}
 ]
 
 puts "Creating company licenses..."
@@ -89,8 +89,8 @@ puts "Creating company licenses..."
 puts "Finished creating company licenses..."
 
 license_transactions = [
-  {purchase_price: rand(1000..20000), company_license: CompanyLicense.all.sample},
-  {purchase_price: rand(1000..20000), company_license: CompanyLicense.all.sample}
+  {purchase_price: rand(1000..20000), company_license: CompanyLicense.all.sample, owner: User.all.sample},
+  {purchase_price: rand(1000..20000), company_license: CompanyLicense.all.sample, owner: User.all.sample}
 ]
 
 puts "Creating license transactions..."
