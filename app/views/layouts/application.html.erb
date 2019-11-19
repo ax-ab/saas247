@@ -10,10 +10,10 @@
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
-    <div class="dashboard-container">
+    <div id="dashboard-container">
       <%= render 'shared/leftnav' %>
-      <main class="dashboard-right">
-        <%#= render 'shared/navbar' %>
+      <main id="dashboard-right" class="main-nav">
+        <%= render 'shared/navbar' %>
         <%= render 'shared/flashes' %>
         <%= yield %>
       </main>

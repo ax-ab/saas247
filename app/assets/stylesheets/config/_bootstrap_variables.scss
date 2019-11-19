@@ -8,7 +8,8 @@ $font-family-sans-serif:  $font-Poppins;
 $headings-font-family:    $font-Poppins;
 $dashboard-bg:            $light-gray-main;
 $secondary-bg:            $light-gray-secondary;
-$left-nav-width: 250px;
+$left-nav-open: 250px;
+$left-nav-closed: 68px;
 $font-size-base: 1rem;
 $base-line-height: 1.5;
 $header-line-height: 1.25;
@@ -32,5 +33,6 @@ $border-radius-sm: 2px;
 // Transitions
 $base-transition-duration: .25s;
 $base-transition-timing: cubic-bezier(.55,.08,.41,.95);
+$transition-all: all $base-transition-duration $base-transition-timing;
 
 // Override other variables below!
