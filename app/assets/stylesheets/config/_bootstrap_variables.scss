@@ -6,20 +6,28 @@
 // General style
 $font-family-sans-serif:  $body-font;
 $headings-font-family:    $headers-font;
-$body-bg:                 $light-gray;
+$dashboard-bg:            $light-gray-main;
+$secondary-bg:            $light-gray-secondary;
 $font-size-base: 1rem;
+$base-line-height: 1.5;
+$header-line-height: 1.25;
 
 // Colors
-$body-color: $gray;
 $primary:    $blue;
 $success:    $green;
 $info:       $yellow;
 $danger:     $red;
 $warning:    $orange;
+$main-text:  $dark-gray;
+$light-text: $medium-gray;
 
 // Buttons & inputs' radius
 $border-radius:    2px;
 $border-radius-lg: 2px;
 $border-radius-sm: 2px;
+
+// Transitions
+$base-transition-duration: .25s;
+$base-transition-timing: cubic-bezier(.55,.08,.41,.95);
 
 // Override other variables below!
