@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_18_164347) do
+ActiveRecord::Schema.define(version: 2019_11_19_125009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2019_11_18_164347) do
     t.bigint "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "active_users"
     t.index ["company_id"], name: "index_company_licenses_on_company_id"
     t.index ["license_id"], name: "index_company_licenses_on_license_id"
   end
@@ -41,6 +42,10 @@ ActiveRecord::Schema.define(version: 2019_11_18_164347) do
     t.bigint "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_licenses_purchased"
+    t.integer "total_purchase_price"
+    t.date "purchase_date"
+    t.date "expiry_date"
     t.index ["company_license_id"], name: "index_license_transactions_on_company_license_id"
     t.index ["owner_id"], name: "index_license_transactions_on_owner_id"
   end
@@ -51,6 +56,7 @@ ActiveRecord::Schema.define(version: 2019_11_18_164347) do
     t.bigint "vendor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "type"
     t.index ["category_id"], name: "index_licenses_on_category_id"
     t.index ["vendor_id"], name: "index_licenses_on_vendor_id"
   end
@@ -64,6 +70,7 @@ ActiveRecord::Schema.define(version: 2019_11_18_164347) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "company_id"
+    t.string "department"
     t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
