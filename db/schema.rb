@@ -10,10 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_18_132437) do
+ActiveRecord::Schema.define(version: 2019_11_18_164347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "company_licenses", force: :cascade do |t|
+    t.bigint "license_id"
+    t.bigint "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_company_licenses_on_company_id"
+    t.index ["license_id"], name: "index_company_licenses_on_license_id"
+  end
+
+  create_table "license_transactions", force: :cascade do |t|
+    t.bigint "company_license_id"
+    t.bigint "owner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_license_id"], name: "index_license_transactions_on_company_license_id"
+    t.index ["owner_id"], name: "index_license_transactions_on_owner_id"
+  end
+
+  create_table "licenses", force: :cascade do |t|
+    t.string "name"
+    t.bigint "category_id"
+    t.bigint "vendor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_licenses_on_category_id"
+    t.index ["vendor_id"], name: "index_licenses_on_vendor_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +63,23 @@ ActiveRecord::Schema.define(version: 2019_11_18_132437) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vendors", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "company_licenses", "companies"
+  add_foreign_key "company_licenses", "licenses"
+  add_foreign_key "license_transactions", "company_licenses"
+  add_foreign_key "license_transactions", "users", column: "owner_id"
+  add_foreign_key "licenses", "categories"
+  add_foreign_key "licenses", "vendors"
+  add_foreign_key "users", "companies"
 end
