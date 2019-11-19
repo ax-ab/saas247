@@ -4,10 +4,11 @@
 // 3. You can override them below!
 
 // General style
-$font-family-sans-serif:  $body-font;
-$headings-font-family:    $headers-font;
+$font-family-sans-serif:  $font-Poppins;
+$headings-font-family:    $font-Poppins;
 $dashboard-bg:            $light-gray-main;
 $secondary-bg:            $light-gray-secondary;
+$left-nav-width: 250px;
 $font-size-base: 1rem;
 $base-line-height: 1.5;
 $header-line-height: 1.25;
@@ -15,9 +16,11 @@ $header-line-height: 1.25;
 // Colors
 $primary:    $blue;
 $success:    $green;
+$white:      #fff;
 $info:       $yellow;
 $danger:     $red;
 $warning:    $orange;
+$light-line: $lightest-gray;
 $main-text:  $dark-gray;
 $light-text: $medium-gray;
 
