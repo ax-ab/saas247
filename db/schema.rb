@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 2019_11_18_164347) do
   end
 
   create_table "license_transactions", force: :cascade do |t|
-    t.integer "purchase_price"
     t.bigint "company_license_id"
     t.bigint "owner_id"
     t.datetime "created_at", null: false
