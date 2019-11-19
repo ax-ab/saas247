@@ -8,20 +8,76 @@
   position: relative;
   flex: 1;
   width: 100%;
-  margin: 30px;
+  margin: 24px;
 }
 
 #leftnav_toggle {
   position: absolute;
   bottom: 0;
-  padding: 20px;
-  background-color: gray;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 8px 2px;
+  transition: all 0.2s ease;
+
+  p {
+    position: absolute;
+    padding-left: 10px;
+    left: 15px;
+    width: 150px;
+    opacity: 0.8;
+  }
+
+  svg {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+  }
+
+  .svg-blue {
+    fill: $primary !important;
+  }
+
+  &:hover {
+    p {
+      opacity: 1;
+    }
+
+    svg {
+      fill: $primary;
+    }
+  }
+}
+
+.show {
+  animation: toggleShow 0.2s ease 0.2s both;
+}
+
+.hide {
+  animation: toggleHide 0.04s ease both;
+}
+
+@keyframes toggleShow {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes toggleHide {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 .leftnav-open {
-  width: 250px;
+  width: $left-nav-open;
 }
 
 .leftnav-closed {
-  width: 68px;
+  width: $left-nav-closed;
 }
