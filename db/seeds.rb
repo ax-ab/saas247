@@ -1,3 +1,14 @@
+class String
+  # colorization
+  def colorize(color_code)
+    "\e[#{color_code}m#{self}\e[0m"
+  end
+
+  def green
+    colorize(32)
+  end
+end
+
 #Cleaning database
 puts "Destroying license transactions..."
 LicenseTransaction.destroy_all
@@ -142,17 +153,17 @@ puts "\nCreating company licenses..."
 puts "Finished creating company licenses"
 
 license_transactions = [
-  {user_licenses_purchased: 200, total_purchase_price: (6.25*200), purchase_date: (Date.today - rand(1..365)), commitment_period: "yearly", company_license: CompanyLicense.find_by(license: License.find_by(name: "Slack", license_type: "")), owner: User.all.sample},
-  {user_licenses_purchased: 150, total_purchase_price: (7.5*150), purchase_date: (Date.today - rand(1..365)), commitment_period: "monthly", company_license: CompanyLicense.find_by(license: License.find_by(name: "Slack", license_type: "")), owner: User.all.sample},
-  {user_licenses_purchased: 500, total_purchase_price: (4.9*500), purchase_date: (Date.today - rand(1..365)), commitment_period: "yearly", company_license: CompanyLicense.find_by(license: License.find_by(name: "Microsoft Office 365", license_type: "Business Essentials")), owner: User.all.sample},
-  {user_licenses_purchased: 300, total_purchase_price: (10.93*300), purchase_date: (Date.today - rand(1..365)), commitment_period: "yearly", company_license: CompanyLicense.find_by(license: License.find_by(name: "Microsoft Office 365", license_type: "Business Premium")), owner: User.all.sample},
-  {user_licenses_purchased: 150, total_purchase_price: (12*150), purchase_date: (Date.today - rand(1..365)), commitment_period: "monthly", company_license: CompanyLicense.find_by(license: License.find_by(name: "Dropbox", license_type: "Standard")), owner: User.all.sample},
-  {user_licenses_purchased: 100, total_purchase_price: (15*100), purchase_date: (Date.today - rand(1..365)), commitment_period: "yearly", company_license: CompanyLicense.find_by(license: License.find_by(name: "Dropbox", license_type: "Advanced")), owner: User.all.sample},
-  {user_licenses_purchased: 10, total_purchase_price: (134.6*10), purchase_date: (Date.today - rand(1..365)), commitment_period: "monthly", company_license: CompanyLicense.find_by(license: License.find_by(name: "Zendesk", license_type: "Enterprise")), owner: User.all.sample},
-  {user_licenses_purchased: 15, total_purchase_price: (80.39*15), purchase_date: (Date.today - rand(1..365)), commitment_period: "monthly", company_license: CompanyLicense.find_by(license: License.find_by(name: "Zendesk", license_type: "Professional")), owner: User.all.sample},
-  {user_licenses_purchased: 100, total_purchase_price: (6.31*100*12), purchase_date: (Date.today - rand(1..365)), commitment_period: "yearly", company_license: CompanyLicense.find_by(license: License.find_by(name: "JiRA", license_type: "Standard")), owner: User.all.sample},
-  {user_licenses_purchased: 100, total_purchase_price: (67.75*100*12), purchase_date: (Date.today - rand(1..365)), commitment_period: "yearly", company_license: CompanyLicense.find_by(license: License.find_by(name: "Salesforce", license_type: "Small Business - Sales Professional")), owner: User.all.sample},
-  {user_licenses_purchased: 150, total_purchase_price: (5.2*150), purchase_date: (Date.today - rand(1..365)), commitment_period: "monthly", company_license: CompanyLicense.find_by(license: License.find_by(name: "Google Suite", license_type: "")), owner: User.all.sample},
+  {user_licenses_purchased: 200, total_purchase_price: (6.25*200), purchase_date: (Date.today - rand(365..730)), commitment_period: "yearly", company_license: CompanyLicense.find_by(license: License.find_by(name: "Slack", license_type: "")), owner: User.all.sample},
+  {user_licenses_purchased: 150, total_purchase_price: (7.5*150), purchase_date: (Date.today - rand(0..365)), commitment_period: "monthly", company_license: CompanyLicense.find_by(license: License.find_by(name: "Slack", license_type: "")), owner: User.all.sample},
+  {user_licenses_purchased: 500, total_purchase_price: (4.9*500), purchase_date: (Date.today - rand(365..730)), commitment_period: "yearly", company_license: CompanyLicense.find_by(license: License.find_by(name: "Microsoft Office 365", license_type: "Business Essentials")), owner: User.all.sample},
+  {user_licenses_purchased: 300, total_purchase_price: (10.93*300), purchase_date: (Date.today - rand(365..730)), commitment_period: "yearly", company_license: CompanyLicense.find_by(license: License.find_by(name: "Microsoft Office 365", license_type: "Business Premium")), owner: User.all.sample},
+  {user_licenses_purchased: 150, total_purchase_price: (12*150), purchase_date: (Date.today - rand(0..365)), commitment_period: "monthly", company_license: CompanyLicense.find_by(license: License.find_by(name: "Dropbox", license_type: "Standard")), owner: User.all.sample},
+  {user_licenses_purchased: 100, total_purchase_price: (15*100), purchase_date: (Date.today - rand(365..730)), commitment_period: "yearly", company_license: CompanyLicense.find_by(license: License.find_by(name: "Dropbox", license_type: "Advanced")), owner: User.all.sample},
+  {user_licenses_purchased: 10, total_purchase_price: (134.6*10), purchase_date: (Date.today - rand(0..365)), commitment_period: "monthly", company_license: CompanyLicense.find_by(license: License.find_by(name: "Zendesk", license_type: "Enterprise")), owner: User.all.sample},
+  {user_licenses_purchased: 15, total_purchase_price: (80.39*15), purchase_date: (Date.today - rand(0..365)), commitment_period: "monthly", company_license: CompanyLicense.find_by(license: License.find_by(name: "Zendesk", license_type: "Professional")), owner: User.all.sample},
+  {user_licenses_purchased: 100, total_purchase_price: (6.31*100*12), purchase_date: (Date.today - rand(365..730)), commitment_period: "yearly", company_license: CompanyLicense.find_by(license: License.find_by(name: "JiRA", license_type: "Standard")), owner: User.all.sample},
+  {user_licenses_purchased: 100, total_purchase_price: (67.75*100*12), purchase_date: (Date.today - rand(365..730)), commitment_period: "yearly", company_license: CompanyLicense.find_by(license: License.find_by(name: "Salesforce", license_type: "Small Business - Sales Professional")), owner: User.all.sample},
+  {user_licenses_purchased: 150, total_purchase_price: (5.2*150), purchase_date: (Date.today - rand(0..365)), commitment_period: "monthly", company_license: CompanyLicense.find_by(license: License.find_by(name: "Google Suite", license_type: "")), owner: User.all.sample},
 ]
 
 puts "\nCreating license transactions..."
@@ -162,14 +173,53 @@ puts "\nCreating license transactions..."
 
   puts "Adding expiry date to licenses"
   LicenseTransaction.all.each do |license_transaction|
-    if license_transaction.commitment_period == "monthly"
-      license_transaction.generate_expiry_date(30)
-    elsif license_transaction.commitment_period == "yearly"
-      license_transaction.generate_expiry_date(365)
+    case license_transaction.commitment_period
+    when 'monthly' then license_transaction.generate_expiry_date(30)
+    when 'yearly'  then license_transaction.generate_expiry_date(365)
     end
   end
 
 puts "Finished creating license transactions"
+
+puts "\nCopying and moving all transactions forward in time..."
+
+  def transaction_updated(transaction)
+    expiry_date = transaction.expiry_date
+    future_date = expiry_date.strftime("%Y%m") >= Date.today.next_month.strftime("%Y%m")
+  end
+
+  def recusively_update_transactions(transaction)
+    #if transaction is not in future then while until the date is in future
+    printf "%-60s %s", "\n#{transaction.company_license.license.name} #{transaction.company_license.license.license_type} (#{transaction.commitment_period})", "#{transaction.expiry_date}"
+
+    next_transaction = {
+      user_licenses_purchased: transaction.user_licenses_purchased,
+      total_purchase_price: transaction.total_purchase_price,
+      purchase_date: transaction.expiry_date + 1,
+      commitment_period: transaction.commitment_period,
+      company_license: transaction.company_license,
+      owner: transaction.owner
+    }
+    LicenseTransaction.create!(next_transaction)
+
+    last_transaction = LicenseTransaction.last
+
+    case last_transaction.commitment_period
+    when 'monthly' then last_transaction.generate_expiry_date(30)
+    when 'yearly'  then last_transaction.generate_expiry_date(365)
+    end
+    print " => #{last_transaction.expiry_date}".green
+
+    recusively_update_transactions(last_transaction) if !transaction_updated(last_transaction)
+  end
+
+  LicenseTransaction.all.each do |transaction|
+    if !transaction_updated(transaction)
+      recusively_update_transactions(transaction)
+    end
+  end
+
+puts "\n\nFinished copying and moving all transactions forward in time"
 
 puts "\nAdding active users to company licenses..."
 CompanyLicense.all.each do |company_license|
@@ -187,4 +237,6 @@ CompanyLicense.all.each do |company_license|
   company_license.save!
 end
 
-puts "Finished adding active users to company licenses\n\n"
+puts "Finished adding active users to company licenses"
+
+puts "\n"
