@@ -5,7 +5,6 @@ export const leftNavInteractivity = () => {
   const toggleP = document.querySelector("#leftnav_toggle p");
   const toggleIcon = document.querySelector("#leftnav_toggle svg");
   const navList = document.querySelectorAll(".leftnav-links p");
-  console.log(navList);
 
   toggleBtn.addEventListener("click", (event) => {
     dashboardLeft.classList.toggle("leftnav-open");

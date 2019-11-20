@@ -6,7 +6,7 @@ class CompanyLicensesController < ApplicationController
   end
 
   def index
-
+    @licenses = LicenseTransaction.all
   end
 
   def show
