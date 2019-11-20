@@ -9,6 +9,34 @@
   flex: 1;
   width: 100%;
   margin: 24px;
+
+  .leftnav-links a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    line-height: 40px;
+    position: relative;
+
+    svg {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+    }
+
+    p {
+      padding-left: 30px;
+      margin: 0;
+      color: $main-text;
+    }
+
+    &:hover p, &:active p, &:focus p {
+      color: $primary;
+    }
+
+    &:hover svg, &:active svg, &:focus svg {
+      fill: $primary;
+    }
+  }
 }
 
 #leftnav_toggle {

@@ -4,6 +4,8 @@ export const leftNavInteractivity = () => {
   const dashboardRight = document.getElementById("dashboard-right");
   const toggleP = document.querySelector("#leftnav_toggle p");
   const toggleIcon = document.querySelector("#leftnav_toggle svg");
+  const navList = document.querySelectorAll(".leftnav-links p");
+  console.log(navList);
 
   toggleBtn.addEventListener("click", (event) => {
     dashboardLeft.classList.toggle("leftnav-open");
@@ -15,11 +17,19 @@ export const leftNavInteractivity = () => {
       toggleP.classList.remove("show");
       toggleP.style.display = "none";
       toggleIcon.classList.add("svg-blue");
+      navList.forEach((text) => {
+        text.classList.add("hide");
+        text.classList.remove("show");
+      });
     } else {
       toggleP.style.display = "block";
       toggleP.classList.remove("hide");
       toggleP.classList.add("show");
       toggleIcon.classList.remove("svg-blue");
+      navList.forEach((text) => {
+        text.classList.remove("hide");
+        text.classList.add("show");
+      });
     }
   })
 }
