@@ -9,8 +9,10 @@ class CompanyLicensesController < ApplicationController
     @licenses = LicenseTransaction.all
   end
 
-  def show
+# Only temporary Axel, don't panic
 
+  def show
+     @licenses = LicenseTransaction.all
   end
 
 end

@@ -72,3 +72,14 @@
     margin: 30px 0;
     color: $dark-gray;
 }
+
+.metrics-card:hover {
+    color: $primary;
+    border-color: $primary;
+
+  .card-top-text {
+    color: $primary;
+    transition: ease-in-out;
+  }
+
+}
