@@ -1,0 +1,45 @@
+#table-styled {
+  width: 100% !important;
+  font-size: 13px;
+  color: $medium-gray;
+
+  thead th:first-of-type {
+    color: $primary;
+  }
+
+  .table-row-name {
+    font-size: 15px;
+    color: $main-text;
+    font-weight: 600;
+  }
+
+  tbody tr:hover {
+    background-color: $white;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  td {
+    padding: 20px !important;
+  }
+
+  th {
+    padding: 7px !important;
+  }
+
+  .table-bordered, .table-bordered td, thead, thead tr, td, tr, .table {
+    border-bottom: 1px solid $light-line !important;
+  }
+
+  .table-price::before {
+    content: '$';
+    padding-right: 3px;
+  }
+
+  th, td, tr {
+    border: none !important;
+  }
+}
+
+// Overriding bootstrap table styling
+
+

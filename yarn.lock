@@ -692,6 +692,11 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
+"@fortawesome/fontawesome-free@^5.11.2":
+  version "5.11.2"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.11.2.tgz#8644bc25b19475779a7b7c1fc104bc0a794f4465"
+  integrity sha512-XiUPoS79r1G7PcpnNtq85TJ7inJWe0v+b5oZJZKb0pGHNIV6+UiNeQWiFGmuQ0aj7GEhnD/v9iqxIsjuRKtEnQ==
+
 "@rails/webpacker@^4.2.0":
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/@rails/webpacker/-/webpacker-4.2.0.tgz#7cb40af589c3f38f9cc7847ee5f15e16d5d89d29"
@@ -1303,6 +1308,11 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
+
+bootstrap-table@^1.15.5:
+  version "1.15.5"
+  resolved "https://registry.yarnpkg.com/bootstrap-table/-/bootstrap-table-1.15.5.tgz#a1897069397185603ef5307f4c9884ff2ee2bb5c"
+  integrity sha512-3T0Z7Htd1Ur3Pjxz3+oJE+pocaq/Rw8P+9uGGtXrEmiQqNBhq6DzVNLAnJPgKpouz24KZpDKXpqfuV8t+VqzkQ==
 
 bootstrap@^4.3.1:
   version "4.3.1"
