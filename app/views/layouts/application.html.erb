@@ -12,11 +12,13 @@
   <body>
     <div id="dashboard-container">
       <%= render 'shared/leftnav' %>
-      <main id="dashboard-right" class="main-nav">
+      <div id="dashboard-right" class="main-nav">
         <%= render 'shared/navbar' %>
-        <%= render 'shared/flashes' %>
-        <%= yield %>
-      </main>
+        <main id="content">
+          <%= render 'shared/flashes' %>
+          <%= yield %>
+        </main>
+      </div>
     </div>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>

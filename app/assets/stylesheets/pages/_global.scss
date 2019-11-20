@@ -22,11 +22,14 @@ html, body, .dashboard-container {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 30px;
 }
 
 #dashboard-left, #dashboard-right {
   transition: $transition-all;
+}
+
+main#content {
+  padding: 30px;
 }
 
 .main-nav {
