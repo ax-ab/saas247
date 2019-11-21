@@ -1,0 +1,34 @@
+<% apps = (1..5) %>
+
+
+  <div class="big-metrics-card">
+    <div class="metrics-header">
+      <div class="header-content">
+        <h4>Utilization - Least used applications</h4>
+        <p>Last 12 months</p>
+      </div>
+      <a href="">View All</a>
+    </div>
+
+
+      <div class="app-info">
+        <div class="app-name no-left-margin">Application</div>
+        <div class="app-headcount app-item">Head Count</div>
+        <div class="app-utilization app-item">Utilization</div>
+        <div class="app-savings app-item">Potential Saving</div>
+
+      </div>
+
+
+    <% apps.each do |app| %>
+      <div class="app-info">
+
+        <%= image_tag("vendor-logos/adobe-logo.png", class: "app-logo") %>
+        <div class="app-name"><%= appName %></div>
+        <div class="app-headcount app-item">12/30</div>
+        <div class="app-utilization app-item">40 %</div>
+        <div class="app-savings app-item">2.000 $</div>
+
+      </div>
+    <% end %>
+  </div>
