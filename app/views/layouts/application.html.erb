@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Saas 247</title>
+    <title><%= if content_for?(:title) then yield(:title) + ' | ' end %>Saas 247</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
@@ -16,7 +16,7 @@
     <div id="dashboard-container">
       <%= render 'shared/leftnav' %>
       <div id="dashboard-right" class="main-nav">
-        <%= render 'shared/navbar' %>
+        <%= render 'shared/navbar'%>
         <main id="content">
           <%= render 'shared/flashes' %>
           <%= yield %>
