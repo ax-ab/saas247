@@ -1,0 +1,142 @@
+.no-left-margin {
+  margin-left: 0 !important;
+}
+
+#metrics-cards-container {
+  width: 100%;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+
+  .metrics-cards-container-row {
+  margin-bottom: 30px;
+  display: flex;
+  }
+
+  .big-metrics-card {
+    background-color: white;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    flex-basis: 1000px;
+    justify-content: flex-start;
+    align-items: stretch;
+    margin-right: 30px;
+    border: 1px solid #DFE0EB;
+    border-radius: 8px;
+    border-color: #DFE0EB;
+
+    padding-top: 36px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+
+    .metrics-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding-right: 32px;
+      padding-left: 32px;
+      padding-bottom: 10px;
+
+      h4 {
+        font-size: 17px;
+        font-weight: medium;
+      }
+
+      p {
+        font-size: 12px;
+        color: #9FA2B4;
+        margin-bottom: 0px;
+      }
+
+      a {
+        font-size: 14px;
+        color: #3751FF;
+      }
+
+      .app-logo {
+        width: 26px;
+        height: 26px;
+      }
+
+      .app-name {
+        font-size: 12px;
+        color: #9FA2B4;
+        margin-bottom: 0px;
+        margin-left: 22px;
+      }
+
+      .app-utilization {
+        font-size: 14px;
+        color: #3751FF;
+        margin-left: 43px;
+      }
+
+      .app-savings {
+        font-size: 14px;
+        color: #3751FF;
+        margin-left: 51px;
+      }
+    }
+
+    .app-info {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding-right: 32px;
+      padding-left: 32px;
+      padding-top: 0px;
+      padding-bottom: 0px;
+      border-bottom: 1px solid;
+      border-bottom-color: #DFE0EB;
+      height: 56px;
+      &:last-of-type {
+        border-bottom: 0px;
+      }
+
+        .app-logo {
+          width: 26px;
+          height: 26px;
+        }
+
+        .app-item {
+          flex: 0 0 110px;
+          text-align: right;
+        }
+
+        .app-name {
+          font-size: 14px;
+          color: #9FA2B4;
+          margin-bottom: 0px;
+          flex-grow: 1;
+          margin-left: 22px;
+        }
+        .app-headcount {
+          font-size: 14px;
+          color: #9FA2B4;
+          margin-bottom: 0px;
+          margin-left: 22px;
+        }
+        .app-utilization {
+          font-size: 14px;
+          color: #9FA2B4;
+          margin-bottom: 0px;
+          margin-left: 22px;
+        }
+        .app-savings {
+          font-size: 14px;
+          color: #9FA2B4;
+          margin-bottom: 0px;
+          margin-left: 22px;
+        }
+
+    }
+
+  }
+
+  .big-metrics-card:last-of-type {
+    margin-right: 0;
+  }
+
+}
