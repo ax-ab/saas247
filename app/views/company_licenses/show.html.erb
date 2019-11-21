@@ -1,10 +1,36 @@
+<% content_for(:title, @companyLicense.license.name) %>
+
+<%
+  totalCost = 0
+  totalLicensesPurchased = 0
+  owners = 0
+  departmentsCount = Hash.new(0)
+  ownersCount = Hash.new(0)
+  @companyLicense.license_transactions.each do |lt|
+    dep = lt.owner.department
+    departmentsCount[dep] += 1
+    totalCost += lt.total_purchase_price
+    totalLicensesPurchased += lt.user_licenses_purchased
+    ownersCount[lt.owner.email] += 1
+  end
+  nOwners = ownersCount.keys.count
+  nDeps = departmentsCount.keys.count
+  user_licenses_used = rand((totalLicensesPurchased / 1.3)..totalLicensesPurchased).floor
+  utilization = ((user_licenses_used * 100) / totalLicensesPurchased)
+%>
+
 
 <div class="show-container">
 
   <div class="app-info-container">
     <div class="app-info">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Skype-icon-new.png" alt="">
-      <h4> Skype </h4>
+
+      <%= image_tag(@companyLicense.license.logo_url, alt: "alttext", class: "app-info-img") %>
+      <!-- <h4> <%= @companyLicense.license.name %> </h4> -->
+  </div>
+    <div class="app-info-group-detail">
+      <h6> Application Name</h6>
+      <p><%= @companyLicense.license.name %></p>
     </div>
     <div class="app-info-group-detail">
       <h6> Contact info</h6>
@@ -12,39 +38,40 @@
     </div>
     <div class="app-info-group-detail">
       <h6> Vendor </h6>
-      <p> Microsoft </p>
+
+      <p> <%= @companyLicense.license.vendor.name %> </p>
     </div>
     <div class="app-info-group-detail">
       <h6> Number of owners </h6>
-      <p> 3 </p>
+      <p><%= nOwners %></p>
     </div>
     <div class="app-info-group-detail">
       <h6> Number of departments </h6>
-      <p> 3 </p>
+      <p><%= nDeps %></p>
     </div>
     <div class="app-info-group-detail">
       <h6> Category </h6>
-      <p> Communications </p>
+      <p> <%= @companyLicense.license.category.name %> </p>
     </div>
 
   </div>
   <div class="right-info">
     <div class="info-row">
       <div id="metrics-top">
-        <div class="metrics-card">
-          <div class="card-top-text">Monthly Spend</div>
-           <div class="card-bottom-text">$3.000<span>+17%</span></div>
-        </div>
 
-        <div class="metrics-card">
-          <div class="card-top-text">Total Licenses</div>
-          <div class="card-bottom-text">200</div>
-        </div>
+      <div class="metrics-card">
+        <div class="card-top-text">Monthly Spend</div>
+         <div class="card-bottom-text">$ <%= totalCost %></div>
+      </div>
 
-        <div class="metrics-card">
-          <div class="card-top-text">Utilization</div>
-          <div class="card-bottom-text">84%</div>
-        </div>
+      <div class="metrics-card">
+        <div class="card-top-text">Total Licenses</div>
+        <div class="card-bottom-text"><%#= @license.user_licenses_purchased %></div>
+      </div>
+
+      <div class="metrics-card">
+        <div class="card-top-text">Utilization</div>
+        <div class="card-bottom-text"><%= utilization %>%</div>
       </div>
     </div>
 
@@ -104,4 +131,4 @@
   </div>
 </div>
 
-<%= render "company_licenses/partials/table-index", locals: { licenses: @licenses } %>
+<%= render partial: "company_licenses/partials/table-subscription-detail", locals: { licenseTransactions: @companyLicense.license_transactions } %>

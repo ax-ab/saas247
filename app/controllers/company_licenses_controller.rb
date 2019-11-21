@@ -6,13 +6,11 @@ class CompanyLicensesController < ApplicationController
   end
 
   def index
-    @licenses = LicenseTransaction.all
+    @companyLicenses = CompanyLicense.all
   end
 
-# Only temporary Axel, don't panic
-
   def show
-     @licenses = LicenseTransaction.all
+     @companyLicense = CompanyLicense.find(params[:id])
   end
 
 end
