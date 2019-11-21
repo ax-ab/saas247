@@ -3,7 +3,7 @@ class CompanyLicensesController < ApplicationController
 
   def dashboard
 
-    @top_spend_apps = CompanyLicense
+    @spend_per_app = CompanyLicense
     .select("licenses.name AS key, '[logo temp]' AS logo, SUM(total_purchase_price) AS expense")
     .joins(:license_transactions, :license)
     .where(company: current_user.company)
@@ -12,7 +12,7 @@ class CompanyLicensesController < ApplicationController
     .order(expense: :desc)
     .limit(5)
 
-    @spend_by_department = CompanyLicense
+    @spend_per_department = CompanyLicense
     .select("users.department AS key, '[logo temp]' AS logo, SUM(license_transactions.total_purchase_price) AS expense")
     .joins({ license_transactions: :owner })
     .where(company: current_user.company)
@@ -21,17 +21,14 @@ class CompanyLicensesController < ApplicationController
     .order(expense: :desc)
     .limit(5)
 
-
-
-# Artist.select("artists.name, COUNT(tracks.id)")
-#         .joins(albums: { tracks: :genre })
-#
-# .where(genres: { name: genre_name })
-#         .group('artists.name')
-#         .order('COUNT(*) DESC')
-#         .limit(5)
-
-
+    @utilization_per_app = LicenseTransaction
+    .select("licenses.name AS app, '[logo temp]' AS logo, SUM(license_transactions.user_licenses_purchased) AS capacity, SUM(company_licenses.active_users) AS usage, SUM(company_licenses.active_users) * 100 / SUM(license_transactions.user_licenses_purchased) AS utilization")
+    .joins({company_license: :license})
+    .where(company_licenses: {company: current_user.company})
+    .where("'#{Date.today}' BETWEEN license_transactions.purchase_date AND license_transactions.expiry_date")
+    .group(:app)
+    .order(utilization: :asc)
+    .limit(5)
 
   end
 
