@@ -9,9 +9,9 @@
     <% apps.each do | app | %>
     <div class="app-info">
 
-      <%= image_tag("vendor-logos/adobe-logo.png", class: "app-logo") %>
+      <%= image_tag("vendor-logos/#{app.logo}", class: "app-logo") %>
 
-      <div class="app-name"><%= app.key %> <%= app.logo %></div>
+      <div class="app-name"><%= app.key %></div>
       <div class="app-expense">€ <%= app.expense %></div>
     </div>
     <% end %>
