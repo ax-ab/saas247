@@ -18,7 +18,7 @@
       <th data-field="alert">Alert</th>
     </tr>
     <tbody>
-      <%# @licenses.each do |license| %>
+      <% licenses.each do |license| %>
       <tr>
         <td class="table-row-name"><%= license.owner.email %></td>
         <td><%= license.owner.department %></td>
@@ -40,7 +40,7 @@
           </label>
         </td>
       </tr>
-      <%# end %>
+      <% end %>
     </tbody>
   </thead>
 </table>
