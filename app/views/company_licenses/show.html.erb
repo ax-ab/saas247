@@ -23,28 +23,32 @@
 
   <div class="app-info-container">
     <div class="app-info">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Skype-icon-new.png" alt="">
-    <h4> <%= @companyLicense.license.name %> </h4>
+      <%= image_tag(@companyLicense.license.logo_url, alt: "alttext", class: "app-info-img") %>
+      <!-- <h4> <%= @companyLicense.license.name %> </h4> -->
+  </div>
+    <div class="app-info-group-detail">
+      <h6> Application Name</h6>
+      <p><%= @companyLicense.license.name %></p>
     </div>
     <div class="app-info-group-detail">
-    <h6> Contact info</h6>
-    <p> help@skype.com </p>
+      <h6> Contact info</h6>
+      <p> help@skype.com </p>
     </div>
     <div class="app-info-group-detail">
-    <h6> Vendor </h6>
-    <p> <%= @companyLicense.license.vendor.name %> </p>
+      <h6> Vendor </h6>
+      <p> <%= @companyLicense.license.vendor.name %> </p>
     </div>
     <div class="app-info-group-detail">
-    <h6> Number of owners </h6>
-    <p><%= nOwners %></p>
+      <h6> Number of owners </h6>
+      <p><%= nOwners %></p>
     </div>
     <div class="app-info-group-detail">
-    <h6> Number of departments </h6>
-    <p><%= nDeps %></p>
+      <h6> Number of departments </h6>
+      <p><%= nDeps %></p>
     </div>
     <div class="app-info-group-detail">
-    <h6> Category </h6>
-    <p> <%= @companyLicense.license.category.name %> </p>
+      <h6> Category </h6>
+      <p> <%= @companyLicense.license.category.name %> </p>
     </div>
 
   </div>
