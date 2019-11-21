@@ -4,10 +4,10 @@
 
   <!-- Spent by top 5 applications -->
   <%= render partial: "company_licenses/partials/card_app_info", locals: {
-  appName: "app-name", appExpense: "13.000" }%>
+    cardName: "Spent by top 5 applications", apps: @top_spend_apps }%>
   <!-- Spent by department -->
   <%= render partial: "company_licenses/partials/card_app_info", locals: {
-  appName: "app-name", appExpense: "13.000" }%>
+  cardName: "Spent by Department", apps: @spend_by_department }%>
 
   </div>
 
@@ -17,7 +17,7 @@
   appName: "app-name", appExpense: "13.000" }%>
   <!-- Upcomming renewals - new partial required? -->
   <%= render partial: "company_licenses/partials/card_app_info", locals: {
-  appName: "app-name", appExpense: "13.000" }%>
+  cardName: "Upcomming renewals", apps: Hash.new(3) }%>
 
   </div>
 
