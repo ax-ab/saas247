@@ -8,7 +8,7 @@ class CompanyLicensesController < ApplicationController
     .joins(:license)
     .where(company: current_user.company)
     .count('distinct name')
-    
+
     spend_current_month = get_spend_from_dates(Date.today.beginning_of_month, Date.today.end_of_month)
     @spend_current_month = number_to_currency(spend_current_month, unit: "€", separator: ",", delimiter: ".", precision: 0)
 
@@ -33,7 +33,7 @@ class CompanyLicensesController < ApplicationController
 
     ### BOTTOM CARD METRICS
     @spend_per_app = CompanyLicense
-    .select("licenses.name AS key, '[logo temp]' AS logo, SUM(total_purchase_price) AS expense")
+    .select("licenses.name AS key, max(licenses.logo_url) AS logo, SUM(total_purchase_price) AS expense")
     .joins(:license_transactions, :license)
     .where(company: current_user.company)
     .where(license_transactions: {purchase_date: Date.today-365..Date.today})
@@ -42,7 +42,7 @@ class CompanyLicensesController < ApplicationController
     .limit(5)
 
     @spend_per_department = CompanyLicense
-    .select("users.department AS key, '[logo temp]' AS logo, SUM(license_transactions.total_purchase_price) AS expense")
+    .select("users.department AS key, 'department-placeholder.png' AS logo, SUM(license_transactions.total_purchase_price) AS expense")
     .joins({ license_transactions: :owner })
     .where(company: current_user.company)
     .where(license_transactions: {purchase_date: Date.today-365..Date.today})
@@ -51,7 +51,7 @@ class CompanyLicensesController < ApplicationController
     .limit(5)
 
     @utilization_per_app = LicenseTransaction
-    .select("licenses.name AS app, '[logo temp]' AS logo, SUM(license_transactions.user_licenses_purchased) AS capacity, SUM(company_licenses.active_users) AS usage, SUM(company_licenses.active_users) * 100 / SUM(license_transactions.user_licenses_purchased) AS utilization")
+    .select("licenses.name AS app, max(licenses.logo_url) AS logo, SUM(license_transactions.user_licenses_purchased) AS capacity, SUM(company_licenses.active_users) AS usage, SUM(company_licenses.active_users) * 100 / SUM(license_transactions.user_licenses_purchased) AS utilization")
     .joins({company_license: :license})
     .where(company_licenses: {company: current_user.company})
     .where("'#{Date.today}' BETWEEN license_transactions.purchase_date AND license_transactions.expiry_date")
