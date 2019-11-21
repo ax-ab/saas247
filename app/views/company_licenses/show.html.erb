@@ -2,7 +2,7 @@
   <div class="app-info-container">
     <div class="app-info">
     <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Skype-icon-new.png" alt="">
-    <h4> Skype </h4>
+    <h4> <%= @license.company_license.license.name %> </h4>
     </div>
     <div class="app-info-group-detail">
     <h6> Contact info</h6>
@@ -10,7 +10,7 @@
     </div>
     <div class="app-info-group-detail">
     <h6> Vendor </h6>
-    <p> Microsoft </p>
+    <p> <%= @license.company_license.license.vendor.name %> </p>
     </div>
     <div class="app-info-group-detail">
     <h6> Number of owners </h6>
@@ -22,7 +22,7 @@
     </div>
     <div class="app-info-group-detail">
     <h6> Category </h6>
-    <p> Communications </p>
+    <p> <%= @license.company_license.license.category.name %> </p>
     </div>
 
   </div>
@@ -31,17 +31,21 @@
       <div id="metrics-top">
       <div class="metrics-card">
         <div class="card-top-text">Monthly Spend</div>
-         <div class="card-bottom-text">$3.000<span>+17%</span></div>
+         <div class="card-bottom-text">$ <%= @license.total_purchase_price %></div>
       </div>
 
       <div class="metrics-card">
         <div class="card-top-text">Total Licenses</div>
-        <div class="card-bottom-text">200</div>
+        <div class="card-bottom-text"><%= @license.user_licenses_purchased %></div>
       </div>
 
       <div class="metrics-card">
         <div class="card-top-text">Utilization</div>
-        <div class="card-bottom-text">84%</div>
+        <%
+          user_licenses_used = rand((@license.user_licenses_purchased / 1.3)..@license.user_licenses_purchased).floor
+          utilization = ((user_licenses_used * 100) / @license.user_licenses_purchased)
+        %>
+        <div class="card-bottom-text"><%= utilization %>%</div>
       </div>
     </div>
     </div>
@@ -51,4 +55,4 @@
   </div>
 </div>
 
-<%= render "company_licenses/partials/table-index", locals: { licenses: @licenses } %>
+<%= render partial: "company_licenses/partials/table-subscription-detail", locals: { license: @license } %>

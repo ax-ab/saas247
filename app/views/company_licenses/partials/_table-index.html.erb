@@ -18,8 +18,13 @@
     <tbody>
       <% @licenses.each do |license| %>
       <tr>
-        <td class="table-row-name"><%= license.company_license.license.name %></td>
+        <td class="table-row-name">
+          <%= link_to company_license_path(license) do %>
+            <%= license.company_license.license.name %>
+          <% end %>
+        </td>
         <td><%= license.owner.department %></td>
+
         <td><%= license.owner.department %></td>
         <td><%= license.company_license.license.vendor.name %></td>
         <td class="table-price"><%= license.total_purchase_price %></td>

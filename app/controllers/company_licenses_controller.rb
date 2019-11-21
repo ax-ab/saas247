@@ -12,7 +12,7 @@ class CompanyLicensesController < ApplicationController
 # Only temporary Axel, don't panic
 
   def show
-     @licenses = LicenseTransaction.all
+     @license = LicenseTransaction.find(params[:id])
   end
 
 end
