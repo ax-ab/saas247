@@ -2,19 +2,20 @@
 
   <div class="metrics-cards-container-row">
 
+  <!-- Spent by top 5 applications -->
   <%= render partial: "company_licenses/partials/card_app_info", locals: {
   appName: "app-name", appExpense: "13.000" }%>
-
+  <!-- Spent by department -->
   <%= render partial: "company_licenses/partials/card_app_info", locals: {
   appName: "app-name", appExpense: "13.000" }%>
 
   </div>
 
   <div class="metrics-cards-container-row">
-
+  <!-- Utililization - Least used applications -->
   <%= render partial: "company_licenses/partials/card_app_util", locals: {
   appName: "app-name", appExpense: "13.000" }%>
-
+  <!-- Upcomming renewals - new partial required? -->
   <%= render partial: "company_licenses/partials/card_app_info", locals: {
   appName: "app-name", appExpense: "13.000" }%>
 
