@@ -1,55 +1,102 @@
-<head>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
-</head>
 
 <div class="show-container">
 
   <div class="app-info-container">
     <div class="app-info">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Skype-icon-new.png" alt="">
-    <h4> Skype </h4>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Skype-icon-new.png" alt="">
+      <h4> Skype </h4>
     </div>
     <div class="app-info-group-detail">
-    <h6> Contact info</h6>
-    <p> help@skype.com </p>
+      <h6> Contact info</h6>
+      <p> help@skype.com </p>
     </div>
     <div class="app-info-group-detail">
-    <h6> Vendor </h6>
-    <p> Microsoft </p>
+      <h6> Vendor </h6>
+      <p> Microsoft </p>
     </div>
     <div class="app-info-group-detail">
-    <h6> Number of owners </h6>
-    <p> 3 </p>
+      <h6> Number of owners </h6>
+      <p> 3 </p>
     </div>
     <div class="app-info-group-detail">
-    <h6> Number of departments </h6>
-    <p> 3 </p>
+      <h6> Number of departments </h6>
+      <p> 3 </p>
     </div>
     <div class="app-info-group-detail">
-    <h6> Category </h6>
-    <p> Communications </p>
+      <h6> Category </h6>
+      <p> Communications </p>
     </div>
 
   </div>
   <div class="right-info">
     <div class="info-row">
       <div id="metrics-top">
-      <div class="metrics-card">
-        <div class="card-top-text">Monthly Spend</div>
-         <div class="card-bottom-text">$3.000<span>+17%</span></div>
-      </div>
+        <div class="metrics-card">
+          <div class="card-top-text">Monthly Spend</div>
+           <div class="card-bottom-text">$3.000<span>+17%</span></div>
+        </div>
 
-      <div class="metrics-card">
-        <div class="card-top-text">Total Licenses</div>
-        <div class="card-bottom-text">200</div>
-      </div>
+        <div class="metrics-card">
+          <div class="card-top-text">Total Licenses</div>
+          <div class="card-bottom-text">200</div>
+        </div>
 
-      <div class="metrics-card">
-        <div class="card-top-text">Utilization</div>
-        <div class="card-bottom-text">84%</div>
+        <div class="metrics-card">
+          <div class="card-top-text">Utilization</div>
+          <div class="card-bottom-text">84%</div>
+        </div>
       </div>
     </div>
-    </div>
+
+  <!-- <div class="drop-down-menu">
+    <label>Show:</label>
+  <select class="bootstrap-select" style="width:80px;">
+  <option value="1" selected="selected">Monthly</option>
+  <option value="2">Quarterly</option>
+  <option value="3">Yearly</option>
+</select>
+</div> -->
+
+
+<form id="app-cover">
+            <div id="select-box">
+                    <input type="checkbox" id="options-view-button">
+                    <div id="select-button" class="brd">
+                            <div id="selected-value">
+                                <span>Show:</span>
+                            </div>
+                            <div id="chevrons">
+                                    <i class="fas fa-chevron-up"></i>
+                                    <i class="fas fa-chevron-down"></i>
+                            </div>
+                    </div>
+                    <div id="options">
+                            <div class="option">
+                                    <input class="s-c top" type="radio">
+                                    <input class="s-c bottom" type="radio">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span class="label">Monthly</span>
+                                    <span class="opt-val">Monthly</span>
+                            </div>
+                            <div class="option">
+                                    <input class="s-c top" type="radio">
+                                    <input class="s-c bottom" type="radio">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span class="label">Quarterly</span>
+                                    <span class="opt-val">Quarterly</span>
+                            </div>
+                            <div class="option">
+                                    <input class="s-c top" type="radio">
+                                    <input class="s-c bottom" type="radio">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span class="label">Yearly</span>
+                                    <span class="opt-val">Yearly</span>
+                            </div>
+                            <div id="option-bg"></div>
+                    </div>
+            </div>
+    </form>
+
     <div class="graph-wrapper">
       <canvas id="myChart" width="730" height="420"></canvas>
 
