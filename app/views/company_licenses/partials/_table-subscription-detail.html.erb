@@ -18,21 +18,21 @@
       <th data-field="alert">Alert</th>
     </tr>
     <tbody>
-      <% licenses.each do |license| %>
+      <% licenseTransactions.each do |transaction| %>
       <tr>
-        <td class="table-row-name"><%= license.owner.email %></td>
-        <td><%= license.owner.department %></td>
-        <td class="table-price"><%= license.total_purchase_price %></td>
-        <td><%= license.user_licenses_purchased %></td>
+        <td class="table-row-name"><%= transaction.owner.email %></td>
+        <td><%= transaction.owner.department %></td>
+        <td class="table-price"><%= transaction.total_purchase_price %></td>
+        <td><%= transaction.user_licenses_purchased %></td>
         <%
-          user_licenses_used = rand((license.user_licenses_purchased / 1.3)..license.user_licenses_purchased).floor
-          utilization = ((user_licenses_used * 100) / license.user_licenses_purchased)
+          user_licenses_used = rand((transaction.user_licenses_purchased / 1.3)..transaction.user_licenses_purchased).floor
+          utilization = ((user_licenses_used * 100) / transaction.user_licenses_purchased)
         %>
         <td><%= user_licenses_used %></td>
         <td><%= utilization %>%</td>
-        <td><%= license.commitment_period %></td>
-        <td><%= license.expiry_date %></td>
-        <td><%= license.purchase_date %></td>
+        <td><%= transaction.commitment_period %></td>
+        <td><%= transaction.expiry_date %></td>
+        <td><%= transaction.purchase_date %></td>
         <td class="toggle-alert">
           <label class="switch">
             <input type="checkbox" <%= ['', 'checked="checked"'].sample %>>
