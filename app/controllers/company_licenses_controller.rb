@@ -9,8 +9,6 @@ class CompanyLicensesController < ApplicationController
     @companyLicenses = CompanyLicense.all
   end
 
-# Only temporary Axel, don't panic
-
   def show
      @companyLicense = CompanyLicense.find(params[:id])
   end
