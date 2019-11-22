@@ -19,6 +19,7 @@ function initCalendar(){
         alert(info.event);
       },
       firstDay: 1
+
     });
 
     calendar.render();

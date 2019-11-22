@@ -2,7 +2,7 @@ class CompanyLicensesController < ApplicationController
 # skip_before_action :authenticate_user!, only: [:dashboard, :index, :show]
 
   def dashboard
-
+    @license_transactions = LicenseTransaction.all
   end
 
   def index
