@@ -20,7 +20,7 @@
     <% apps.each do |app| %>
       <div class="app-info">
 
-        <%= image_tag("vendor-logos/#{app.logo}", class: "app-logo") %>
+        <%= image_tag("#{app.logo}", class: "app-logo") %>
         <div class="app-name"><%= app.app %></div>
         <div class="app-headcount app-item"><%= app.usage %>/<%= app.capacity %></div>
         <div class="app-utilization app-item"><%= app.utilization %>%</div>

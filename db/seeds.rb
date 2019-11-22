@@ -101,16 +101,26 @@ puts "Finished creating categories"
 
 puts "\nCreating licenses..."
   licenses = [
-    {name: "Slack", license_type: "", category: Category.find_by(name: "Communications"), vendor: Vendor.find_by(name: "Slack"), logo_url: "slack-logo.svg"},
-    {name: "Microsoft Office 365", license_type: "Business Essentials", category: Category.find_by(name: "Business Operations"), vendor: Vendor.find_by(name: "Microsoft"), logo_url: "msft-office-365-logo.svg"},
-    {name: "Microsoft Office 365", license_type: "Business Premium", category: Category.find_by(name: "Business Operations"), vendor: Vendor.find_by(name: "Microsoft"), logo_url: "msft-office-365-logo.svg"},
-    {name: "Dropbox", license_type: "Standard", category: Category.find_by(name: "Utilities"), vendor: Vendor.find_by(name: "Dropbox"), logo_url: "dropbox-logo.svg"},
-    {name: "Dropbox", license_type: "Advanced", category: Category.find_by(name: "Utilities"), vendor: Vendor.find_by(name: "Dropbox"), logo_url: "dropbox-logo.svg"},
-    {name: "Zendesk", license_type: "Enterprise", category: Category.find_by(name: "Customer Support"), vendor: Vendor.find_by(name: "Zendesk"), logo_url: "zendesk-logo.svg"},
-    {name: "Zendesk", license_type: "Professional", category: Category.find_by(name: "Customer Support"), vendor: Vendor.find_by(name: "Zendesk"), logo_url: "zendesk-logo.svg"},
-    {name: "JiRA", license_type: "Standard", category: Category.find_by(name: "Engineering"), vendor: Vendor.find_by(name: "Atlassian"), logo_url: "Jira-logo.svg"},
-    {name: "Salesforce", license_type: "Small Business - Sales Professional", category: Category.find_by(name: "Sales"), vendor: Vendor.find_by(name: "Salesforce"), logo_url: "salesforce-logo.svg"},
-    {name: "Google Suite", license_type: "", category: Category.find_by(name: "Business Operations"), vendor: Vendor.find_by(name: "Google"), logo_url: "gsuite-logo.svg"},
+    {name: "Slack", license_type: "", category: Category.find_by(name: "Communications"),
+      vendor: Vendor.find_by(name: "Slack"), logo_url: "vendor-logos/slack-logo.svg"},
+    {name: "Microsoft Office 365", license_type: "Business Essentials", category: Category.find_by(name: "Business Operations"),
+      vendor: Vendor.find_by(name: "Microsoft"), logo_url: "vendor-logos/msft-office-365-logo.svg"},
+    {name: "Microsoft Office 365", license_type: "Business Premium", category: Category.find_by(name: "Business Operations"),
+      vendor: Vendor.find_by(name: "Microsoft"), logo_url: "vendor-logos/msft-office-365-logo.svg"},
+    {name: "Dropbox", license_type: "Standard", category: Category.find_by(name: "Utilities"),
+      vendor: Vendor.find_by(name: "Dropbox"), logo_url: "vendor-logos/dropbox-logo.svg"},
+    {name: "Dropbox", license_type: "Advanced", category: Category.find_by(name: "Utilities"),
+      vendor: Vendor.find_by(name: "Dropbox"), logo_url: "vendor-logos/dropbox-logo.svg"},
+    {name: "Zendesk", license_type: "Enterprise", category: Category.find_by(name: "Customer Support"),
+      vendor: Vendor.find_by(name: "Zendesk"), logo_url: "vendor-logos/zendesk-logo.svg"},
+    {name: "Zendesk", license_type: "Professional", category: Category.find_by(name: "Customer Support"),
+      vendor: Vendor.find_by(name: "Zendesk"), logo_url: "vendor-logos/zendesk-logo.svg"},
+    {name: "JiRA", license_type: "Standard", category: Category.find_by(name: "Engineering"),
+      vendor: Vendor.find_by(name: "Atlassian"), logo_url: "vendor-logos/Jira-logo.svg"},
+    {name: "Salesforce", license_type: "Small Business - Sales Professional", category: Category.find_by(name: "Sales"),
+      vendor: Vendor.find_by(name: "Salesforce"), logo_url: "vendor-logos/salesforce-logo.svg"},
+    {name: "Google Suite", license_type: "", category: Category.find_by(name: "Business Operations"),
+      vendor: Vendor.find_by(name: "Google"), logo_url: "vendor-logos/gsuite-logo.svg"},
     # {name: "Zoom", license_type: "Business", category: Category.find_by(name: "Communications"), vendor: Vendor.find_by(name: "Zoom")},
     # {name: "WebEx", license_type: "Business", category: Category.find_by(name: "Communications"), vendor: Vendor.find_by(name: "Cisco")},
     # {name: "TeamViewer", license_type: "Individual Seat", category: Category.find_by(name: "Communications"), vendor: Vendor.find_by(name: "TeamViewer")},
@@ -211,8 +221,8 @@ puts "Finished creating initial license transactions"
 
 puts "\nAdvancing initial transactions to current or future date..."
   def transaction_updated(transaction)
-    expiry_date = transaction.expiry_date
-    future_date = expiry_date.strftime("%Y%m") >= Date.today.next_month.strftime("%Y%m")
+    # -1 below so that there are no purchase_dates on today's date
+    future_date = transaction.expiry_date > Date.today - 2
   end
 
   def recusively_update_transactions(transaction)
