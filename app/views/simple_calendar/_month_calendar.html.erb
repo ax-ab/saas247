@@ -9,12 +9,11 @@
 <div class="simple-calendar">
 
 
-
   <div class="renewals-info">
 
-    <div class="count"><span style="font-size:25px"><%= LicenseTransaction.where('expiry_date BETWEEN ? AND ?', start_date.at_beginning_of_month, start_date.at_beginning_of_month.next_month ).count %></span><span style="font-size:12px"> in the current month</span></div>
+    <div class="count highlight-value"><span><%= LicenseTransaction.where('expiry_date BETWEEN ? AND ?', start_date.at_beginning_of_month, start_date.at_beginning_of_month.next_month ).count %></span><p> in the current month</p></div>
 
-    <div class="value"><span style="font-size:25px"><%= '$18.000' %><span style="font-size:12px"> up for renewal</span></div>
+    <div class="value highlight-value"><span><%= '$18.000' %><p> up for renewal</p></div>
 
     <div class="calendar-heading">
       <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
