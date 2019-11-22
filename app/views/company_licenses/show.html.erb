@@ -71,14 +71,15 @@
       </div>
     </div>
 
-  <!-- <div class="drop-down-menu">
-    <label>Show:</label>
-    <select class="bootstrap-select" style="width:80px;">
-      <option value="1" selected="selected">Monthly</option>
-      <option value="2">Quarterly</option>
-      <option value="3">Yearly</option>
-    </select>
-  </div> -->
+  <div class="dropdown">
+    <button onclick="periodSelect()" class="dropbtn">Show:</button>
+      <div id="myDropdown" class="dropdown-content">
+
+        <a href="#"><i class="far fa-calendar-alt"></i> Monthly</a>
+        <a href="#"> <i class="far fa-calendar-alt"></i> Quarterly</a>
+        <a href="#"> <i class="far fa-calendar-alt"></i> Yearly</a>
+  </div>
+</div>
 
     <div class="graph-wrapper">
       <form id="app-cover">
@@ -125,3 +126,4 @@
 </div>
 
 <%= render partial: "company_licenses/partials/table-subscription-detail", locals: { licenseTransactions: @companyLicense.license_transactions } %>
+
