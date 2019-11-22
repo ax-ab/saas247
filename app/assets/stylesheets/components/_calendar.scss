@@ -1,6 +1,11 @@
+
 .simple-calendar {
 
-  padding: 30px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px;
 
   .table {
     margin: 0px;
@@ -10,7 +15,20 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+
+    .highlight-value {
+      .span {font-size:25px;}
+      .p  {font-size:12px;}
+    }
+
+    .calendar-heading {
+      font-size:12;
+      .calendar-title  {font-size:12px;}
+    }
+
+
   }
+
 
   .day {
     position: relative;
