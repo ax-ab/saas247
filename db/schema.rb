@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2019_11_22_093133) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "license_type"
+    t.string "logo_url"
     t.index ["category_id"], name: "index_licenses_on_category_id"
     t.index ["vendor_id"], name: "index_licenses_on_vendor_id"
   end

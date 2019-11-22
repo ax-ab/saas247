@@ -1,58 +1,44 @@
-<table class="card-container table-container">
+<table
+  id="table-styled"
+  class="card-container table-container"
+  data-toggle="table"
+  data-search="true"
+  data-sort-name="name">
   <thead>
     <tr>
-      <th>Owner
-        <svg width="7" height="3" viewBox="0 0 7 3" fill="#AEAEAE" mlns="http://www.w3.org/2000/svg">
-        <path d="M3.5 3L0.468911 -9.41288e-08L6.53109 4.35844e-07L3.5 3Z"/>
-        </svg>
-      </th>
-      <th>Department <svg width="7" height="3" viewBox="0 0 7 3" fill="#AEAEAE" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3.5 3L0.468911 -9.41288e-08L6.53109 4.35844e-07L3.5 3Z"/>
-        </svg>
-      </th>
-      <th>Start Date <svg width="7" height="3" viewBox="0 0 7 3" fill="#AEAEAE" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3.5 3L0.468911 -9.41288e-08L6.53109 4.35844e-07L3.5 3Z"/>
-        </svg>
-      </th>
-      <th>Expense <svg width="7" height="3" viewBox="0 0 7 3" fill="#AEAEAE" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3.5 3L0.468911 -9.41288e-08L6.53109 4.35844e-07L3.5 3Z"/>
-        </svg>
-      </th>
-      <th>L. Size <svg width="7" height="3" viewBox="0 0 7 3" fill="#AEAEAE" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3.5 3L0.468911 -9.41288e-08L6.53109 4.35844e-07L3.5 3Z"/>
-        </svg>
-      </th>
-      <th>L. Used <svg width="7" height="3" viewBox="0 0 7 3" fill="#AEAEAE" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3.5 3L0.468911 -9.41288e-08L6.53109 4.35844e-07L3.5 3Z"/>
-        </svg>
-      </th>
-      <th>Utilization <svg width="7" height="3" viewBox="0 0 7 3" fill="#AEAEAE" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3.5 3L0.468911 -9.41288e-08L6.53109 4.35844e-07L3.5 3Z"/>
-        </svg>
-      </th>
-      <th>Billing Cycle <svg width="7" height="3" viewBox="0 0 7 3" fill="#AEAEAE" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3.5 3L0.468911 -9.41288e-08L6.53109 4.35844e-07L3.5 3Z"/>
-        </svg>
-      </th>
-      <th>Renewal Date <svg width="7" height="3" viewBox="0 0 7 3" fill="#AEAEAE" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3.5 3L0.468911 -9.41288e-08L6.53109 4.35844e-07L3.5 3Z"/>
-        </svg>
-      </th>
-      <th>Alert</th>
+      <th data-field="owner" data-sortable="true">Owner</th>
+      <th data-field="department" data-sortable="true">Department</th>
+      <th data-field="expense" data-sortable="true">Expense</th>
+      <th data-field="LSize" data-sortable="true">L. Size</th>
+      <th data-field="LUsed" data-sortable="true">L. Used</th>
+      <th data-field="utilization" data-sortable="true">Utilization</th>
+      <th data-field="billingCycle" data-sortable="true">Billing Cycle</th>
+      <th data-field="startDate" data-sortable="true">Start Date</th>
+      <th data-field="renewalDate" data-sortable="true">Renewal Date</th>
+      <th data-field="alert">Alert</th>
     </tr>
     <tbody>
-      <% 10.times do %>
+      <% licenseTransactions.each do |transaction| %>
       <tr>
-        <td>Peter Hanson</td>
-        <td>Management</td>
-        <td>12 Jan 2017</td>
-        <td>$ 2.000</td>
-        <td>6</td>
-        <td>6</td>
-        <td>100%</td>
-        <td>Monthly</td>
-        <td>29 Nov 2019</td>
-        <td>yo</td>
+        <td class="table-row-name"><%= transaction.owner.email %></td>
+        <td><%= transaction.owner.department %></td>
+        <td class="table-price"><%= transaction.total_purchase_price %></td>
+        <td><%= transaction.user_licenses_purchased %></td>
+        <%
+          user_licenses_used = rand((transaction.user_licenses_purchased / 1.3)..transaction.user_licenses_purchased).floor
+          utilization = ((user_licenses_used * 100) / transaction.user_licenses_purchased)
+        %>
+        <td><%= user_licenses_used %></td>
+        <td><%= utilization %>%</td>
+        <td><%= transaction.commitment_period %></td>
+        <td><%= transaction.purchase_date %></td>
+        <td><%= transaction.expiry_date %></td>
+        <td class="toggle-alert">
+          <label class="switch">
+            <input type="checkbox" <%= ['', 'checked="checked"'].sample %>>
+            <span class="slider round"></span>
+          </label>
+        </td>
       </tr>
       <% end %>
     </tbody>

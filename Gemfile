@@ -16,6 +16,9 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'simple_calendar'
+gem "chartkick"
+gem "groupdate"
+gem "highcharts-rails"
 
 group :development do
   gem 'web-console', '>= 3.3.0'

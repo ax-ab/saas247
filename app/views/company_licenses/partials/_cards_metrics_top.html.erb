@@ -2,22 +2,22 @@
 
   <div class="metrics-card">
     <div class="card-top-text">Applications</div>
-    <div class="card-bottom-text">60</div>
+    <div class="card-bottom-text"><%= @total_applications %></div>
   </div>
 
   <div class="metrics-card">
     <div class="card-top-text">Monthly spend</div>
-    <div class="card-bottom-text">$3.000<span>+17%</span></div>
+    <div class="card-bottom-text"><%= @spend_current_month %><span><%= @spend_trend_month %>%</span></div>
   </div>
 
   <div class="metrics-card">
     <div class="card-top-text">Spend last 12 months</div>
-    <div class="card-bottom-text">$20.000</div>
-</div>
+    <div class="card-bottom-text"><%= @spend_one_year_back %></div>
+  </div>
 
   <div class="metrics-card">
     <div class="card-top-text">Utilization</div>
-    <div class="card-bottom-text">84%</div>
+    <div class="card-bottom-text"><%= @utilization %>%</div>
   </div>
 
 </div>

@@ -1,54 +1,118 @@
+  <% content_for(:title, @company_license.license.name) %>
+
+<%
+  totalCost = 0
+  totalLicensesPurchased = 0
+  owners = 0
+  departmentsCount = Hash.new(0)
+  ownersCount = Hash.new(0)
+  transactionsPerMonths = Hash.new(0)
+
+  @company_license.license_transactions.each do |lt|
+    dep = lt.owner.department
+    departmentsCount[dep] += 1
+    totalCost += lt.total_purchase_price
+    totalLicensesPurchased += lt.user_licenses_purchased
+    ownersCount[lt.owner.email] += 1
+    if lt.purchase_date < Date.today && lt.purchase_date > Date.today - 365
+      dateFilter = "#{lt.purchase_date.year}-#{lt.purchase_date.month}"
+      transactionsPerMonths[dateFilter] += lt.total_purchase_price
+    end
+  end
+
+
+  nOwners = ownersCount.keys.count
+  nDeps = departmentsCount.keys.count
+  user_licenses_used = rand((totalLicensesPurchased / 1.3)..totalLicensesPurchased).floor
+  utilization = ((user_licenses_used * 100) / totalLicensesPurchased)
+%>
+
 <div class="show-container">
   <div class="app-info-container">
     <div class="app-info">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Skype-icon-new.png" alt="">
-    <h4> Skype </h4>
+      <%= image_tag(@company_license.license.logo_url, alt: "alttext", class: "app-info-img") %>
+      <!-- <h4> <%= @company_license.license.name %> </h4> -->
     </div>
     <div class="app-info-group-detail">
-    <h6> Contact info</h6>
-    <p> help@skype.com </p>
+      <h6> Application Name</h6>
+      <p><%= @company_license.license.name %></p>
     </div>
     <div class="app-info-group-detail">
-    <h6> Vendor </h6>
-    <p> Microsoft </p>
+      <h6> Contact info</h6>
+      <p> help@skype.com </p>
     </div>
     <div class="app-info-group-detail">
-    <h6> Number of owners </h6>
-    <p> 3 </p>
+      <h6> Vendor </h6>
+      <p> <%= @company_license.license.vendor.name %> </p>
     </div>
     <div class="app-info-group-detail">
-    <h6> Number of departments </h6>
-    <p> 3 </p>
+      <h6> Number of owners </h6>
+      <p><%= nOwners %></p>
     </div>
     <div class="app-info-group-detail">
-    <h6> Category </h6>
-    <p> Communications </p>
+      <h6> Number of departments </h6>
+      <p><%= nDeps %></p>
     </div>
-
+    <div class="app-info-group-detail">
+      <h6> Category </h6>
+      <p> <%= @company_license.license.category.name %> </p>
+    </div>
   </div>
   <div class="right-info">
     <div class="info-row">
       <div id="metrics-top">
-      <div class="metrics-card">
-        <div class="card-top-text">Monthly Spend</div>
-         <div class="card-bottom-text">$3.000<span>+17%</span></div>
-      </div>
 
-      <div class="metrics-card">
-        <div class="card-top-text">Total Licenses</div>
-        <div class="card-bottom-text">200</div>
-      </div>
+        <div class="metrics-card">
+          <div class="card-top-text">Monthly Spend</div>
+          <div class="card-bottom-text">$ <%= totalCost %></div>
+        </div>
 
-      <div class="metrics-card">
-        <div class="card-top-text">Utilization</div>
-        <div class="card-bottom-text">84%</div>
+        <div class="metrics-card">
+          <div class="card-top-text">Total Licenses</div>
+          <div class="card-bottom-text"><%#= @license.user_licenses_purchased %></div>
+        </div>
+
+        <div class="metrics-card">
+          <div class="card-top-text">Utilization</div>
+          <div class="card-bottom-text"><%= utilization %>%</div>
+        </div>
       </div>
     </div>
-    </div>
+
+
     <div class="graph-wrapper">
-      beautiful graph
+      <ul class="nav nav-tabs tabs-saassy" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Cost over time</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Utilization</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Other</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <div class="dropdown">
+            <button onclick="periodSelect()" class="dropbtn">Show:</button>
+            <div id="myDropdown" class="dropdown-content">
+              <a href="#"><i class="far fa-calendar-alt"></i> Monthly</a>
+              <a href="#"> <i class="far fa-calendar-alt"></i> Quarterly</a>
+              <a href="#"> <i class="far fa-calendar-alt"></i> Yearly</a>
+            </div>
+          </div>
+          <%= javascript_pack_tag 'chart' %>
+          <%= area_chart @company_license.license_transactions.where("purchase_date BETWEEN ? AND ?", Date.today - 365.days, Date.today).group_by_month(:purchase_date).sum(:total_purchase_price) %>
+
+          <!-- <canvas id="myChart" width="730" height="420" data-values="<%= transactionsPerMonths %><%= transactionsPerMonths.values.to_a %>"></canvas> -->
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+      </div>
     </div>
   </div>
 </div>
 
-<%= render "company_licenses/partials/table-index", locals: { licenses: @licenses } %>
+<%= render partial: "company_licenses/partials/table-subscription-detail", locals: { licenseTransactions: @company_license.license_transactions } %>
+
