@@ -42,7 +42,7 @@ class CompanyLicensesController < ApplicationController
     .limit(5)
 
     @spend_per_department = CompanyLicense
-    .select("users.department AS key, 'department-placeholder.png' AS logo, SUM(license_transactions.total_purchase_price) AS expense")
+    .select("users.department AS key, 'vendor-logos/department-placeholder.png' AS logo, SUM(license_transactions.total_purchase_price) AS expense")
     .joins({ license_transactions: :owner })
     .where(company: current_user.company)
     .where(license_transactions: {purchase_date: Date.today-365..Date.today})
