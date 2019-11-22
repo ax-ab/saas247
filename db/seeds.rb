@@ -102,7 +102,7 @@ puts "Finished creating categories"
 puts "\nCreating licenses..."
   licenses = [
     {name: "Slack", license_type: "", category: Category.find_by(name: "Communications"),
-      vendor: Vendor.find_by(name: "Slack"), logo_url: "vendor-logos/slack-logo.svg"},
+      vendor: Vendor.find_by(name: "Slack"), logo_url: "vendor-logos/slack-logo.svg" },
     {name: "Microsoft Office 365", license_type: "Business Essentials", category: Category.find_by(name: "Business Operations"),
       vendor: Vendor.find_by(name: "Microsoft"), logo_url: "vendor-logos/msft-office-365-logo.svg"},
     {name: "Microsoft Office 365", license_type: "Business Premium", category: Category.find_by(name: "Business Operations"),
