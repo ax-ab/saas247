@@ -2,6 +2,8 @@ class CompanyLicensesController < ApplicationController
   include ActionView::Helpers::NumberHelper
 
   def dashboard
+    @license_transactions = LicenseTransaction.all
+
     ### TOP METRICS
     # https://apidock.com/rails/ActionView/Helpers/NumberHelper/number_to_currency
     @total_applications = CompanyLicense

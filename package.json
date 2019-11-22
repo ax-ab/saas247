@@ -2,6 +2,8 @@
   "name": "saas247",
   "private": true,
   "dependencies": {
+    "@fullcalendar/core": "^4.3.1",
+    "@fullcalendar/daygrid": "^4.3.0",
     "@rails/webpacker": "^4.2.0",
     "bootstrap": "^4.3.1",
     "bootstrap-table": "^1.15.5",

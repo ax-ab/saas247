@@ -1,0 +1,65 @@
+.simple-calendar {
+
+  padding: 30px;
+
+  .table {
+    margin: 0px;
+  }
+
+  .renewals-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .day {
+    position: relative;
+    height: 50px;
+    width: 70px;
+    background-color: white;
+
+    .day-number {
+      position: absolute;
+      top: 4px;
+      right: 7px;
+      font-size: 10px;
+    }
+
+    .day-renewal-sum {
+      position: absolute;
+      bottom: 4px;
+      left: 7px;
+      font-size: 10px;
+    }
+
+  }
+
+.calendar-heading {
+  font-size: 14px;
+
+  .calendar-title{
+    color: #000000;
+  }
+
+}
+
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+
+  .today {}
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {}
+  .next-month { }
+  .current-month {}
+
+  .has-events {}
+}

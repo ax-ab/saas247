@@ -1,0 +1,21 @@
+<% apps = (1..5) %>
+
+  <div class="big-metrics-card">
+    <div class="metrics-header">
+      <div class="header-content">
+        <h4>Spent by department</h4>
+        <p>Last 12 months</p>
+      </div>
+      <a href="">View All</a>
+    </div>
+    <% apps.each do |app| %>
+      <div class="app-info">
+
+        <%= image_tag("vendor-logos/adobe-logo.png", class: "app-logo") %>
+
+        <div class="app-name"><%= departmentName %></div>
+        <div class="app-expense"><%= appExpense %> $</div>
+      </div>
+    <% end %>
+  </div>
+
