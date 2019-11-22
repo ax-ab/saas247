@@ -168,22 +168,22 @@ puts "\nCreating initial license transactions..."
   end
 
   license_transactions = [
-    {user_licenses_purchased: 200, total_purchase_price: (6.25*200), purchase_date: (Date.today - rand(365..730)),
+    {user_licenses_purchased: 200, total_purchase_price: (6.25*200*12), purchase_date: (Date.today - rand(365..730)),
       commitment_period: "yearly", company_license: get_company_license("Slack", ""), owner: User.all.sample},
 
     {user_licenses_purchased: 150, total_purchase_price: (7.5*150), purchase_date: (Date.today - rand(0..365)),
      commitment_period: "monthly", company_license: get_company_license("Slack", ""), owner: User.all.sample},
 
-    {user_licenses_purchased: 500, total_purchase_price: (4.9*500), purchase_date: (Date.today - rand(365..730)),
+    {user_licenses_purchased: 500, total_purchase_price: (4.9*500*12), purchase_date: (Date.today - rand(365..730)),
      commitment_period: "yearly", company_license: get_company_license("Microsoft Office 365", "Business Essentials"), owner: User.all.sample},
 
-    {user_licenses_purchased: 300, total_purchase_price: (10.93*300), purchase_date: (Date.today - rand(365..730)),
+    {user_licenses_purchased: 300, total_purchase_price: (10.93*300*12), purchase_date: (Date.today - rand(365..730)),
      commitment_period: "yearly", company_license: get_company_license("Microsoft Office 365", "Business Premium"), owner: User.all.sample},
 
     {user_licenses_purchased: 150, total_purchase_price: (12*150), purchase_date: (Date.today - rand(0..365)),
      commitment_period: "monthly", company_license: get_company_license("Dropbox", "Standard"), owner: User.all.sample},
 
-    {user_licenses_purchased: 100, total_purchase_price: (15*100), purchase_date: (Date.today - rand(365..730)),
+    {user_licenses_purchased: 100, total_purchase_price: (15*100*12), purchase_date: (Date.today - rand(365..730)),
      commitment_period: "yearly", company_license: get_company_license("Dropbox", "Advanced"), owner: User.all.sample},
 
     {user_licenses_purchased: 10, total_purchase_price: (134.6*10), purchase_date: (Date.today - rand(0..365)),
