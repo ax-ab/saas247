@@ -61,11 +61,11 @@ class CompanyLicensesController < ApplicationController
   end
 
   def index
-    @companyLicenses = CompanyLicense.all
+    @company_licenses = CompanyLicense.all
   end
 
   def show
-     @companyLicense = CompanyLicense.find(params[:id])
+     @company_license = CompanyLicense.find(params[:id])
   end
 
   ### HELPER FUNCTION FOR TOP METRICS
