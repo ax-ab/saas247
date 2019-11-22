@@ -19,15 +19,12 @@
   utilization = ((user_licenses_used * 100) / totalLicensesPurchased)
 %>
 
-
 <div class="show-container">
-
   <div class="app-info-container">
     <div class="app-info">
-
       <%= image_tag(@companyLicense.license.logo_url, alt: "alttext", class: "app-info-img") %>
       <!-- <h4> <%= @companyLicense.license.name %> </h4> -->
-  </div>
+    </div>
     <div class="app-info-group-detail">
       <h6> Application Name</h6>
       <p><%= @companyLicense.license.name %></p>
@@ -38,7 +35,6 @@
     </div>
     <div class="app-info-group-detail">
       <h6> Vendor </h6>
-
       <p> <%= @companyLicense.license.vendor.name %> </p>
     </div>
     <div class="app-info-group-detail">
@@ -53,25 +49,25 @@
       <h6> Category </h6>
       <p> <%= @companyLicense.license.category.name %> </p>
     </div>
-
   </div>
   <div class="right-info">
     <div class="info-row">
       <div id="metrics-top">
 
-      <div class="metrics-card">
-        <div class="card-top-text">Monthly Spend</div>
-         <div class="card-bottom-text">$ <%= totalCost %></div>
-      </div>
+        <div class="metrics-card">
+          <div class="card-top-text">Monthly Spend</div>
+          <div class="card-bottom-text">$ <%= totalCost %></div>
+        </div>
 
-      <div class="metrics-card">
-        <div class="card-top-text">Total Licenses</div>
-        <div class="card-bottom-text"><%#= @license.user_licenses_purchased %></div>
-      </div>
+        <div class="metrics-card">
+          <div class="card-top-text">Total Licenses</div>
+          <div class="card-bottom-text"><%#= @license.user_licenses_purchased %></div>
+        </div>
 
-      <div class="metrics-card">
-        <div class="card-top-text">Utilization</div>
-        <div class="card-bottom-text"><%= utilization %>%</div>
+        <div class="metrics-card">
+          <div class="card-top-text">Utilization</div>
+          <div class="card-bottom-text"><%= utilization %>%</div>
+        </div>
       </div>
     </div>
 
@@ -86,8 +82,45 @@
 </div>
 
     <div class="graph-wrapper">
+      <form id="app-cover">
+        <div id="select-box">
+          <input type="checkbox" id="options-view-button">
+          <div id="select-button" class="brd">
+            <div id="selected-value">
+              <span>Show:</span>
+            </div>
+            <div id="chevrons">
+              <i class="fas fa-chevron-up"></i>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+          </div>
+          <div id="options">
+            <div class="option">
+              <input class="s-c top" type="radio">
+              <input class="s-c bottom" type="radio">
+              <i class="far fa-calendar-alt"></i>
+              <span class="label">Monthly</span>
+              <span class="opt-val">Monthly</span>
+            </div>
+            <div class="option">
+              <input class="s-c top" type="radio">
+              <input class="s-c bottom" type="radio">
+              <i class="far fa-calendar-alt"></i>
+              <span class="label">Quarterly</span>
+              <span class="opt-val">Quarterly</span>
+            </div>
+            <div class="option">
+              <input class="s-c top" type="radio">
+              <input class="s-c bottom" type="radio">
+              <i class="far fa-calendar-alt"></i>
+              <span class="label">Yearly</span>
+              <span class="opt-val">Yearly</span>
+            </div>
+            <div id="option-bg"></div>
+          </div>
+        </div>
+      </form>
       <canvas id="myChart" width="730" height="420"></canvas>
-
     </div>
   </div>
 </div>
