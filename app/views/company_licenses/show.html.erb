@@ -75,54 +75,15 @@
       </div>
     </div>
 
-  <!-- <div class="drop-down-menu">
-    <label>Show:</label>
-  <select class="bootstrap-select" style="width:80px;">
-  <option value="1" selected="selected">Monthly</option>
-  <option value="2">Quarterly</option>
-  <option value="3">Yearly</option>
-</select>
-</div> -->
+  <div class="dropdown">
+    <button onclick="periodSelect()" class="dropbtn">Show:</button>
+      <div id="myDropdown" class="dropdown-content">
 
-
-<form id="app-cover">
-            <div id="select-box">
-                    <input type="checkbox" id="options-view-button">
-                    <div id="select-button" class="brd">
-                            <div id="selected-value">
-                                <span>Show:</span>
-                            </div>
-                            <div id="chevrons">
-                                    <i class="fas fa-chevron-up"></i>
-                                    <i class="fas fa-chevron-down"></i>
-                            </div>
-                    </div>
-                    <div id="options">
-                            <div class="option">
-                                    <input class="s-c top" type="radio">
-                                    <input class="s-c bottom" type="radio">
-                                    <i class="far fa-calendar-alt"></i>
-                                    <span class="label">Monthly</span>
-                                    <span class="opt-val">Monthly</span>
-                            </div>
-                            <div class="option">
-                                    <input class="s-c top" type="radio">
-                                    <input class="s-c bottom" type="radio">
-                                    <i class="far fa-calendar-alt"></i>
-                                    <span class="label">Quarterly</span>
-                                    <span class="opt-val">Quarterly</span>
-                            </div>
-                            <div class="option">
-                                    <input class="s-c top" type="radio">
-                                    <input class="s-c bottom" type="radio">
-                                    <i class="far fa-calendar-alt"></i>
-                                    <span class="label">Yearly</span>
-                                    <span class="opt-val">Yearly</span>
-                            </div>
-                            <div id="option-bg"></div>
-                    </div>
-            </div>
-    </form>
+        <a href="#"><i class="far fa-calendar-alt"></i> Monthly</a>
+        <a href="#"> <i class="far fa-calendar-alt"></i> Quarterly</a>
+        <a href="#"> <i class="far fa-calendar-alt"></i> Yearly</a>
+  </div>
+</div>
 
     <div class="graph-wrapper">
       <canvas id="myChart" width="730" height="420"></canvas>
@@ -132,3 +93,4 @@
 </div>
 
 <%= render partial: "company_licenses/partials/table-subscription-detail", locals: { licenseTransactions: @companyLicense.license_transactions } %>
+

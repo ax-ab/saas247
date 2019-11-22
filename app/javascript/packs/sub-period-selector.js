@@ -1,6 +1,5 @@
-//= require rails-ujs
-//= require_tree .
-
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
 function periodSelect() {
   document.getElementById("myDropdown").classList.toggle("show");
   window.onclick = function(event) {
@@ -16,3 +15,8 @@ function periodSelect() {
     }
   }
 }
+
+
+export { periodSelect }
+// Close the dropdown menu if the user clicks outside of it
+
