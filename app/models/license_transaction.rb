@@ -20,8 +20,24 @@ class LicenseTransaction < ApplicationRecord
     }
   ]
 
-  def generate_expiry_date(days)
-    self.expiry_date = purchase_date + days
+  def add_purchase_date(period)
+    case period
+    when 'monthly'  then self.purchase_date = Date.today - rand(0..365)
+    when 'yearly'   then self.purchase_date = Date.today - rand(0..730)
+    end
+    save
+  end
+
+  def add_expiry_date(period)
+    case period
+    when 'monthly' then self.expiry_date = purchase_date + 30
+    when 'yearly'  then self.expiry_date = purchase_date + 365
+    end
+    save
+  end
+
+  def add_owner
+    self.owner = User.all.sample
     save
   end
 
@@ -34,11 +50,12 @@ class LicenseTransaction < ApplicationRecord
 
   scope :utilization_per_app, -> (company) {
     select("
-    licenses.name AS app, max(licenses.logo_url) AS logo,
+    licenses.name AS app,
+    max(licenses.logo_url) AS logo,
     SUM(license_transactions.user_licenses_purchased) AS capacity,
-    SUM(company_licenses.active_users) AS usage,
-    SUM(company_licenses.active_users) * 100 / SUM(license_transactions.user_licenses_purchased) AS utilization,
-    (SUM(license_transactions.user_licenses_purchased) - SUM(company_licenses.active_users)) * MIN(licenses.avg_license_cost) AS potential_saving
+    SUM(distinct company_licenses.active_users) AS usage,
+    SUM(distinct company_licenses.active_users) * 100 / SUM(license_transactions.user_licenses_purchased) AS utilization,
+    (SUM(license_transactions.user_licenses_purchased) - SUM(distinct company_licenses.active_users)) * MIN(licenses.avg_license_cost) AS potential_saving
     ")
     .joins({company_license: :license})
     .where(company_licenses: {company: company})

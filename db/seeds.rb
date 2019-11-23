@@ -168,54 +168,39 @@ puts "\nCreating initial license transactions..."
   end
 
   license_transactions = [
-    {user_licenses_purchased: 200, total_purchase_price: (6.25*200*12), purchase_date: (Date.today - rand(365..730)),
-      commitment_period: "yearly", company_license: get_company_license("Slack", ""), owner: User.all.sample},
-
-    {user_licenses_purchased: 150, total_purchase_price: (7.5*150), purchase_date: (Date.today - rand(0..365)),
-     commitment_period: "monthly", company_license: get_company_license("Slack", ""), owner: User.all.sample},
-
-    {user_licenses_purchased: 500, total_purchase_price: (4.9*500*12), purchase_date: (Date.today - rand(365..730)),
-     commitment_period: "yearly", company_license: get_company_license("Microsoft Office 365", "Business Essentials"), owner: User.all.sample},
-
-    {user_licenses_purchased: 300, total_purchase_price: (10.93*300*12), purchase_date: (Date.today - rand(365..730)),
-     commitment_period: "yearly", company_license: get_company_license("Microsoft Office 365", "Business Premium"), owner: User.all.sample},
-
-    {user_licenses_purchased: 150, total_purchase_price: (12*150), purchase_date: (Date.today - rand(0..365)),
-     commitment_period: "monthly", company_license: get_company_license("Dropbox", "Standard"), owner: User.all.sample},
-
-    {user_licenses_purchased: 100, total_purchase_price: (15*100*12), purchase_date: (Date.today - rand(365..730)),
-     commitment_period: "yearly", company_license: get_company_license("Dropbox", "Advanced"), owner: User.all.sample},
-
-    {user_licenses_purchased: 10, total_purchase_price: (134.6*10), purchase_date: (Date.today - rand(0..365)),
-     commitment_period: "monthly", company_license: get_company_license("Zendesk", "Enterprise"), owner: User.all.sample},
-
-    {user_licenses_purchased: 15, total_purchase_price: (80.39*15), purchase_date: (Date.today - rand(0..365)),
-     commitment_period: "monthly", company_license: get_company_license("Zendesk", "Professional"), owner: User.all.sample},
-
-    {user_licenses_purchased: 100, total_purchase_price: (6.31*100*12), purchase_date: (Date.today - rand(365..730)),
-     commitment_period: "yearly", company_license: get_company_license("JiRA", "Standard"), owner: User.all.sample},
-
-    {user_licenses_purchased: 100, total_purchase_price: (67.75*100*12), purchase_date: (Date.today - rand(365..730)),
-     commitment_period: "yearly", company_license: get_company_license("Salesforce", "Small Business - Sales Professional"), owner: User.all.sample},
-
-    {user_licenses_purchased: 150, total_purchase_price: (5.2*150), purchase_date: (Date.today - rand(0..365)),
-     commitment_period: "monthly", company_license: get_company_license("Google Suite", ""), owner: User.all.sample},
-  ]
+    {user_licenses_purchased: 200, total_purchase_price: (6.25*200*12),commitment_period: "yearly",
+      company_license: get_company_license("Slack", ""), owner: User.all.sample},
+    {user_licenses_purchased: 150, total_purchase_price: (7.5*150),commitment_period: "monthly",
+      company_license: get_company_license("Slack", ""), owner: User.all.sample},
+    {user_licenses_purchased: 500, total_purchase_price: (4.9*500*12),commitment_period: "yearly",
+      company_license: get_company_license("Microsoft Office 365", "Business Essentials"), owner: User.all.sample},
+    {user_licenses_purchased: 300, total_purchase_price: (10.93*300*12),commitment_period: "yearly",
+      company_license: get_company_license("Microsoft Office 365", "Business Premium"), owner: User.all.sample},
+    {user_licenses_purchased: 150, total_purchase_price: (12*150),commitment_period: "monthly",
+      company_license: get_company_license("Dropbox", "Standard"), owner: User.all.sample},
+    {user_licenses_purchased: 100, total_purchase_price: (15*100*12),commitment_period: "yearly",
+      company_license: get_company_license("Dropbox", "Advanced"), owner: User.all.sample},
+    {user_licenses_purchased: 10, total_purchase_price: (134.6*10),commitment_period: "monthly",
+      company_license: get_company_license("Zendesk", "Enterprise"), owner: User.all.sample},
+    {user_licenses_purchased: 15, total_purchase_price: (80.39*15),commitment_period: "monthly",
+      company_license: get_company_license("Zendesk", "Professional"), owner: User.all.sample},
+    {user_licenses_purchased: 100, total_purchase_price: (6.31*100*12),commitment_period: "yearly",
+      company_license: get_company_license("JiRA", "Standard"), owner: User.all.sample},
+    {user_licenses_purchased: 100, total_purchase_price: (67.75*100*12),commitment_period: "yearly",
+      company_license: get_company_license("Salesforce", "Small Business - Sales Professional"), owner: User.all.sample},
+    {user_licenses_purchased: 150, total_purchase_price: (5.2*150),commitment_period: "monthly",
+      company_license: get_company_license("Google Suite", ""), owner: User.all.sample},
+    ]
 
   license_transactions.each do |license_transaction|
     LicenseTransaction.create!(license_transaction)
   end
 
-  def add_expiry_date(transaction)
-    case transaction.commitment_period
-    when 'monthly' then transaction.generate_expiry_date(30)
-    when 'yearly'  then transaction.generate_expiry_date(365)
-    end
-  end
-
-  puts "Adding expiry date to initial licenses..."
+  puts "Adding expiry and purchase date to initial licenses..."
     LicenseTransaction.all.each do |license_transaction|
-      add_expiry_date(license_transaction)
+      license_transaction.add_purchase_date(license_transaction.commitment_period)
+      license_transaction.add_expiry_date(license_transaction.commitment_period)
+      license_transaction.add_owner
     end
 puts "Finished creating initial license transactions"
 
@@ -236,11 +221,10 @@ puts "\nAdvancing initial transactions to current or future date..."
       company_license: transaction.company_license,
       owner: transaction.owner
     }
+
     LicenseTransaction.create!(next_transaction)
-
     last_transaction = LicenseTransaction.last
-
-    add_expiry_date(last_transaction)
+    last_transaction.add_expiry_date(last_transaction.commitment_period)
 
     # print " => #{last_transaction.expiry_date}".green
 
@@ -255,10 +239,12 @@ puts "\nAdvancing initial transactions to current or future date..."
 puts "Finished advancing initial transactions to current or future date"
 
 puts "\nCreating custom license transactions..."
-  100.times do
+  50.times do
     LicenseTransaction.create!(license_transactions.sample)
     last_transaction = LicenseTransaction.last
-    add_expiry_date(last_transaction)
+    last_transaction.add_purchase_date(last_transaction.commitment_period)
+    last_transaction.add_expiry_date(last_transaction.commitment_period)
+    last_transaction.add_owner
   end
 puts "Finished creating custom license transactions"
 
