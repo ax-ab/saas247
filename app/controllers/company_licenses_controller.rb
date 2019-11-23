@@ -28,6 +28,6 @@ class CompanyLicensesController < ApplicationController
   end
 
   def show
-    @companyLicense = CompanyLicense.find(params[:id])
+    @company_license = CompanyLicense.find(params[:id])
   end
 end
