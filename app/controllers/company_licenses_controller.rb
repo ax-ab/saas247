@@ -1,5 +1,4 @@
 class CompanyLicensesController < ApplicationController
-  include ActionView::Helpers::NumberHelper
   include DashboardHelper
 
   def dashboard
