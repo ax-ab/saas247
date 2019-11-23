@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_22_145544) do
+ActiveRecord::Schema.define(version: 2019_11_23_073244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2019_11_22_145544) do
     t.datetime "updated_at", null: false
     t.string "license_type"
     t.string "logo_url"
-    t.integer "license_cost"
+    t.integer "avg_license_cost"
     t.index ["category_id"], name: "index_licenses_on_category_id"
     t.index ["vendor_id"], name: "index_licenses_on_vendor_id"
   end
