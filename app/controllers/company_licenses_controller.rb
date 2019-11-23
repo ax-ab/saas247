@@ -58,64 +58,8 @@ class CompanyLicensesController < ApplicationController
     .order(utilization: :asc)
     .limit(5)
 
-    @renewals_current_month = get_renewals_from_dates(Date.today, Date.today.end_of_month)
-    @renewals_december = get_renewals_from_dates(Date.today.next_month.beginning_of_month, Date.today.next_month.end_of_month)
-
-    test2 = LicenseTransaction
-    .select("licenses.name AS app,
-      max(licenses.logo_url) AS logo, SUM(license_transactions.user_licenses_purchased) AS capacity,
-      SUM(company_licenses.active_users) AS usage,
-      SUM(company_licenses.active_users) * 100 / SUM(license_transactions.user_licenses_purchased) AS utilization,
-      licenses.license_type AS types,
-      license_transactions.commitment_period AS com,
-      CASE
-        WHEN license_transactions.commitment_period = 'yearly'
-        THEN SUM(total_purchase_price) / SUM(user_licenses_purchased) / 12
-        ELSE SUM(total_purchase_price) / SUM(user_licenses_purchased)
-      END AS cost2
-      ")
-    .joins({company_license: :license})
-    .where(company_licenses: {company: current_user.company})
-    .where("'#{Date.today}' BETWEEN license_transactions.purchase_date AND license_transactions.expiry_date")
-    .group('app, types, com')
-    .order(utilization: :asc)
-    .limit(5)
-    .select("licenses.name AS app, ROUND(AVG(cost2)) as average_monthly_cost")
-
-    # cost_per_license = LicenseTransaction.
-    # select("licenses.name AS app, license_transactions.commitment_period AS com, SUM(license_transactions.user_licenses_purchased) AS user_licenses_purchased, SUM(total_purchase_price) / SUM(user_licenses_purchased) AS cost_per_license")
-    # .joins({company_license: :license})
-    # .where(company_licenses: {company: current_user.company})
-    # .where("'#{Date.today}' BETWEEN license_transactions.purchase_date AND license_transactions.expiry_date")
-    # .group('app, com')
-
-
-
-raise
-# SELECT
-#   licenses.name AS app,
-# --  licenses.license_type AS types,
-#   license_transactions.commitment_period AS com,
-# --  SUM(license_transactions.user_licenses_purchased) AS user_licenses_purchased,
-# --  SUM(license_transactions.total_purchase_price) AS total_purchase_price,
-#   SUM(total_purchase_price) / SUM(user_licenses_purchased) AS cost_per_license
-# FROM
-#   license_transactions
-#   JOIN company_licenses ON company_licenses.id = license_transactions.company_license_id
-#   JOIN licenses ON licenses.id = company_licenses.license_id
-# WHERE
-#   '2019-11-22' BETWEEN license_transactions.purchase_date AND license_transactions.expiry_date
-#   AND
-#   company_licenses.company_id = 36
-# GROUP BY
-#   app,
-# --  types,
-#   com
-# --  licenses.license_type
-
-
-
-
+    # @renewals_current_month = get_renewals_from_dates(Date.today, Date.today.end_of_month)
+    # @renewals_december = get_renewals_from_dates(Date.today.next_month.beginning_of_month, Date.today.next_month.end_of_month)
 
   end
 
