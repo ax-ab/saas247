@@ -4,5 +4,9 @@ Rails.application.routes.draw do
 
   resources :company_licenses, only: [:index, :show]
   get '/dashboard', to: 'company_licenses#dashboard'
-
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :events, only: [ :index ]
+    end
+  end
 end

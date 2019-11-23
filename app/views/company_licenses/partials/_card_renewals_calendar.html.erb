@@ -1,0 +1,17 @@
+<div class="big-metrics-card">
+
+<%= month_calendar(events: @license_transactions, attribute: :expiry_date) do |date, license_transactions| %>
+
+  <div class="day-number">
+    <%= date.day %>
+  </div>
+
+  <div class="day-renewal-sum">
+  <% license_transactions.each do |license_transaction| %>
+    <%= license_transaction.total_purchase_price %> $
+  </div>
+
+  <% end %>
+<% end %>
+
+</div>

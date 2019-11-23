@@ -1,14 +1,19 @@
 import Chart from 'chart.js'
 
+
 function initCharts(){
   const ctx = document.getElementById('myChart');
+  console.log(ctx.dataset.values.first);
+  const labels12Months = ['2018-12', '2019-1','2019-2','2019-3','2019-4','2019-5','2019-6', '2019-7', '2019-8', '2019-9', '2019-10', '2019-11'];
+
+
   const myChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: ['1 Oct', '8 Oct', '16 Oct', '31 Oct'],
+        labels: labels12Months,
         datasets: [{
             label: 'Monthly spend',
-            data: [680, 790, 383, 1853],
+            data: [680, 790, 800, 1000, 790, 800, 1000, 680, 790, 800, 1000, 900],
             backgroundColor: [
                 // 'rgba(255, 99, 132, 0.2)',
                 // 'rgba(54, 162, 235, 0.2)',

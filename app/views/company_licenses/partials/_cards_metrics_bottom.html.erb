@@ -1,24 +1,18 @@
 <div id="metrics-cards-container">
-
   <div class="metrics-cards-container-row">
-
   <!-- Spent by top 5 applications -->
   <%= render partial: "company_licenses/partials/card_app_info", locals: {
     cardName: "Spent by top 5 applications", apps: @spend_per_app }%>
   <!-- Spent by department -->
   <%= render partial: "company_licenses/partials/card_app_info", locals: {
   cardName: "Spent by Department", apps: @spend_per_department }%>
-
   </div>
-
   <div class="metrics-cards-container-row">
   <!-- Utililization - Least used applications -->
   <%= render partial: "company_licenses/partials/card_app_util", locals: {
     apps: @utilization_per_app }%>
   <!-- Upcomming renewals - new partial required? -->
-  <%= render partial: "company_licenses/partials/card_app_info", locals: {
+  <%= render partial: "company_licenses/partials/card_renewals_calendar", locals: {
   cardName: "Upcomming renewals", apps: Hash.new(3) }%>
-
   </div>
-
 </div>

@@ -2,18 +2,38 @@
   margin-left: 0 !important;
 }
 
+.fc-dayGrid-view .fc-body .fc-row {
+    min-height: 2em !important;
+}
+
+#calendar {
+  padding: 30px !important;
+}
+
 #metrics-cards-container {
   width: 100%;
   margin-bottom: 30px;
   display: flex;
   flex-direction: column;
 
+
+.fc-toolbar h2 {
+    font-size: 17pt !important;
+    font-family: "Poppins", "Helvetica", "sans-serif";
+}
+
+.fc-day-number {
+    font-size: 12pt;
+    color: #9FA2B4;
+}
+
   .metrics-cards-container-row {
-  margin-bottom: 30px;
-  display: flex;
+    margin-bottom: 30px;
+    display: flex;
   }
 
   .big-metrics-card {
+    position: relative;
     background-color: white;
     display: flex;
     flex-grow: 1;
@@ -140,3 +160,5 @@
   }
 
 }
+
+

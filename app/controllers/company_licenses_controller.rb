@@ -3,6 +3,8 @@ class CompanyLicensesController < ApplicationController
   include DashboardHelper
 
   def dashboard
+    @license_transactions = LicenseTransaction.all
+
     ### TOP METRICS
     @total_applications = CompanyLicense.company_applications_count(current_user.company)
 
@@ -23,11 +25,10 @@ class CompanyLicensesController < ApplicationController
   end
 
   def index
-    @companyLicenses = CompanyLicense.all
+    @company_licenses = CompanyLicense.all
   end
 
   def show
     @companyLicense = CompanyLicense.find(params[:id])
   end
-
 end
