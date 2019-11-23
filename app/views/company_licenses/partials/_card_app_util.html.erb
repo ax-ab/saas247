@@ -24,7 +24,7 @@
         <div class="app-name"><%= app.app %></div>
         <div class="app-headcount app-item"><%= app.usage %>/<%= app.capacity %></div>
         <div class="app-utilization app-item"><%= app.utilization %>%</div>
-        <div class="app-savings app-item">€ 9.999</div>
+        <div class="app-savings app-item">€ <%= app.potential_saving %></div>
 
       </div>
     <% end %>

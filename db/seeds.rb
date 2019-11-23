@@ -102,25 +102,25 @@ puts "Finished creating categories"
 puts "\nCreating licenses..."
   licenses = [
     {name: "Slack", license_type: "", category: Category.find_by(name: "Communications"),
-      vendor: Vendor.find_by(name: "Slack"), logo_url: "vendor-logos/slack-logo.svg"},
+      vendor: Vendor.find_by(name: "Slack"), logo_url: "vendor-logos/slack-logo.svg", avg_license_cost: 6.875 },
     {name: "Microsoft Office 365", license_type: "Business Essentials", category: Category.find_by(name: "Business Operations"),
-      vendor: Vendor.find_by(name: "Microsoft"), logo_url: "vendor-logos/msft-office-365-logo.svg"},
+      vendor: Vendor.find_by(name: "Microsoft"), logo_url: "vendor-logos/msft-office-365-logo.svg", avg_license_cost: 7.915 },
     {name: "Microsoft Office 365", license_type: "Business Premium", category: Category.find_by(name: "Business Operations"),
-      vendor: Vendor.find_by(name: "Microsoft"), logo_url: "vendor-logos/msft-office-365-logo.svg"},
+      vendor: Vendor.find_by(name: "Microsoft"), logo_url: "vendor-logos/msft-office-365-logo.svg", avg_license_cost: 7.915 },
     {name: "Dropbox", license_type: "Standard", category: Category.find_by(name: "Utilities"),
-      vendor: Vendor.find_by(name: "Dropbox"), logo_url: "vendor-logos/dropbox-logo.svg"},
+      vendor: Vendor.find_by(name: "Dropbox"), logo_url: "vendor-logos/dropbox-logo.svg", avg_license_cost: 13.75 },
     {name: "Dropbox", license_type: "Advanced", category: Category.find_by(name: "Utilities"),
-      vendor: Vendor.find_by(name: "Dropbox"), logo_url: "vendor-logos/dropbox-logo.svg"},
+      vendor: Vendor.find_by(name: "Dropbox"), logo_url: "vendor-logos/dropbox-logo.svg", avg_license_cost: 13.75 },
     {name: "Zendesk", license_type: "Enterprise", category: Category.find_by(name: "Customer Support"),
-      vendor: Vendor.find_by(name: "Zendesk"), logo_url: "vendor-logos/zendesk-logo.svg"},
+      vendor: Vendor.find_by(name: "Zendesk"), logo_url: "vendor-logos/zendesk-logo.svg", avg_license_cost: 107.495 },
     {name: "Zendesk", license_type: "Professional", category: Category.find_by(name: "Customer Support"),
-      vendor: Vendor.find_by(name: "Zendesk"), logo_url: "vendor-logos/zendesk-logo.svg"},
+      vendor: Vendor.find_by(name: "Zendesk"), logo_url: "vendor-logos/zendesk-logo.svg", avg_license_cost: 107.495 },
     {name: "JiRA", license_type: "Standard", category: Category.find_by(name: "Engineering"),
-      vendor: Vendor.find_by(name: "Atlassian"), logo_url: "vendor-logos/Jira-logo.svg"},
+      vendor: Vendor.find_by(name: "Atlassian"), logo_url: "vendor-logos/Jira-logo.svg", avg_license_cost: 6.31 },
     {name: "Salesforce", license_type: "Small Business - Sales Professional", category: Category.find_by(name: "Sales"),
-      vendor: Vendor.find_by(name: "Salesforce"), logo_url: "vendor-logos/salesforce-logo.svg"},
+      vendor: Vendor.find_by(name: "Salesforce"), logo_url: "vendor-logos/salesforce-logo.svg", avg_license_cost: 67.75 },
     {name: "Google Suite", license_type: "", category: Category.find_by(name: "Business Operations"),
-      vendor: Vendor.find_by(name: "Google"), logo_url: "vendor-logos/gsuite-logo.svg"},
+      vendor: Vendor.find_by(name: "Google"), logo_url: "vendor-logos/gsuite-logo.svg", avg_license_cost: 5.2 },
     # {name: "Zoom", license_type: "Business", category: Category.find_by(name: "Communications"), vendor: Vendor.find_by(name: "Zoom")},
     # {name: "WebEx", license_type: "Business", category: Category.find_by(name: "Communications"), vendor: Vendor.find_by(name: "Cisco")},
     # {name: "TeamViewer", license_type: "Individual Seat", category: Category.find_by(name: "Communications"), vendor: Vendor.find_by(name: "TeamViewer")},
@@ -168,22 +168,22 @@ puts "\nCreating initial license transactions..."
   end
 
   license_transactions = [
-    {user_licenses_purchased: 200, total_purchase_price: (6.25*200), purchase_date: (Date.today - rand(365..730)),
+    {user_licenses_purchased: 200, total_purchase_price: (6.25*200*12), purchase_date: (Date.today - rand(365..730)),
       commitment_period: "yearly", company_license: get_company_license("Slack", ""), owner: User.all.sample},
 
     {user_licenses_purchased: 150, total_purchase_price: (7.5*150), purchase_date: (Date.today - rand(0..365)),
      commitment_period: "monthly", company_license: get_company_license("Slack", ""), owner: User.all.sample},
 
-    {user_licenses_purchased: 500, total_purchase_price: (4.9*500), purchase_date: (Date.today - rand(365..730)),
+    {user_licenses_purchased: 500, total_purchase_price: (4.9*500*12), purchase_date: (Date.today - rand(365..730)),
      commitment_period: "yearly", company_license: get_company_license("Microsoft Office 365", "Business Essentials"), owner: User.all.sample},
 
-    {user_licenses_purchased: 300, total_purchase_price: (10.93*300), purchase_date: (Date.today - rand(365..730)),
+    {user_licenses_purchased: 300, total_purchase_price: (10.93*300*12), purchase_date: (Date.today - rand(365..730)),
      commitment_period: "yearly", company_license: get_company_license("Microsoft Office 365", "Business Premium"), owner: User.all.sample},
 
     {user_licenses_purchased: 150, total_purchase_price: (12*150), purchase_date: (Date.today - rand(0..365)),
      commitment_period: "monthly", company_license: get_company_license("Dropbox", "Standard"), owner: User.all.sample},
 
-    {user_licenses_purchased: 100, total_purchase_price: (15*100), purchase_date: (Date.today - rand(365..730)),
+    {user_licenses_purchased: 100, total_purchase_price: (15*100*12), purchase_date: (Date.today - rand(365..730)),
      commitment_period: "yearly", company_license: get_company_license("Dropbox", "Advanced"), owner: User.all.sample},
 
     {user_licenses_purchased: 10, total_purchase_price: (134.6*10), purchase_date: (Date.today - rand(0..365)),
@@ -221,11 +221,11 @@ puts "Finished creating initial license transactions"
 
 puts "\nAdvancing initial transactions to current or future date..."
   def transaction_updated(transaction)
-    # -1 below so that there are no purchase_dates on today's date
+    # -2 below so that there are no purchase_dates on today's date
     future_date = transaction.expiry_date > Date.today - 2
   end
 
-  def recusively_update_transactions(transaction)
+  def recusively_update_transaction(transaction)
     # printf "%-60s %s", "\n#{transaction.company_license.license.name} #{transaction.company_license.license.license_type} (#{transaction.commitment_period})", "#{transaction.expiry_date}"
 
     next_transaction = {
@@ -244,15 +244,23 @@ puts "\nAdvancing initial transactions to current or future date..."
 
     # print " => #{last_transaction.expiry_date}".green
 
-    recusively_update_transactions(last_transaction) if !transaction_updated(last_transaction)
+    recusively_update_transaction(last_transaction) if !transaction_updated(last_transaction)
   end
 
   LicenseTransaction.all.each do |transaction|
     if !transaction_updated(transaction)
-      recusively_update_transactions(transaction)
+      recusively_update_transaction(transaction)
     end
   end
 puts "Finished advancing initial transactions to current or future date"
+
+puts "\nCreating custom license transactions..."
+  100.times do
+    LicenseTransaction.create!(license_transactions.sample)
+    last_transaction = LicenseTransaction.last
+    add_expiry_date(last_transaction)
+  end
+puts "Finished creating custom license transactions"
 
 puts "\nAdding active users to company licenses..."
   CompanyLicense.all.each do |company_license|
