@@ -7,45 +7,31 @@
   <thead>
     <tr>
       <th data-field="name" data-sortable="true">Application</th>
-      <th data-field="type" data-sortable="true">Type</th>
       <th data-field="nDep" data-sortable="true">N. Dep</th>
       <th data-field="category" data-sortable="true">Category</th>
       <th data-field="vendor" data-sortable="true">Vendor</th>
       <th data-field="expense" data-sortable="true">Expense</th>
       <th data-field="LSize" data-sortable="true">L. Size</th>
       <th data-field="LUsed" data-sortable="true">L. Used</th>
-      <th data-field="utilization" data-sortable="true">Utilization</th>
+      <th data-field="util" data-sortable="true">Utilization</th>
+      <th data-field="SPotential" data-sortable="true">Savings potential</th>
     </tr>
     <tbody>
-      <% @company_licenses.each do |companyLicense| %>
+      <% @licenses_aggregated.each do |license| %>
       <tr>
         <td class="table-row-name">
-          <%= link_to company_license_path(companyLicense) do %>
-            <%= companyLicense.license.name %>
+          <%= link_to company_license_path(license[:id]) do %>
+            <%= license[:application] %>
           <% end %>
         </td>
-        <%
-          totalCost = 0
-          totalLicensesPurchased = 0
-          departmentsCount = Hash.new(0)
-          companyLicense.license_transactions.each do |lt|
-            dep = lt.owner.department
-            departmentsCount[dep] += 1
-            totalCost += lt.total_purchase_price
-            totalLicensesPurchased += lt.user_licenses_purchased
-          end
-          nDeps = departmentsCount.keys.count
-          user_licenses_used = rand((totalLicensesPurchased / 1.3)..totalLicensesPurchased).floor
-          utilization = ((user_licenses_used * 100) / totalLicensesPurchased)
-        %>
-        <td><%= !companyLicense.license.license_type.empty? ? companyLicense.license.license_type : "n/a" %></td>
-        <td><%= nDeps %></td>
-        <td><%= companyLicense.license.category.name %></td>
-        <td><%= companyLicense.license.vendor.name %></td>
-        <td class="table-price"><%= totalCost %></td>
-        <td><%= totalLicensesPurchased %></td>
-        <td><%= user_licenses_used %></td>
-        <td><%= utilization %>%</td>
+        <td><%= license[:departments] %></td>
+        <td><%= license[:category] %></td>
+        <td><%= license[:vendor] %></td>
+        <td><%= number_to_currency(license[:expense], unit: "€ ", separator: ",", delimiter: ".", precision: 0)%></td>
+        <td><%= license[:capacity] %></td>
+        <td><%= license[:usage] %></td>
+        <td><%= license[:utilization] %>%</td>
+        <td><%= number_to_currency(license[:saving], unit: "€ ", separator: ",", delimiter: ".", precision: 0)%></td>
       </tr>
       <% end %>
     </tbody>

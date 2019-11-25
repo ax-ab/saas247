@@ -12,7 +12,7 @@
       <%= image_tag("#{app.logo}", class: "app-logo") %>
 
       <div class="app-name"><%= app.key %></div>
-      <div class="app-expense">€ <%= app.expense %></div>
+      <div class="app-expense"><%= number_to_currency(app.expense, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></div>
     </div>
     <% end %>
   </div>
