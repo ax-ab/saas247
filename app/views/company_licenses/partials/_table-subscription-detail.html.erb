@@ -20,7 +20,7 @@
     <tbody>
       <% licenseTransactions.each do |transaction| %>
       <tr>
-        <td class="table-row-name"><%= transaction.owner.email %></td>
+        <td class="table-row-name"><%= "#{transaction.owner.first_name} #{transaction.owner.last_name}" %></td>
         <td><%= transaction.owner.department %></td>
         <td class="table-price"><%= transaction.total_purchase_price %></td>
         <td><%= transaction.user_licenses_purchased %></td>
