@@ -47,6 +47,7 @@ class CompanyLicense < ApplicationRecord
     SELECT
       min(lid) AS id,
       min(application) AS application,
+      min(logo_url) AS logo_url,
       min(departments) AS departments,
       min(category) AS category,
       min(vendor) AS vendor,
@@ -59,6 +60,7 @@ class CompanyLicense < ApplicationRecord
       SELECT
         licenses.id AS lid,
         licenses.name AS application,
+        licenses.logo_url AS logo_url,
         COUNT(DISTINCT users.department) AS departments,
         categories.name AS category,
         vendors.name AS vendor,
@@ -85,6 +87,7 @@ class CompanyLicense < ApplicationRecord
       SELECT
         licenses.id AS lid,
         licenses.name AS application,
+        licenses.logo_url AS logo_url,
         NULL AS departments,
         NULL AS category,
         NULL AS vendor,
@@ -105,6 +108,7 @@ class CompanyLicense < ApplicationRecord
       SELECT
         licenses.id AS lid,
         licenses.name AS application,
+        licenses.logo_url AS logo_url,
         NULL AS departments,
         NULL AS category,
         NULL AS vendor,

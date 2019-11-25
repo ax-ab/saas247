@@ -15,16 +15,14 @@
         <div class="app-savings app-item">Potential Saving</div>
       </div>
 
-
-    <% apps.each do |app| %>
+    <% @utilization_per_app.each do |license| %>
       <div class="app-info">
 
-        <%= image_tag("#{app.logo}", class: "app-logo") %>
-        <div class="app-name"><%= app.app %></div>
-        <div class="app-headcount app-item"><%= app.usage %>/<%= app.capacity %></div>
-        <div class="app-utilization app-item"><%= app.utilization %>%</div>
-        <div class="app-savings app-item"><%= number_to_currency(app.potential_saving, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></div>
-
+        <%= image_tag("#{license[:logo_url]}", class: "app-logo") %>
+        <div class="app-name"><%= license[:application] %></div>
+        <div class="app-headcount app-item"><%= license[:usage] %>/<%= license[:capacity] %></div>
+        <div class="app-utilization app-item"><%= license[:utilization] %>%</div>
+        <div class="app-savings app-item"><%= number_to_currency(((100 - license[:utilization].to_i) * license[:expense].to_i / 100), unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></div>
       </div>
     <% end %>
   </div>
