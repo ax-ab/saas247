@@ -1,5 +1,6 @@
 class CompanyLicensesController < ApplicationController
   include DashboardHelper
+  include ActionView::Helpers::NumberHelper
 
   def dashboard
     @license_transactions = LicenseTransaction.all
