@@ -1,0 +1,138 @@
+.landing-page-container {
+  width: 100%;
+  font-family: $font-Poppins;
+
+  main {
+    position: relative;
+    width: 100%;
+    height: 550px;
+    display: flex;
+    align-items: center;
+    color: $white;
+    background: linear-gradient(120deg, #109CF1 3.3%, #10CCF1 48.56%, #11FF9B 98.79%);;
+
+    .main-headline-container {
+      max-width: 590px;
+      width: 95%;
+      margin-left: 6%;
+
+      h1 {
+        font-weight: bold;
+        font-size: 48px;
+      }
+
+      p {
+        max-width: 400px;
+        font-size: 18px;
+      }
+
+    }
+  }
+
+  img {
+    position: absolute;
+    bottom: -130px;
+  }
+
+  nav {
+    position: absolute;
+    padding: 12px 30px;
+    top: 0;
+    width: 100%;
+    height: 80px;
+
+    .brand-logo {
+      padding: 10px;
+      float: left;
+    }
+
+    .nav-right {
+      padding: 10px;
+      float: right;
+      top: 0;
+
+      a {
+        min-width: 100px;
+        padding: 12px 20px;
+        border-radius: 3px;
+        margin-left: 20px;
+      }
+    }
+  }
+  section.steps {
+    padding: 100px 30px;
+
+    .section-title {
+      width: 60%;
+      margin: 0 20%;
+      text-align: center;
+      line-height: 30px;
+
+      h2 {
+        font-size: 32px;
+      }
+
+      p {
+        font-size: 16px;
+        color: $lighter-text;
+        letter-spacing: 0.07rem;
+      }
+    }
+
+    .steps-container {
+      margin: 0 20%;
+      padding: 120px 0;
+    }
+
+    .step-container {
+        max-width: 380px;
+    }
+
+    .step-container:nth-of-type(2) {
+        margin-left: 60%;
+    }
+    .step-container:nth-of-type(3) {
+        margin-left: 10%;
+    }
+
+    .step-text {
+      display: flex;
+      line-height: 30px;
+
+      span {
+        font-weight: bold;
+        font-size: 100px;
+        line-height: 0.8em;
+        background: -webkit-linear-gradient(-30deg, #109CF1 3.3%, #10CCF1 48.56%, #11FF9B 98.79%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-right: 20px;
+      }
+
+      h3 {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      p {
+        font-size: 16px;
+        line-height: 25px;
+        color: $lighter-text;
+      }
+    }
+
+    .btn-cta {
+      position: absolute;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+      width: 300px;
+      text-align: center;
+      border-radius: 3px;
+      font-weight: bold;
+      padding: 16px 60px;
+      color: $white;
+      background: linear-gradient(120deg, #10ABE5 0%, #11F699 137.72%);
+    }
+  }
+}

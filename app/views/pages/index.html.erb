@@ -1,0 +1,75 @@
+<div class="landing-page-container">
+  <main class="main-banner">
+    <nav>
+      <div class="brand-logo">
+        Saas247
+      </div>
+      <div class="nav-right">
+        <%= link_to "Log in", new_user_session_path %>
+        <%= link_to "Sign up", new_user_registration_path %>
+      </div>
+    </nav>
+    <div class="main-headline-container">
+      <h1>Cut your Saas costs and save yourself time.</h1>
+      <p>Built for businesses who want to get their Saas spending back under control without breaking the bank.</p>
+      <%= link_to "Try it for free", dashboard_path %>
+    </div>
+    <div class="banner-img">
+      <%= image_tag "LandingPage_browser.png", alt: "Saas 247 dashboard in browser" %>
+    </div>
+  </main>
+  <section class="steps">
+    <div class="section-title">
+      <h2>Smile, your life just got easier!</h2>
+      <p>Let us help you to help yourself by allowing you to take back control of your spending.</p>
+    </div>
+    <div class="steps-container">
+      <div class="step-container">
+        <div class="step-img">
+          <!-- svg -->
+        </div>
+        <div class="step-text">
+          <div class="step-number">
+            <span>1</span>
+          </div>
+          <div>
+            <h3>Import your bank<br>transactions in one click</h3>
+            <p>It’s as easy as loggin into your bank account with the maximum regard in security and privacy.</p>
+          </div>
+        </div>
+      </div>
+      <div class="step-container">
+        <div class="step-img">
+          <!-- svg -->
+        </div>
+        <div class="step-text">
+          <div class="step-number">
+            <span>2</span>
+          </div>
+          <div>
+            <h3>View who<br>is using what</h3>
+            <p>Do you really know who is using which software? Get an overview of the employees with a quick and simple survey.</p>
+          </div>
+        </div>
+      </div>
+      <div class="step-container">
+        <div class="step-img">
+          <!-- svg -->
+        </div>
+        <div class="step-text">
+          <div class="step-number">
+            <span>3</span>
+          </div>
+          <div>
+            <h3>Act smart,<br>look smart</h3>
+            <p>Once you have the complete picture, you can make decisions based on our insights.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= link_to "Try it for free", dashboard_path, class: "btn-cta" %>
+  </section>
+  <footer>
+    Footer stuff
+  </footer>
+</div>
