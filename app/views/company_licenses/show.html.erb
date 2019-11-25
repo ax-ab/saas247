@@ -25,6 +25,7 @@
   nDeps = departmentsCount.keys.count
   user_licenses_used = rand((totalLicensesPurchased / 1.3)..totalLicensesPurchased).floor
   utilization = ((user_licenses_used * 100) / totalLicensesPurchased)
+  potential_savings = ((100 - utilization) * totalCost) / 100
 %>
 
 <div class="show-container">
@@ -68,8 +69,8 @@
         </div>
 
         <div class="metrics-card">
-          <div class="card-top-text">Total Licenses</div>
-          <div class="card-bottom-text"><%#= @license.user_licenses_purchased %></div>
+          <div class="card-top-text">Potential Savings</div>
+          <div class="card-bottom-text">$ <%= potential_savings %></div>
         </div>
 
         <div class="metrics-card">
