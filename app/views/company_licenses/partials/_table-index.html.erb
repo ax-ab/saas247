@@ -31,7 +31,8 @@
         <td><%= license[:capacity] %></td>
         <td><%= license[:usage] %></td>
         <td><%= license[:utilization] %>%</td>
-        <td><%= number_to_currency(license[:saving], unit: "€ ", separator: ",", delimiter: ".", precision: 0)%></td>
+        <td>
+          <%= number_to_currency(((100 - license[:utilization].to_i) * license[:expense].to_i / 100), unit: "€ ", separator: ",", delimiter: ".", precision: 0)%></td>
       </tr>
       <% end %>
     </tbody>
