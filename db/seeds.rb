@@ -44,11 +44,11 @@ puts "Finished creating companies"
 
 puts "\nCreating users..."
   users = [
-    {email: "user@company.com", password: "123456", department: "IT", company: Company.find_by(name: "Company")},
-    {email: "user2@company.com", password: "123456", department: "Sales", company: Company.find_by(name: "Company")},
-    {email: "user3@company.com", password: "123456", department: "Marketing", company: Company.find_by(name: "Company")},
-    {email: "user4@company.com", password: "123456", department: "HR", company: Company.find_by(name: "Company")},
-    {email: "user5@company.com", password: "123456", department: "Finance", company: Company.find_by(name: "Company")}
+    {first_name: "Susan", last_name: "Ferguson", email: "susan@company.com", password: "123456", department: "IT", company: Company.find_by(name: "Company")},
+    {first_name: "Peter", last_name: "Albridge", email: "peter@company.com", password: "123456", department: "Sales", company: Company.find_by(name: "Company")},
+    {first_name: "Mike", last_name: "Peterson", email: "mike@company.com", password: "123456", department: "Marketing", company: Company.find_by(name: "Company")},
+    {first_name: "Carol", last_name: "Anderson", email: "carol@company.com", password: "123456", department: "HR", company: Company.find_by(name: "Company")},
+    {first_name: "Kathrine", last_name: "Hudson", email: "kathrine@company.com", password: "123456", department: "Finance", company: Company.find_by(name: "Company")}
   ]
 
   users.each do |user|
