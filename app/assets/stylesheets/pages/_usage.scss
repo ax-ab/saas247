@@ -1,0 +1,106 @@
+.top-section-container {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 300px;
+  background: linear-gradient(100deg, #109CF1 0%, #11F1A7 100%);
+  display: flex;
+  padding: 30px 30px 110px 30px;
+  align-items: center;
+  justify-content: space-between;
+
+  #top-section-illustration {
+    position: absolute;
+    right: 50px;
+    bottom: -10px;
+  }
+}
+
+.top-section-cta {
+  width: 40%;
+  height: 120px;
+  border-left: 1px solid $white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p {
+    color: $white;
+    font-size: 18px;
+  }
+
+  a.btn {
+    min-width: 100px;
+    padding: 12px 40px;
+    border-radius: 3px;
+    margin-left: 20px;
+  }
+}
+.top-section-metrics, .department-metrics {
+  flex: 1;
+  display: flex;
+}
+
+.top-section-metrics {
+  color: $white;
+}
+
+.department-metrics {
+  color: $main-text;
+  padding: 0 30px;
+}
+.section-metric-group {
+  margin-right: 80px;
+  line-height: 12px;
+
+  h2 {
+    font-size: 40px !important;
+    font-weight: bold;
+  }
+
+  p {
+    font-size: 20px;
+  }
+}
+
+.usage-department-container {
+  position: relative;
+  z-index: 50;
+  margin-top: 199px;
+
+  .nav-tabs {
+    border: none;
+  }
+
+  .nav-item a {
+    padding: 24px 40px;
+    border: none;
+    border: 1px solid transparent;
+    color: $white;
+    font-size: 14px;
+  }
+
+  .nav-item a:hover {
+    border-top: 1px solid $white;
+    border-left: 1px solid $white;
+    border-right: 1px solid $white;
+    border-bottom: 1px solid transparent;
+  }
+
+  .nav-item a.active {
+    background-color: $dashboard-bg;
+    border: 1px solid transparent;
+  }
+}
+
+.department-metrics-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 0;
+}
+
+

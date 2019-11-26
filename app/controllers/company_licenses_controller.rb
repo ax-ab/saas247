@@ -33,4 +33,8 @@ class CompanyLicensesController < ApplicationController
   def show
     @company_license = CompanyLicense.find(params[:id])
   end
+
+  def usage
+    @users = User.all
+  end
 end

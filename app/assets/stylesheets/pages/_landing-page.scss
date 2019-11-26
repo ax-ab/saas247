@@ -31,11 +31,15 @@
   img {
     position: absolute;
     bottom: -130px;
+    right: 100px;
   }
 
   nav {
     position: absolute;
     padding: 12px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     top: 0;
     z-index: 100;
     width: 100%;
@@ -43,7 +47,10 @@
 
     .brand-logo {
       padding: 10px;
-      float: left;
+    }
+
+    a {
+      text-decoration: none;
     }
 
     .logo-link {
@@ -54,27 +61,20 @@
 
     .nav-right {
       padding: 10px;
-      float: right;
       top: 0;
+    }
 
-      a {
-        min-width: 100px;
-        padding: 12px 40px;
-        border-radius: 3px;
-        margin-left: 20px;
-      }
-
-      .btn-outline {
-        border: 1px solid $white;
-        color: $white;
-
-      }
-      .btn-outline:hover {
-        background-color: $white;
-        color: $main-text;
-      }
+    .nav-right a {
+      margin-left: 12px;
     }
   }
+
+  .btn {
+    min-width: 100px;
+    padding: 12px 40px;
+    border-radius: 3px;
+  }
+
   section.steps {
     padding: 100px 30px;
 
@@ -226,4 +226,13 @@
       opacity: 0.5
     }
   }
+}
+
+.btn-outline {
+  border: 1px solid $white !important;
+  color: $white !important;
+}
+.btn-outline:hover {
+  background-color: $white;
+  color: $primary !important;
 }
