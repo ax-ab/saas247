@@ -10,6 +10,9 @@ class String
 end
 
 #Cleaning database
+puts "Destroying license usages..."
+LicenseUsage.destroy_all
+
 puts "Destroying license transactions..."
 LicenseTransaction.destroy_all
 
@@ -48,7 +51,8 @@ puts "\nCreating users..."
     {first_name: "Peter", last_name: "Albridge", email: "peter@company.com", password: "123456", department: "Sales", company: Company.find_by(name: "Company")},
     {first_name: "Mike", last_name: "Peterson", email: "mike@company.com", password: "123456", department: "Marketing", company: Company.find_by(name: "Company")},
     {first_name: "Carol", last_name: "Anderson", email: "carol@company.com", password: "123456", department: "HR", company: Company.find_by(name: "Company")},
-    {first_name: "Kathrine", last_name: "Hudson", email: "kathrine@company.com", password: "123456", department: "Finance", company: Company.find_by(name: "Company")}
+    {first_name: "Kathrine", last_name: "Hudson", email: "kathrine@company.com", password: "123456", department: "Finance", company: Company.find_by(name: "Company")},
+    {first_name: "Axel", last_name: "LastName", email: "acja87@gmail.com", password: "123456", department: "IT", company: Company.find_by(name: "Company")}
   ]
 
   users.each do |user|
@@ -264,5 +268,12 @@ puts "\nAdding active users to company licenses..."
     company_license.save!
   end
 puts "Finished adding active users to company licenses"
+
+puts "\nCreating license usages..."
+  User.all.where.not(email: "acja87@gmail.com").each do |user|
+    LicenseUsage.create!(company_license_id: CompanyLicense.all.sample.id, user_id: user.id)
+  end
+puts "Finished creating license usages"
+
 
 puts "\n"
