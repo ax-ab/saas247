@@ -100,7 +100,9 @@
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
           <%= javascript_pack_tag 'chart' %>
-          <%= area_chart @company_license.license_transactions.where("purchase_date BETWEEN ? AND ?", Date.today - 365.days, Date.today).group_by_month(:purchase_date).sum(:total_purchase_price) %>
+          <% cost_over_time = @company_license.license_transactions.where("purchase_date BETWEEN ? AND ?", Date.today - 365.days, Date.today).group_by_month(:purchase_date).sum(:total_purchase_price) %>
+
+          <%= area_chart cost_over_time %>
         </div>
 
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">

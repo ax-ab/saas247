@@ -1,4 +1,9 @@
 <% content_for(:title, "Dashboard") %>
 
 <%= render "company_licenses/partials/cards_metrics_top" %>
+
+<%= javascript_pack_tag "chart" %>
+<h4> Spend in the last 12 months</h4>
+<%= area_chart @monthly_costs %>
+
 <%= render "company_licenses/partials/cards_metrics_bottom" %>
