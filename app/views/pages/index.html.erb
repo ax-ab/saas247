@@ -5,14 +5,14 @@
         <%= link_to "Saas 247", root_path, class: "logo-link" %>
       </div>
       <div class="nav-right">
-        <%= link_to "Log in", new_user_session_path, class: "btn btn-outline" %>
-        <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary" %>
+        <%= link_to "Log in", dashboard_path, class: "btn btn-outline" %>
+        <%= link_to "Sign up", dashboard_path, class: "btn btn-primary" %>
       </div>
     </nav>
     <div class="main-headline-container">
       <h1>Cut your Saas costs and save yourself time.</h1>
       <p>Built for businesses who want to get their Saas spending back under control without breaking the bank.</p>
-      <%= link_to "Try it for free", dashboard_path %>
+      <%= link_to "Try it for free", dashboard_path, class: "btn btn-outline btn-bold" %>
     </div>
     <div class="banner-img">
       <%= image_tag "LandingPage_browser.png", alt: "Saas 247 dashboard in browser" %>
