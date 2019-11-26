@@ -16,6 +16,7 @@ html, body, .dashboard-container {
   bottom: 0;
   background: $white;
   display: flex;
+  z-index: 100;
   flex-direction: column;
   box-shadow: 6px 0px 18px rgba(0, 0, 0, 0.06);
 }
