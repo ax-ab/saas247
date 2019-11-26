@@ -27,8 +27,12 @@ class CompanyLicensesController < ApplicationController
   end
 
   def index
-    # @company_licenses = CompanyLicense.all
+    @company_licenses = CompanyLicense.all
     @licenses_aggregated = CompanyLicense.index_query(current_user.company)
+
+    @sort_header = params["sort"].nil? ? 'name' : params["sort"]
+    @sort_order = params["sort"].nil? ? 'asc' : 'desc'
+
   end
 
   def show

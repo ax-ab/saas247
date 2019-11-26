@@ -1,10 +1,15 @@
+.desc, .asc {
+  color: #109CF1 !important;
+}
+
+
 #table-styled {
   width: 100% !important;
   font-size: 13px;
   color: $medium-gray;
 
   thead th:first-of-type {
-    color: $primary;
+    // color: $primary;
   }
 
   .table-row-name {
@@ -34,9 +39,14 @@
     border-bottom: 1px solid $light-line !important;
   }
 
-  .table-price::before {
-    content: '$';
+  .table-price::before, .expense-td::before {
+    content: '€';
     padding-right: 3px;
+  }
+
+  .utilization-td::after {
+    content: '%';
+    margin-left: 3px;
   }
 
   th, td, tr {

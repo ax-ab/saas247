@@ -17,6 +17,14 @@
   display: flex;
   flex-direction: column;
 
+  a {
+    color: $main-text;
+    text-decoration: none;
+    &:hover {
+      color: $primary;
+    }
+  }
+
 .fc-toolbar h2 {
     font-size: 17pt !important;
     font-family: "Poppins", "Helvetica", "sans-serif";
@@ -131,6 +139,13 @@
           margin-bottom: 0px;
           flex-grow: 1;
           margin-left: 22px;
+        }
+        .app-name-depart {
+          font-size: 14px;
+          color: #252733;
+          margin-bottom: 0px;
+          flex-grow: 1;
+          margin-left: 0px;
         }
         .app-headcount {
           font-size: 14px;
