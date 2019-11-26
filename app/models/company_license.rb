@@ -2,6 +2,7 @@ class CompanyLicense < ApplicationRecord
   belongs_to :license
   belongs_to :company
   has_many :license_transactions
+  has_many :license_usages
 
   scope :company_applications_count, -> (company) {
     joins(:license)
