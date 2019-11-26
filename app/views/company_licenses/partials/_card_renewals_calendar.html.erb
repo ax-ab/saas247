@@ -20,7 +20,8 @@
 
                 <%= license_transaction.company_license.license.name %>
                 <br>
-                Renewal sum: <%= license_transaction.total_purchase_price %> $
+                Renewal sum: <%= number_with_delimiter(license_transaction.total_purchase_price, :delimiter => '.') %> €
+
                 <br>
                 Expiry date: <%= license_transaction.expiry_date %>
                 <br>

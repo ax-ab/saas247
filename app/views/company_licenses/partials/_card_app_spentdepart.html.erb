@@ -9,9 +9,9 @@
     <% apps.each do | app | %>
     <div class="app-info">
 
-      <%= image_tag("#{app.logo}", class: "app-logo") %>
+      <!-- <%= image_tag("#{app.logo}", class: "app-logo") %> -->
 
-      <div class="app-name"><%= app.key %></div>
+      <div class="app-name-depart"><%= app.key %></div>
       <div class="app-expense"><%= number_to_currency(app.expense, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></div>
     </div>
     <% end %>

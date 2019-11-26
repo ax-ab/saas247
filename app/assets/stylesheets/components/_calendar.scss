@@ -14,7 +14,7 @@
   .renewals-info{
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: flex-end;
 
 
     .highlight-value span {
@@ -56,7 +56,7 @@
     .dot {
       height: 14px;
       width: 14px;
-      background-color: #C4C4C4;
+      background-color: $primary;
       border-radius: 50%;
       display: inline-block;
       }
@@ -89,9 +89,11 @@
 
 .calendar-heading {
   font-size: 14px;
+  margin-bottom: 16px;
 
   .calendar-title{
     color: #000000;
+    padding: 0px 6px;
   }
 
 }
@@ -105,7 +107,7 @@
   .wday-6 {}
 
   .today {
-    background-color: #C4C4C4 !important;
+    background-color: $success !important;
   }
   .past {}
 
