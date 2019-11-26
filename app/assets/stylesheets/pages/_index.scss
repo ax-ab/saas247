@@ -24,5 +24,24 @@
   margin-bottom: 50px;
   padding-left: 30px;
   padding-right: 30px;
+  height: 100%;
+  width: 100% !important;
+  background-color: white;
+  justify-content: center;
+  align-items: flex-start;
+  display: flex;
+  position: relative;
+  padding: 20px;
+  border: 1px solid #DFE0EB;
+  border-radius: 8px;
+  flex-direction: column;
+
+  h4 {
+    justify-content: flex-start;
+  }
+
+  .dashboard-chart canvas {
+    width: 90% !important;
+  }
 }
 

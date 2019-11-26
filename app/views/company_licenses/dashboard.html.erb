@@ -5,7 +5,7 @@
 <%= javascript_pack_tag "chart" %>
 <div class="dashboard-chart-container">
 <h4> Spend in the last 12 months</h4>
-<%= area_chart @monthly_costs %>
+<%= area_chart @monthly_costs, responsive: true, maintainAspectRation: false, class: "dashboard-chart" %>
 </div>
 
 <%= render "company_licenses/partials/cards_metrics_bottom" %>
