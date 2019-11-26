@@ -20,7 +20,7 @@
         <td><%= ["UX Designer", "UX/UI Designer", "Art Director", "Lead UX Designer", "Product Design"].sample %></td>
         <td><%= (3..6).to_a.sample %></td>
         <td class="table-action-td">
-          <%= link_to usage_path, class: "btn btn-table btn-success" do %>
+          <%= link_to user_survey_path(user), class: "btn btn-table btn-success" do %>
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M10 2H2C1.45 2 1.005 2.45 1.005 3L1 9C1 9.55 1.45 10 2 10H10C10.55 10 11 9.55 11 9V3C11 2.45 10.55 2 10 2ZM10 4L6 6.5L2 4V3L6 5.5L10 3V4Z" fill="white"/>
             </svg>

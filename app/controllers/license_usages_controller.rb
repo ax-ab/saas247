@@ -1,4 +1,5 @@
 class LicenseUsagesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:new, :create]
 
   layout 'license_usage'
 
@@ -19,26 +20,18 @@ class LicenseUsagesController < ApplicationController
     end
 
     render :thank_you
-    # render :new
-
   end
 
-  # def create
-  #   @superpower = Superpower.find(params[:superpower_id])
-  #   @booking = Booking.new(booking_params)
-  #   @booking.rentee = current_user
-  #   @booking.superpower_id = @superpower.id
-  #   if @booking.save
-  #     redirect_to profile_path, notice: "Booking successful"
-  #   else
-  #     render template: 'superpowers/show'
-  #   end
-  # end
+  def user_survey
+    @user = User.find(params[:user_id])
+    UserMailer.with(user: @user).usage.deliver_now
+    redirect_to usage_path, notice: "Survey sent to #{@user.first_name} #{@user.last_name}"
+  end
 
-  # private
-
-  # def license_usage_params
-  #   params.require(:license_usage).permit(:start_date, :end_date, :price, :disclaimer)
-  # end
-
+  def all_survey
+    User.all.each do |user|
+      UserMailer.with(user: user).usage.deliver_now
+    end
+    redirect_to usage_path, notice: "Survey sent to everyone"
+  end
 end

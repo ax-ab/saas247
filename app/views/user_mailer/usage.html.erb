@@ -1,3 +1,5 @@
-<p>Hi <%= @user.first_name %>,</p>
+<div>
+  <h1>Hi <%= @user.first_name %></h1>
+  <h3><%= link_to "Click here to tell us about your license usage", new_survey_url(@user) %></h3>
+</div>
 
-<%= link_to "Take the survey here", "http://saas247.herokuapp.com/license_usages/new/#{@user.id}"  %>
