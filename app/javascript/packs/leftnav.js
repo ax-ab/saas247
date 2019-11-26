@@ -5,6 +5,18 @@ export const leftNavInteractivity = () => {
   const toggleP = document.querySelector("#leftnav_toggle p");
   const toggleIcon = document.querySelector("#leftnav_toggle svg");
   const navList = document.querySelectorAll(".leftnav-links p");
+  const logo = document.querySelector(".logo-link");
+
+  window.addEventListener('load', () => {
+    // const navLinks = document.querySelectorAll(".leftnav-links");
+    // navLinks.forEach((link) => {
+    //   link.classList.remove("active");
+    // });
+    let url = window.location.href.split("/");
+    let url_path = url[url.length - 1];
+    let currentNav = document.querySelector(`a[href*='${url_path}'`);
+    currentNav.classList.add("active");
+  }, false );
 
   toggleBtn.addEventListener("click", (event) => {
     dashboardLeft.classList.toggle("leftnav-open");
@@ -12,6 +24,7 @@ export const leftNavInteractivity = () => {
     dashboardRight.classList.toggle("main-no-nav");
     dashboardRight.classList.toggle("main-nav");
     if (toggleP.style.display !== "none") {
+      logo.innerText = "S";
       toggleP.classList.add("hide");
       toggleP.classList.remove("show");
       toggleP.style.display = "none";
@@ -29,6 +42,9 @@ export const leftNavInteractivity = () => {
         text.classList.remove("hide");
         text.classList.add("show");
       });
+      setTimeout(( ) => {
+        logo.innerText = "Saas 247";
+      }, 200)
     }
   })
 }

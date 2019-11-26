@@ -1,6 +1,11 @@
 <div id="navbar-container">
   <div class="left-items">
-    <h2 class="main-title"><%= content_for(:title) %></h2>
+    <div class="breadcrumbs">
+      <% if content_for(:title) != "Dashboard" && content_for(:title) != "Company Licenses" && content_for(:title) != "Usage"%>
+      <%= link_to "< Back", :back %>
+      <% end %>
+      <h2 class="main-title"><%= content_for(:title) %></h2>
+    </div>
     <% if !current_user.nil? %>
       <div class="icons">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
