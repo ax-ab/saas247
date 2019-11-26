@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'company_licenses#dashboard'
+  root to: 'pages#index'
 
   resources :company_licenses, only: [:index, :show]
   get '/dashboard', to: 'company_licenses#dashboard'
-
+  get '/usage', to: 'company_licenses#usage'
+  
   resources :license_usages, only: [:create]
   get 'license_usages/new/:user_id', to: 'license_usages#new'
 

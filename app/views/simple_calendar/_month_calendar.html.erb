@@ -13,12 +13,13 @@
 
     <div class="count highlight-value"><span><%= LicenseTransaction.where('expiry_date BETWEEN ? AND ?', start_date.at_beginning_of_month, start_date.at_beginning_of_month.next_month ).count %></span><p> in the current month</p></div>
 
-    <div class="value highlight-value"><span><%= '$18.000' %><p> up for renewal</p></div>
+    <div class="value highlight-value"><span><%= number_with_delimiter(LicenseTransaction.where('expiry_date BETWEEN ? AND ?', start_date.at_beginning_of_month, start_date.at_beginning_of_month.next_month ).sum(:total_purchase_price), :delimiter => ',') %> $<p> up for renewal</p></div>
 
     <div class="calendar-heading">
-      <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
-      <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
-      <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
+      <%= link_to t('simple_calendar.previous', default: '  <  '), calendar.url_for_previous_view %>
+      <span class="calendar-title"><%= t('date.month_names')[start_date.month][0..2] %> <%= start_date.year %></span>
+      <%= link_to t('simple_calendar.next', default: '  >  '), calendar.url_for_next_view %>
+      <%#= raise %>
     </div>
 
   </div>

@@ -1,3 +1,4 @@
+
 .no-left-margin {
   margin-left: 0 !important;
 }
@@ -16,14 +17,13 @@
   display: flex;
   flex-direction: column;
 
-
 .fc-toolbar h2 {
     font-size: 17pt !important;
     font-family: "Poppins", "Helvetica", "sans-serif";
 }
 
 .fc-day-number {
-    font-size: 12pt;
+    font-size: 14pt;
     color: #9FA2B4;
 }
 
@@ -45,7 +45,7 @@
     border: 1px solid #DFE0EB;
     border-radius: 8px;
     border-color: #DFE0EB;
-    overflow: hidden;
+    // overflow: hidden;
     padding-top: 36px;
     padding-bottom: 0px;
     padding-right: 0px;
