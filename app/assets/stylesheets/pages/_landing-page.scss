@@ -1,6 +1,7 @@
 .landing-page-container {
   width: 100%;
   font-family: $font-Poppins;
+  overflow-x: hidden;
 
   main {
     position: relative;
@@ -61,7 +62,6 @@
     }
 
     .nav-right {
-      padding: 10px;
       top: 0;
     }
 
@@ -71,7 +71,6 @@
   }
 
   .btn {
-    min-width: 100px;
     padding: 12px 40px;
     border-radius: 3px;
   }
@@ -97,14 +96,14 @@
     }
 
     .steps-container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto;
       height: 800px;
       position: relative;
     }
 
     .step-container {
-      max-width: 380px;
+      max-width: 420px;
       position: absolute;
     }
 
@@ -167,12 +166,12 @@
       }
 
       h3 {
-        font-size: 24px;
+        font-size: 28px;
         font-weight: bold;
       }
 
       p {
-        font-size: 16px;
+        font-size: 18px;
         line-height: 25px;
         color: $lighter-text;
       }
@@ -242,18 +241,33 @@
     nav {
       position: absolute;
       padding: 12px 10px;
+
+      .btn {
+        padding: 6px !important;
+        border-radius: 3px;
+        font-size: 14px;
+      }
+
+      .brand-logo {
+        padding: 6px;
+      }
+
+      .brand-logo a {
+        font-size: 20px !important;
+      }
     }
 
     main {
       height: 850px;
       display: block;
+      border-radius: 0 0 200px 200px;
     }
 
     .main-headline-container {
       max-width: 590px;
       width: 95%;
       margin: 0;
-      padding: 150px 6%;
+      padding: 110px 6%;
     }
 
     img {
@@ -270,12 +284,12 @@
       display: none;
     }
     .section-title {
-      width: 90%;
-      margin: 0 5%;
+      width: 90% !important;
+      margin: 0 5% !important;
     }
 
     .steps-container {
-        height: 950px !important;
+        height: 1080px !important;
       }
 
       .step-container:nth-of-type(1) {
@@ -284,11 +298,11 @@
       }
       .step-container:nth-of-type(2) {
           left: 0;
-          top: 360px !important;
+          top: 430px !important;
       }
       .step-container:nth-of-type(3) {
           left: 0 !important;
-          bottom: 80px !important;
+          bottom: 60px !important;
       }
   }
 }
