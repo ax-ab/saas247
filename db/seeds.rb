@@ -10,6 +10,9 @@ class String
 end
 
 #Cleaning database
+puts "Destroying license usages..."
+LicenseUsage.destroy_all
+
 puts "Destroying license transactions..."
 LicenseTransaction.destroy_all
 
@@ -48,7 +51,8 @@ puts "\nCreating users..."
     {first_name: "Peter", last_name: "Albridge", email: "peter@company.com", password: "123456", department: "Sales", company: Company.find_by(name: "Company")},
     {first_name: "Mike", last_name: "Peterson", email: "mike@company.com", password: "123456", department: "Marketing", company: Company.find_by(name: "Company")},
     {first_name: "Carol", last_name: "Anderson", email: "carol@company.com", password: "123456", department: "HR", company: Company.find_by(name: "Company")},
-    {first_name: "Kathrine", last_name: "Hudson", email: "kathrine@company.com", password: "123456", department: "Finance", company: Company.find_by(name: "Company")}
+    {first_name: "Kathrine", last_name: "Hudson", email: "kathrine@company.com", password: "123456", department: "Finance", company: Company.find_by(name: "Company")},
+    {first_name: "Axel", last_name: "LastName", email: "acja87@gmail.com", password: "123456", department: "IT", company: Company.find_by(name: "Company")}
   ]
 
   users.each do |user|
@@ -104,9 +108,9 @@ puts "\nCreating licenses..."
     {name: "Slack", license_type: "", category: Category.find_by(name: "Communications"),
       vendor: Vendor.find_by(name: "Slack"), logo_url: "vendor-logos/slack-logo.svg", avg_license_cost: 6.875 },
     {name: "Microsoft Office 365", license_type: "Business Essentials", category: Category.find_by(name: "Business Operations"),
-      vendor: Vendor.find_by(name: "Microsoft"), logo_url: "vendor-logos/msft-office-365-logo.svg", avg_license_cost: 7.915 },
+      vendor: Vendor.find_by(name: "Microsoft"), logo_url: "vendor-logos/microsoft-office-logo.png", avg_license_cost: 7.915 },
     {name: "Microsoft Office 365", license_type: "Business Premium", category: Category.find_by(name: "Business Operations"),
-      vendor: Vendor.find_by(name: "Microsoft"), logo_url: "vendor-logos/msft-office-365-logo.svg", avg_license_cost: 7.915 },
+      vendor: Vendor.find_by(name: "Microsoft"), logo_url: "vendor-logos/microsoft-office-logo.png", avg_license_cost: 7.915 },
     {name: "Dropbox", license_type: "Standard", category: Category.find_by(name: "Utilities"),
       vendor: Vendor.find_by(name: "Dropbox"), logo_url: "vendor-logos/dropbox-logo.svg", avg_license_cost: 13.75 },
     {name: "Dropbox", license_type: "Advanced", category: Category.find_by(name: "Utilities"),
@@ -264,5 +268,12 @@ puts "\nAdding active users to company licenses..."
     company_license.save!
   end
 puts "Finished adding active users to company licenses"
+
+puts "\nCreating license usages..."
+  User.all.where.not(email: "acja87@gmail.com").each do |user|
+    LicenseUsage.create!(company_license_id: CompanyLicense.all.sample.id, user_id: user.id)
+  end
+puts "Finished creating license usages"
+
 
 puts "\n"

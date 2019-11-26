@@ -1,0 +1,44 @@
+<table
+  id="table-styled"
+  class="card-container table-container"
+  data-toggle="table"
+  data-search="true"
+  data-sort-name="name">
+  <thead>
+    <tr>
+      <th data-field="user" data-sortable="true">User</th>
+      <th data-field="email" data-sortable="true">Email</th>
+      <th data-field="role" data-sortable="true">Role</th>
+      <th data-field="NApps" data-sortable="true">N. Applications</th>
+      <th data-field="Actions"></th>
+    </tr>
+    <tbody>
+      <% users.each do |user| %>
+      <tr>
+        <td class="table-row-name"><%= user.first_name %> <%= user.last_name %></td>
+        <td><%= user.email %></td>
+        <td><%= ["UX Designer", "UX/UI Designer", "Art Director", "Lead UX Designer", "Product Design"].sample %></td>
+        <td><%= (3..6).to_a.sample %></td>
+        <td class="table-action-td">
+          <%= link_to user_survey_path(user), class: "btn btn-table btn-success" do %>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 2H2C1.45 2 1.005 2.45 1.005 3L1 9C1 9.55 1.45 10 2 10H10C10.55 10 11 9.55 11 9V3C11 2.45 10.55 2 10 2ZM10 4L6 6.5L2 4V3L6 5.5L10 3V4Z" fill="white"/>
+            </svg>
+            Send survey
+          <% end %>
+          <%= link_to usage_path do %>
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 10.5V13H2.5L9.87333 5.62662L7.37333 3.12662L0 10.5ZM11.8067 3.69329C12.0667 3.43329 12.0667 3.01329 11.8067 2.75329L10.2467 1.19329C9.98667 0.933291 9.56667 0.933291 9.30667 1.19329L8.08667 2.41329L10.5867 4.91329L11.8067 3.69329Z" fill="#C2CFE0"/>
+            </svg>
+          <% end %>
+          <%= link_to usage_path do %>
+            <svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.999674 10.6667C0.999674 11.4 1.59967 12 2.33301 12H7.66634C8.39967 12 8.99967 11.4 8.99967 10.6667V2.66667H0.999674V10.6667ZM9.66634 0.666667H7.33301L6.66634 0H3.33301L2.66634 0.666667H0.333008V2H9.66634V0.666667Z" fill="#C2CFE0"/>
+            </svg>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </thead>
+</table>

@@ -16,9 +16,25 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  .main-title {
+  .breadcrumbs {
     flex-grow: 1;
-    font-size: 19px;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    * {
+      font-size: 19px;
+      margin-right: 10px;
+      text-decoration: none;
+    }
+
+    a:after {
+      content: "/";
+      font-size: 16px;
+      margin-left: 10px;
+      line-height: 10px;
+      margin-bottom: 6px;
+    }
   }
   .icons {
     margin-right: 12px;

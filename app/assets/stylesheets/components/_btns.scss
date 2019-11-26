@@ -1,0 +1,25 @@
+.btn {
+  min-width: 100px;
+  border-radius: 3px;
+
+  svg {
+    transform: translateY(-1px);
+  }
+}
+
+.btn-big {
+  padding: 12px 40px !important;
+}
+
+.btn-small {
+  padding: 4px 6px !important;
+  font-size: 14px !important;
+}
+
+.btn-bold {
+  font-weight: bold !important;
+}
+
+.btn-success {
+  color: $white !important;
+}

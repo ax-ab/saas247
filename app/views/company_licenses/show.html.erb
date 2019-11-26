@@ -1,4 +1,4 @@
-  <% content_for(:title, @company_license.license.name) %>
+<% content_for(:title, "#{@company_license.license.name}", ) %>
 
 <%
   totalCost = 0
@@ -25,8 +25,10 @@
   nDeps = departmentsCount.keys.count
   user_licenses_used = rand((totalLicensesPurchased / 1.3)..totalLicensesPurchased).floor
   utilization = ((user_licenses_used * 100) / totalLicensesPurchased)
+  # utilization_by_owner = ((user_licenses_used * 100) / totalLicensesPurchased)
   potential_savings = ((100 - utilization) * totalCost) / 100
   potential_savings_by_owner = ""
+
 
 
 %>
@@ -98,29 +100,35 @@
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
           <%= javascript_pack_tag 'chart' %>
-          <%= area_chart @company_license.license_transactions.where("purchase_date BETWEEN ? AND ?", Date.today - 365.days, Date.today).group_by_month(:purchase_date).sum(:total_purchase_price) %>
+          <% cost_over_time = @company_license.license_transactions.where("purchase_date BETWEEN ? AND ?", Date.today - 365.days, Date.today).group_by_month(:purchase_date).sum(:total_purchase_price) %>
+
+          <%= area_chart cost_over_time %>
         </div>
 
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
            <%= bar_chart [
-            {
-              name: "Utilization",
-              data: @company_license.license_transactions.where("purchase_date BETWEEN ? AND ?", Date.today - 365.days, Date.today)
-          .group('owner_id').sum(:total_purchase_price).transform_keys { |key| User.find_by_id(key).email },
-          stack: "stack 1"
+
+              {
+
+               name: "Total Spend",
+               data: total_prices = @company_license.license_transactions.where("purchase_date BETWEEN ? AND ?", Date.today - 365.days, Date.today)
+          .group('owner_id').sum(:total_purchase_price).transform_keys { |key| User.find_by_id(key).email }
         },
-          {
-              name: "Other",
-              data: [15, 29, 42],
-              stack: "stack 1"
-          }
-        ], stacked: true
-         %>
+        {
+              name: "Utilization",
+              data: total_licenses = @company_license.license_transactions.where("purchase_date BETWEEN ? AND ?", Date.today - 365.days, Date.today)
+          .group('owner_id').sum(:user_licenses_purchased).transform_values { |value| (rand((value / 1.3)..value).floor / value.to_f) * 100 }.transform_keys { |key| User.find_by_id(key).email }
+        }], stacked: true
+        %>
         </div>
 
-
         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-          <%= bar_chart [["savings", potential_savings]]%>
+          <%= bar_chart [
+  {name: "Potential Savings", data: savings = total_licenses.map { |key, value| [ key, ((1 - (value / 100.0)) * total_prices[key]).round(2) ] }.to_h }
+] %>
+
+
+
         </div>
       </div>
     </div>

@@ -2,6 +2,18 @@
   width: 100%;
   height: 60px;
   border-bottom: 1px solid $light-line;
+
+  .logo-link {
+    color: $primary;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 20px;
+  }
 }
 
 .leftnav_bottom {
@@ -9,6 +21,22 @@
   flex: 1;
   width: 100%;
   margin: 24px;
+
+  li {
+    position: absolute;
+  }
+
+  li:nth-of-type(2) {
+    top: 40px !important;
+  }
+
+  li:nth-of-type(3) {
+    top: 80px !important;
+  }
+
+  li:nth-of-type(4) {
+    top: 120px !important;
+  }
 
   .leftnav-links a {
     display: flex;
@@ -27,9 +55,19 @@
       padding-left: 30px;
       margin: 0;
       color: $main-text;
+      height: 38px;
     }
 
-    &:hover p, &:active p, &:focus p {
+    &.active {
+      p {
+        color: $primary !important;
+      }
+
+      svg {
+        fill: $primary !important;
+      }
+    }
+    &:hover p, &:active p, &:focus p,  {
       color: $primary;
     }
 
@@ -91,6 +129,7 @@
   }
   100% {
     opacity: 1;
+    display: none;
   }
 }
 @keyframes toggleHide {

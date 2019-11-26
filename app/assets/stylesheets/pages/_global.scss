@@ -1,5 +1,6 @@
 html, body, .dashboard-container {
   width: 100vw;
+  font-family: $font-Poppins;
 }
 
 #dashboard-container {
@@ -15,6 +16,7 @@ html, body, .dashboard-container {
   bottom: 0;
   background: $white;
   display: flex;
+  z-index: 100;
   flex-direction: column;
   box-shadow: 6px 0px 18px rgba(0, 0, 0, 0.06);
 }
@@ -24,6 +26,7 @@ html, body, .dashboard-container {
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  position: relative;
 }
 
 #dashboard-left, #dashboard-right {
