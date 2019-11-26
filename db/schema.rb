@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_25_173152) do
+ActiveRecord::Schema.define(version: 2019_11_26_084701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,15 @@ ActiveRecord::Schema.define(version: 2019_11_25_173152) do
     t.string "commitment_period"
     t.index ["company_license_id"], name: "index_license_transactions_on_company_license_id"
     t.index ["owner_id"], name: "index_license_transactions_on_owner_id"
+  end
+
+  create_table "license_usages", force: :cascade do |t|
+    t.bigint "company_license_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_license_id"], name: "index_license_usages_on_company_license_id"
+    t.index ["user_id"], name: "index_license_usages_on_user_id"
   end
 
   create_table "licenses", force: :cascade do |t|
@@ -91,6 +100,8 @@ ActiveRecord::Schema.define(version: 2019_11_25_173152) do
   add_foreign_key "company_licenses", "licenses"
   add_foreign_key "license_transactions", "company_licenses"
   add_foreign_key "license_transactions", "users", column: "owner_id"
+  add_foreign_key "license_usages", "company_licenses"
+  add_foreign_key "license_usages", "users"
   add_foreign_key "licenses", "categories"
   add_foreign_key "licenses", "vendors"
   add_foreign_key "users", "companies"

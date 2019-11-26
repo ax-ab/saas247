@@ -1,0 +1,49 @@
+.form-usage {
+  width: 50vw;
+  background: #ecf0f1;
+  margin-top: 50px;
+  padding: 50px;
+  border-radius: 10px;
+  h1 {
+    text-align: left;
+    font-weight: bold;
+    font-size: 25px;
+    color: #666666;
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+  .btn {
+    width: 100%;
+    padding: 10px;
+    font-weight: bold;
+  }
+}
+
+// Checkboxes design
+.company-license-choices {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  .hidden {
+    display: none;
+  }
+}
+
+.company-license-choice {
+  background: #b7b7b7;
+  padding: 20px;
+  border-radius: 5px;
+  opacity: .4;
+  flex: 0 0 30%;
+  text-align: center;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  &.active {
+  background: $primary;
+  color: white;
+  opacity: 1;
+  }
+}

@@ -1,0 +1,2 @@
+class LicenseUsage < ApplicationRecord
+end

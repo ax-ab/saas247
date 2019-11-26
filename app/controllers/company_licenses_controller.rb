@@ -2,11 +2,6 @@ class CompanyLicensesController < ApplicationController
   include DashboardHelper
   include ActionView::Helpers::NumberHelper
 
-require 'json'
-require 'open-uri'
-
-
-
   def dashboard
     @license_transactions = LicenseTransaction.all
 
@@ -31,31 +26,12 @@ require 'open-uri'
   end
 
   def index
-    @company_licenses = CompanyLicense.all
+    # @company_licenses = CompanyLicense.all
     @licenses_aggregated = CompanyLicense.index_query(current_user.company)
   end
 
   def show
     @company_license = CompanyLicense.find(params[:id])
-  end
-
-  def usage
-
-    url = "https://api.typeform.com/forms/RyFnZ0/responses"
-    form_results_serialized = open(url, "Authorization" => "Bearer 5nfqD7rtaGvyXb3fXbPVAuzczXdfMxPo8N9typ8D6KQX", "Accept" => "application/json").read
-    results = JSON.parse(form_results_serialized)['items']
-
-
-
-
-
-
-
-# open("http://www.ruby-lang.org/en/",
-#    "User-Agent" => "Ruby/#{RUBY_VERSION}",
-#    "From" => "foo@bar.invalid",
-#    "Referer" => "http://www.ruby-lang.org/")
-
   end
 
 end

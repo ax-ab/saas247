@@ -4,7 +4,11 @@ Rails.application.routes.draw do
 
   resources :company_licenses, only: [:index, :show]
   get '/dashboard', to: 'company_licenses#dashboard'
-   get '/usage', to: 'company_licenses#usage'
+
+  # post 'license_usages', to: 'license_usages#create'
+  resources :license_usages, only: [:create]
+  get 'license_usages/new/:user_id', to: 'license_usages#new'
+
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :events, only: [ :index ]

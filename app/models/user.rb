@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   belongs_to :company
   has_many :license_transactions, foreign_key: 'owner_id'
+  has_many :license_usages
 end
