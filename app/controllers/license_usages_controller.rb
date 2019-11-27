@@ -19,19 +19,35 @@ class LicenseUsagesController < ApplicationController
       @license_usage.save
     end
 
+    @user.usage_survey_completed = Date.today
+    @user.save
+
     render :thank_you
   end
 
-  def user_survey
+  def survey_user
     @user = User.find(params[:user_id])
     UserMailer.with(user: @user).usage.deliver_now
     redirect_to usage_path, notice: "Survey sent to #{@user.first_name} #{@user.last_name}"
   end
 
-  def all_survey
+  def survey_all
     User.all.each do |user|
       UserMailer.with(user: user).usage.deliver_now
     end
-    redirect_to usage_path, notice: "Survey sent to everyone"
+    redirect_to usage_path, notice: "Survey sent to all users"
   end
+
+  def survey_missing
+    non_respondents = User.all.where('usage_survey_completed IS NULL')
+    if non_respondents.empty?
+      redirect_to usage_path, notice: "All users have already respondend to the survey"
+    else
+      non_respondents.each do |user|
+        UserMailer.with(user: user).usage.deliver_now
+      end
+      redirect_to usage_path, notice: "Survey sent to non-respondents"
+    end
+  end
+
 end

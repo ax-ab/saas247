@@ -51,8 +51,7 @@ puts "\nCreating users..."
     {first_name: "Peter", last_name: "Albridge", email: "peter@company.com", password: "123456", department: "Sales", company: Company.find_by(name: "Company")},
     {first_name: "Mike", last_name: "Peterson", email: "mike@company.com", password: "123456", department: "Marketing", company: Company.find_by(name: "Company")},
     {first_name: "Carol", last_name: "Anderson", email: "carol@company.com", password: "123456", department: "HR", company: Company.find_by(name: "Company")},
-    {first_name: "Kathrine", last_name: "Hudson", email: "kathrine@company.com", password: "123456", department: "Finance", company: Company.find_by(name: "Company")},
-    {first_name: "Axel", last_name: "LastName", email: "acja87@gmail.com", password: "123456", department: "IT", company: Company.find_by(name: "Company")}
+    {first_name: "Kathrine", last_name: "Hudson", email: "kathrine@company.com", password: "123456", department: "Finance", company: Company.find_by(name: "Company")}
   ]
 
   users.each do |user|
@@ -270,8 +269,13 @@ puts "\nAdding active users to company licenses..."
 puts "Finished adding active users to company licenses"
 
 puts "\nCreating license usages..."
-  User.all.where.not(email: "acja87@gmail.com").each do |user|
-    LicenseUsage.create!(company_license_id: CompanyLicense.all.sample.id, user_id: user.id)
+  User.all.where.not(email: "carol@company.com").each do |user|
+    company_license_ids = CompanyLicense.all.ids.shuffle
+    rand(1..company_license_ids.count).times do |index|
+      LicenseUsage.create!(company_license_id: company_license_ids[index], user_id: user.id)
+    end
+    user.usage_survey_completed = Date.today
+    user.save
   end
 puts "Finished creating license usages"
 
