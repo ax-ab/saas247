@@ -1,5 +1,8 @@
-<div>
-  <h1>Hi <%= @user.first_name %></h1>
-  <h3><%= link_to "Click here to tell us about your license usage", new_survey_url(@user), target: "_blank" %></h3>
+<div class="mail-content">
+  <h1>Hi <%= @user.first_name %> 👋</h1>
+  <hr>
+  <h3>Have a minute?</h3>
+  <p>We need to know which Saas licenses your using.</p>
+  <%= link_to "Take Survey", new_survey_url(@user), target: "_blank", class: "btn btn-cta" %>
 </div>
 
