@@ -19,11 +19,12 @@ gem 'simple_calendar'
 gem "chartkick"
 gem "groupdate"
 gem "highcharts-rails"
-
-gem 'letter_opener'
+gem 'letter_opener_web', '~> 1.0'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
+  gem 'letter_opener'
+  gem 'letter_opener_web', '~> 1.0'
 end
 
 group :development, :test do
