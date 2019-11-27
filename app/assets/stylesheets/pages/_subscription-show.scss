@@ -132,21 +132,26 @@
 .show {display:block;}
 
 .tabs-saassy {
-  background-color: #DFE0EB;
+  background: $success;
 
   .nav-link {
     padding: 24px 40px;
-    color: $dark-gray;
-    opacity: 0.5;
+    color: $white;
+    opacity: 1;
+    font-weight: 500;
 
     &:hover {
       background-color: $white;
+      color: $light-text;
     }
 
     &.active {
       border-color: transparent !important;
-      font-weight: bold;
       opacity: 1;
     }
   }
+}
+
+.tab-pane {
+  height: 100%;
 }

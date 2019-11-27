@@ -3,9 +3,15 @@
 <%= render "company_licenses/partials/cards_metrics_top" %>
 
 <%= javascript_pack_tag "chart" %>
-<div class="dashboard-chart-container">
-<h4> Spend in the last 12 months</h4>
-<%= area_chart @monthly_costs, responsive: true, maintainAspectRation: false, class: "dashboard-chart" %>
+<div class="big-metrics-card-full">
+  <div class="">
+    <div class="header-content">
+      <h4>Spend in the last 12 months</h4>
+    </div>
+  </div>
+  <div class="card-bottom-graph">
+    <%= area_chart @monthly_costs, responsive: true, maintainAspectRatio: false, class: "dashboard-chart" %>
+  </div>
 </div>
 
 <%= render "company_licenses/partials/cards_metrics_bottom" %>
