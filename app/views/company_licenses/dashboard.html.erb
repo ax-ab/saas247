@@ -10,7 +10,8 @@
     </div>
   </div>
   <div class="card-bottom-graph">
-    <%= area_chart @monthly_costs, responsive: true, maintainAspectRatio: false, class: "dashboard-chart" %>
+    <%#= area_chart @monthly_costs, responsive: true, maintainAspectRatio: false, class: "dashboard-chart" %>
+    <%= area_chart({"Dec 2018" => 31000, "Jan 2019" => 40000, "Feb 2019" => 44000,"Mar 2019" => 47000,"Apr 2019" => 52000,"May 2019" => 53000,"Jun 2019" => 60000,"Jul 2019" => 60000,"Aug 2019" => 70000,"Sep 2019" => 70000,"Oct 2019" => 70000}) %>
   </div>
 </div>
 

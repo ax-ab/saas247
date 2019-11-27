@@ -17,21 +17,93 @@
         <div class="app-savings app-item">Potential Saving</div>
       </div>
 
-    <% @utilization_per_app.each_with_index do |license, index| %>
+    <%# @utilization_per_app.each_with_index do |license, index| %>
+      <!-- <div class="app-info"> -->
+
+        <%#= image_tag("#{license[:logo_url]}", class: "app-logo") %>
+
+        <!-- <div class="app-name"> -->
+          <%#= link_to company_license_path(@utilization_per_app[index][:id]) do %>
+          <%#= license[:application] %>
+          <%# end %>
+        <!-- </div> -->
+
+        <!-- <div class="app-headcount app-item"><%#= license[:usage] %>/<%#= license[:capacity] %></div> -->
+        <!-- <div class="app-utilization app-item"><%#= license[:utilization] %>%</div> -->
+        <!-- <div class="app-savings app-item"><%#= number_to_currency(((100 - license[:utilization].to_i) * license[:expense].to_i / 100), unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></div> -->
+      <!-- </div> -->
+
+    <%# end %>
+
       <div class="app-info">
 
-        <%= image_tag("#{license[:logo_url]}", class: "app-logo") %>
+        <%= image_tag("#{'vendor-logos/slack-logo.svg'}", class: "app-logo") %>
 
         <div class="app-name">
-          <%= link_to company_license_path(@utilization_per_app[index][:id]) do %>
-          <%= license[:application] %>
+          <% slack = CompanyLicense.find_by(license_id: License.find_by(name: "Slack")) %>
+          <%= link_to company_license_path(slack) do %>
+          Slack
           <% end %>
         </div>
 
-        <div class="app-headcount app-item"><%= license[:usage] %>/<%= license[:capacity] %></div>
-        <div class="app-utilization app-item"><%= license[:utilization] %>%</div>
-        <div class="app-savings app-item"><%= number_to_currency(((100 - license[:utilization].to_i) * license[:expense].to_i / 100), unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></div>
+        <div class="app-headcount app-item"> 230/420</div>
+        <div class="app-utilization app-item">53%</div>
+        <div class="app-savings app-item"> € 51.800</div>
       </div>
 
-    <% end %>
+
+      <div class="app-info">
+
+        <%= image_tag("#{'vendor-logos/salesforce-logo.svg'}", class: "app-logo") %>
+
+        <div class="app-name">
+          <a href="/company_licenses/59"> Salesforce </a>
+        </div>
+
+        <div class="app-headcount app-item"> 52/60</div>
+        <div class="app-utilization app-item">87%</div>
+        <div class="app-savings app-item"> € 24.310</div>
+      </div>
+
+      <div class="app-info">
+
+        <%= image_tag("#{'vendor-logos/zendesk-logo.svg'}", class: "app-logo") %>
+
+        <div class="app-name">
+         <a href="/company_licenses/56"> Zendesk </a>
+        </div>
+
+        <div class="app-headcount app-item"> 27/35</div>
+        <div class="app-utilization app-item">77%</div>
+        <div class="app-savings app-item"> € 7.314</div>
+      </div>
+
+      <div class="app-info">
+
+        <%= image_tag("#{'vendor-logos/dropbox-logo.svg'}", class: "app-logo") %>
+
+        <div class="app-name">
+          <a href="/company_licenses/54"> Dropbox </a>
+        </div>
+
+        <div class="app-headcount app-item"> 351/370</div>
+        <div class="app-utilization app-item">81%</div>
+        <div class="app-savings app-item"> € 8.030</div>
+      </div>
+
+
+      <div class="app-info">
+
+        <%= image_tag("#{'vendor-logos/gsuite-logo.svg'}", class: "app-logo") %>
+
+        <div class="app-name">
+          <a href="/company_licenses/60"> Google Suite </a>
+        </div>
+
+        <div class="app-headcount app-item"> 500/510</div>
+        <div class="app-utilization app-item">91%</div>
+        <div class="app-savings app-item"> € 4.300</div>
+      </div>
+
+
   </div>
