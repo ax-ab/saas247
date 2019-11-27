@@ -1,9 +1,9 @@
 <table
-  id="table-styled"
-  class="card-container table-container"
+  class="card-container table-container table-styled"
   data-toggle="table"
   data-search="true"
-  data-sort-name="name">
+  data-sort-name="<%= @sort_header %>"
+  data-sort-order="<%= @sort_order %>">
   <thead>
     <tr>
       <th data-field="name" data-sortable="true">Application</th>
@@ -20,6 +20,7 @@
       <% @licenses_aggregated.each do |license| %>
       <tr>
         <td class="table-row-name">
+          <p style="display: none;"><%= license[:application] %></p>
           <%= link_to company_license_path(license[:id]) do %>
             <%= license[:application] %>
           <% end %>
@@ -27,12 +28,12 @@
         <td><%= license[:departments] %></td>
         <td><%= license[:category] %></td>
         <td><%= license[:vendor] %></td>
-        <td><%= number_to_currency(license[:expense], unit: "€ ", separator: ",", delimiter: ".", precision: 0)%></td>
+        <td class="expense-td"><%= license[:expense] %></td>
         <td><%= license[:capacity] %></td>
         <td><%= license[:usage] %></td>
         <td><%= license[:utilization] %>%</td>
         <td>
-          <%= number_to_currency(((100 - license[:utilization].to_i) * license[:expense].to_i / 100), unit: "€ ", separator: ",", delimiter: ".", precision: 0)%></td>
+          <%= ((100 - license[:utilization].to_i) * license[:expense].to_i / 100) %></td>
       </tr>
       <% end %>
     </tbody>

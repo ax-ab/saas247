@@ -4,7 +4,9 @@
         <h4>Utilization - Least used applications</h4>
         <p>Current</p>
       </div>
-      <a href="">View All</a>
+
+      <%= link_to 'View All', company_licenses_path(sort: 'util') %>
+
     </div>
 
 
@@ -15,14 +17,21 @@
         <div class="app-savings app-item">Potential Saving</div>
       </div>
 
-    <% @utilization_per_app.each do |license| %>
+    <% @utilization_per_app.each_with_index do |license, index| %>
       <div class="app-info">
 
         <%= image_tag("#{license[:logo_url]}", class: "app-logo") %>
-        <div class="app-name"><%= license[:application] %></div>
+
+        <div class="app-name">
+          <%= link_to company_license_path(@utilization_per_app[index][:id]) do %>
+          <%= license[:application] %>
+          <% end %>
+        </div>
+
         <div class="app-headcount app-item"><%= license[:usage] %>/<%= license[:capacity] %></div>
         <div class="app-utilization app-item"><%= license[:utilization] %>%</div>
         <div class="app-savings app-item"><%= number_to_currency(((100 - license[:utilization].to_i) * license[:expense].to_i / 100), unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></div>
       </div>
+
     <% end %>
   </div>

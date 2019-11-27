@@ -90,6 +90,10 @@
             <h2><%= (100 - @users.all.where('usage_survey_completed IS NULL').count.to_f / @users.count.to_f * 100).round %>%</h2>
             <p>Completion rate</p>
           </div>
+          <div class="section-metric-group">
+            <h2>85%</h2>
+            <p>Completion Rate</p>
+          </div>
         </div>
         <%= link_to "Remind all non-respondents", survey_missing_path, class: "btn btn-big btn-primary" %>
       </div>

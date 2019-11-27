@@ -1,10 +1,10 @@
-<div id="metrics-cards-container">
+<div class="metrics-cards-container">
   <div class="metrics-cards-container-row">
   <!-- Spent by top 5 applications -->
-  <%= render partial: "company_licenses/partials/card_app_info", locals: {
+  <%= render partial: "company_licenses/partials/card_app_top5app", locals: {
     cardName: "Spent by top 5 applications", apps: @spend_per_app }%>
   <!-- Spent by department -->
-  <%= render partial: "company_licenses/partials/card_app_info", locals: {
+  <%= render partial: "company_licenses/partials/card_app_spentdepart", locals: {
   cardName: "Spent by Department", apps: @spend_per_department }%>
   </div>
   <div class="metrics-cards-container-row">

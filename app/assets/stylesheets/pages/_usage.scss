@@ -39,12 +39,12 @@
     margin-left: 20px;
   }
 }
-.top-section-metrics, .department-metrics {
+.top-section-metrics, .department-metrics, .top-section-title {
   flex: 1;
   display: flex;
 }
 
-.top-section-metrics {
+.top-section-metrics, .top-section-title {
   color: $white;
 }
 
@@ -52,6 +52,7 @@
   color: $main-text;
   padding: 0 30px;
 }
+
 .section-metric-group {
   margin-right: 80px;
   line-height: 12px;

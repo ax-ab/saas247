@@ -3,17 +3,18 @@
       <div class="header-content">
         <h4>Upcoming renewals</h4>
       </div>
-      <a href="">View All</a>
+
+      <%= link_to company_licenses_path do %>View All<% end %>
+
     </div>
 
 <div class="simple-calendar">
-
 
   <div class="renewals-info">
 
     <div class="count highlight-value"><span><%= LicenseTransaction.where('expiry_date BETWEEN ? AND ?', start_date.at_beginning_of_month, start_date.at_beginning_of_month.next_month ).count %></span><p> in the current month</p></div>
 
-    <div class="value highlight-value"><span><%= number_with_delimiter(LicenseTransaction.where('expiry_date BETWEEN ? AND ?', start_date.at_beginning_of_month, start_date.at_beginning_of_month.next_month ).sum(:total_purchase_price), :delimiter => ',') %> $<p> up for renewal</p></div>
+    <div class="value highlight-value"><span>€ <%= number_with_delimiter(LicenseTransaction.where('expiry_date BETWEEN ? AND ?', start_date.at_beginning_of_month, start_date.at_beginning_of_month.next_month ).sum(:total_purchase_price), :delimiter => '.') %><p> up for renewal</p></div>
 
     <div class="calendar-heading">
       <%= link_to t('simple_calendar.previous', default: '  <  '), calendar.url_for_previous_view %>
