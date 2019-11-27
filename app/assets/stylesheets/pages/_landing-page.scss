@@ -153,32 +153,6 @@
       left: -60px;
     }
 
-    .step-text {
-      display: flex;
-      line-height: 30px;
-
-      span {
-        font-weight: bold;
-        font-size: 100px;
-        line-height: 0.8em;
-        background: -webkit-linear-gradient(-30deg, #109CF1 3.3%, #10CCF1 48.56%, #11FF9B 98.79%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-right: 20px;
-      }
-
-      h3 {
-        font-size: 24px;
-        font-weight: bold;
-      }
-
-      p {
-        font-size: 16px;
-        line-height: 25px;
-        color: $lighter-text;
-      }
-    }
-
     .step-img {
       margin-bottom: 20px;
     }
@@ -226,6 +200,32 @@
       margin-left: 30px;
       opacity: 0.5
     }
+  }
+}
+
+.step-text {
+  display: flex;
+  line-height: 30px;
+
+  span {
+    font-weight: bold;
+    font-size: 100px;
+    line-height: 0.8em;
+    background: -webkit-linear-gradient(-30deg, #109CF1 3.3%, #10CCF1 48.56%, #11FF9B 98.79%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-right: 20px;
+  }
+
+  h3 {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 25px;
+    color: $lighter-text;
   }
 }
 
