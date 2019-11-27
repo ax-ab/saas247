@@ -3,22 +3,22 @@
 <div class="top-section-container">
   <div class="top-section-metrics">
     <div class="section-metric-group">
-      <h2>5</h2>
+      <h2>8</h2>
       <p>Departments</p>
     </div>
     <div class="section-metric-group">
-      <h2>62</h2>
+      <h2>887</h2>
       <p>Users</p>
     </div>
     <div class="section-metric-group">
-      <h2>35</h2>
+      <h2>79</h2>
       <p>Applications</p>
     </div>
   </div>
   <div class="top-section-cta">
     <p>Send a survey to the team<br>
     to know which applications they are using:</p>
-    <%= link_to "Send survey to all", all_survey_path, class: "btn btn-outline btn-bold" %>
+    <%= link_to "Send survey to all", survey_all_path, class: "btn btn-outline btn-bold" %>
   </div>
   <svg id="top-section-illustration" width="148" height="152" viewBox="0 0 148 152" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g opacity="0.3">
@@ -51,10 +51,10 @@
 <div class="usage-department-container">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-      <a class="nav-link" id="AllDeps-tab" data-toggle="tab" href="#all-deps" role="tab" aria-controls="all-deps" aria-selected="false">All Deps</a>
+      <a class="nav-link active" id="AllDeps-tab" data-toggle="tab" href="#all-deps" role="tab" aria-controls="all-deps" aria-selected="true">All deps</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" id="Design-tab" data-toggle="tab" href="#design" role="tab" aria-controls="design" aria-selected="true">Design</a>
+      <a class="nav-link" id="Design-tab" data-toggle="tab" href="#design" role="tab" aria-controls="design" aria-selected="false">Design</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" id="Dev-tab" data-toggle="tab" href="#dev" role="tab" aria-controls="dev" aria-selected="false">Development</a>
@@ -70,35 +70,39 @@
     </li>
   </ul>
   <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade" id="all-deps" role="tabpanel" aria-labelledby="AllDeps-tab">
-      <div class="department-metrics-container">
-        <h1> 1st tab content </h1>
-      </div>
-    </div>
-    <div class="tab-pane fade show active" id="design" role="tabpanel" aria-labelledby="Design-tab">
+    <div class="tab-pane fade show active" id="all-deps" role="tabpanel" aria-labelledby="AllDeps-tab">
 
       <div class="department-metrics-container">
         <div class="department-metrics">
           <div class="section-metric-group">
-            <h2><%= @users.count %></h2>
+            <h2>887<!-- @users.count --></h2>
             <p>Users</p>
           </div>
           <div class="section-metric-group">
-            <h2>15</h2>
+            <h2>75<!-- LicenseUsage.distinct.count(:company_license_id) --></h2>
             <p>Applications Used</p>
           </div>
           <div class="section-metric-group">
-            <h2>2</h2>
-            <p>Pending Surveys</p>
+            <h2><%= @users.all.where('usage_survey_completed IS NULL').count %></h2>
+            <p>Missing replies</p>
+          </div>
+          <div class="section-metric-group">
+            <h2><%= (100 - @users.all.where('usage_survey_completed IS NULL').count.to_f / @users.count.to_f * 100).round %>%</h2>
+            <p>Completion rate</p>
           </div>
           <div class="section-metric-group">
             <h2>85%</h2>
             <p>Completion Rate</p>
           </div>
         </div>
-        <%= link_to "Send survey to department", usage_path, class: "btn btn-big btn-primary" %>
+        <%= link_to "Remind all non-respondents", survey_missing_path, class: "btn btn-big btn-primary" %>
       </div>
       <%= render partial: "company_licenses/partials/table-department", locals: { users: @users } %>
+    </div>
+    <div class="tab-pane fade" id="design" role="tabpanel" aria-labelledby="Design-tab">
+      <div class="department-metrics-container">
+        <h1> 1st tab content </h1>
+      </div>
     </div>
     <div class="tab-pane fade" id="dev" role="tabpanel" aria-labelledby="Dev-tab">
       <div class="department-metrics-container">
