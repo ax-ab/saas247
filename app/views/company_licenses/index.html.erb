@@ -1,3 +1,17 @@
 <% content_for(:title, "Company Licenses") %>
-
-<%= render "company_licenses/partials/table-index", locals: { licenses: @licenses_aggregated } %>
+<div id="company-licenses-top" class="top-section-container">
+  <div class="top-section-title">
+    <div class="section-metric-group">
+      <h2><%= @licenses_aggregated.count %></h2>
+      <p>Applications</p>
+    </div>
+  </div>
+<!--   <div class="top-section-cta">
+    <p>Send a survey to the team<br>
+    to know which applications they are using:</p>
+    <%= link_to "Send survey to all", all_survey_path, class: "btn btn-outline btn-bold" %>
+  </div> -->
+</div>
+<div id="company-licenses-table">
+  <%= render "company_licenses/partials/table-index", locals: { licenses: @licenses_aggregated } %>
+</div>
