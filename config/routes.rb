@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'usage/survey_all', to: 'license_usages#survey_all', as: 'survey_all'
   get 'usage/survey_missing', to: 'license_usages#survey_missing', as: 'survey_missing'
 
+  mount LetterOpenerWeb::Engine, at: "/letter_opener"
   # %w( 404 422 500 ).each do |code|
   #   get code, controller: :error, action: :show, code: code
   # end
