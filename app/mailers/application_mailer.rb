@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'susan@gsaas247.com'
+  default from: 'Susan Ferguson'
   layout 'mailer'
 end
