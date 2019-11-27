@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <div class="form-usage">
-        <h1>Hi <%= @user.first_name %>! <br> What licenses are you currently using?</h1>
+        <h1>Hi <%= @user.first_name %>! <br> <br> What licenses are you currently using?</h1>
         <%= simple_form_for(@license_usage) do |f| %>
           <!-- Inject categories here -->
           <div class="form-group">

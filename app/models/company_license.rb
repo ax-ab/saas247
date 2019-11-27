@@ -16,14 +16,16 @@ class CompanyLicense < ApplicationRecord
   }
 
   scope :spend_per_app, -> (company) {
-    select("company_licenses.id,
-    licenses.name AS key, max(licenses.logo_url) AS logo,
+    select("
+    max(company_licenses.id) AS id,
+    licenses.name AS key,
+    max(licenses.logo_url) AS logo,
     SUM(total_purchase_price) AS expense
     ")
     .joins(:license_transactions, :license)
     .where(company: company)
     .where(license_transactions: {purchase_date: Date.today-365..Date.today})
-    .group('key, company_licenses.id')
+    .group('key')
     .order(expense: :desc)
     .limit(5)
   }
