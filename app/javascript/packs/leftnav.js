@@ -26,21 +26,21 @@ export const leftNavInteractivity = () => {
     if (toggleP.style.display !== "none") {
       logo.innerText = "S";
       toggleP.classList.add("hide");
-      toggleP.classList.remove("show");
+      toggleP.classList.remove("show-left-nav");
       toggleP.style.display = "none";
       toggleIcon.classList.add("svg-blue");
       navList.forEach((text) => {
         text.classList.add("hide");
-        text.classList.remove("show");
+        text.classList.remove("show-left-nav");
       });
     } else {
       toggleP.style.display = "block";
       toggleP.classList.remove("hide");
-      toggleP.classList.add("show");
+      toggleP.classList.add("show-left-nav");
       toggleIcon.classList.remove("svg-blue");
       navList.forEach((text) => {
         text.classList.remove("hide");
-        text.classList.add("show");
+        text.classList.add("show-left-nav");
       });
       setTimeout(( ) => {
         logo.innerText = "Saas 247";
