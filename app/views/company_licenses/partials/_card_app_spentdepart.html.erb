@@ -6,13 +6,42 @@
       </div>
       <%= link_to company_licenses_path do %>View All<% end %>
     </div>
-    <% apps.each do | app | %>
-    <div class="app-info">
+    <%# apps.each do | app | %>
+    <!-- <div class="app-info"> -->
 
-      <!-- <%= image_tag("#{app.logo}", class: "app-logo") %> -->
+      <!-- <%#= image_tag("#{app.logo}", class: "app-logo") %> -->
 
-      <div class="app-name-depart"><%= app.key %></div>
-      <div class="app-expense"><%= number_to_currency(app.expense, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></div>
+      <!-- <div class="app-name-depart"><%#= app.key %></div>
+      <div class="app-expense"><%#= number_to_currency(app.expense, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></div>
     </div>
-    <% end %>
+    <%# end %>
+  </div> -->
+
+   <div class="app-info">
+   <div class="app-name-depart"> IT/Engineering </div>
+      <div class="app-expense"> € 420.000 </div>
+    </div>
+
+    <div class="app-info">
+   <div class="app-name-depart"> Sales </div>
+      <div class="app-expense"> € 168.000 </div>
+    </div>
+
+    <div class="app-info">
+   <div class="app-name-depart"> Marketing </div>
+      <div class="app-expense"> € 67.200 </div>
+    </div>
+
+    <div class="app-info">
+   <div class="app-name-depart"> HR </div>
+      <div class="app-expense"> € 42.000 </div>
+    </div>
+
+    <div class="app-info">
+   <div class="app-name-depart"> Finance </div>
+      <div class="app-expense"> € 33.600 </div>
+    </div>
+
+
+
   </div>
