@@ -25,7 +25,7 @@
       <th data-field="LUsed" data-sortable="true">L. Used</th>
       <th data-field="utilization" data-sortable="true">L. Usage</th>
       <th data-field="billingCycle" data-sortable="true">Billing Cycle</th>
-      <th data-field="renewalDate" data-sortable="true">Renewal Date</th>
+      <th data-field="renewalDate" data-sortable="true">Renewal</th>
       <th data-field="expense" data-sortable="true">Expense</th>
       <th data-field="potentialSaving" data-sortable="true">P. Savings</th>
       <!-- <th data-field="potentialSaving" data-sortable="true">P. Savings</th> -->
@@ -35,7 +35,7 @@
       <%# licenseTransactions.each do |transaction| %>
 
       <tr>
-        <td class="table-row-name"> Peter Albridge </td>
+        <td class="table-row-name"> Mike Peterson </td>
         <td>Sales</td>
         <td>230</td>
         <td>110</td>
@@ -46,7 +46,7 @@
         <!-- <td>€ 285 </td> -->
         <td><span class="badge badge-pill badge-success"> € 9.285 </span></td>
         <td class="action">
-          <button type="button" class="btn btn-table btn-success" data-toggle="modal" data-target="#exampleModal" data-email="peter@company.com" data-name="Peter"> Request Review</button>
+          <button id="review-entry" type="button" class="btn btn-table btn-success" data-toggle="modal" data-target="#reviewModal"> Request Review</button>
         </td>
       </tr>
 
@@ -71,7 +71,7 @@
       </tr>
 
       <tr>
-        <td class="table-row-name"> Mike Peterson </td>
+        <td class="table-row-name"> Peter Albridge </td>
         <td>Marketing</td>
         <td>170</td>
         <td>112</td>
@@ -160,19 +160,33 @@
     </tbody>
   </thead>
 </table>
-
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<%= render partial: "company_licenses/partials/modal_showpage" %>
 
 <script>
-  $('#exampleModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var recipient = button.data('whatever') // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-title').text('New message to ' + recipient)
-  modal.find('.modal-body input').val(recipient)
-})
+
+  const send_button = document.getElementById('send_review');
+  send_button.addEventListener('click', (event) => {
+
+    const review_button = document.getElementById('review-entry');
+    review_button.classList.toggle('btn-success');
+    review_button.classList.add('border');
+    review_button.style.color = "white";
+    review_button.style.background = "grey";
+    review_button.innerText = "Review pending";
+
+    const notificationFeed = document.getElementById('notification-feed');
+    notificationFeed.insertAdjacentHTML("afterbegin","<a class='dropdown-item flex-column' href='#'><div class='d-flex justify-content-center align-items-center py-2'><div class='ml-2'>Slack - Request sent to Mike Peterson</div></div></a>");
+
+    const notificationBell = document.getElementById('notification-bell');
+    notificationBell.insertAdjacentHTML("afterbegin",
+    "<span class='badge badge-pill badge-danger'>1</span>")
+
+    notificationBell.addEventListener('click', (event) => {
+      notificationBell.innerHTML = ""
+    });
+
+  });
+
 </script>
 
 
