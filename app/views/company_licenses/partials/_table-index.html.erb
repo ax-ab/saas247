@@ -32,7 +32,7 @@
         <td><%= license[:capacity] %></td>
         <td><%= license[:usage] %></td>
         <td><%= license[:utilization] %>%</td>
-        <td>
+        <td> €
           <%= ((100 - license[:utilization].to_i) * license[:expense].to_i / 100) %></td>
       </tr>
       <% end %>
