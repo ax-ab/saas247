@@ -1,8 +1,11 @@
 <div class="landing-page-container">
   <main class="main-banner">
+<%= link_to root_path do %>
+ <%= image_tag "Saas247_full-logo_white.png", alt: "Saas24-7 icon circle", class: "full-saas247-logo" %>
+<% end %>
     <nav>
-      <div class="brand-logo">
-        <%= link_to "Saas 247", root_path, class: "logo-link" %>
+      <div class="nav-left-landing">
+
       </div>
       <div class="nav-right">
         <%= link_to "Log in", dashboard_path, class: "btn btn-outline" %>

@@ -21,6 +21,11 @@
   width: 100%;
   height: 310px;
   overflow-y: auto;
+  -ms-overflow-style: none;
+}
+
+.actions-frame::-webkit-scrollbar {
+  display: none;
 }
 
 .action-item {
