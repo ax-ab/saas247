@@ -242,8 +242,16 @@ puts "\nAdvancing initial transactions to current or future date..."
 puts "Finished advancing initial transactions to current or future date"
 
 puts "\nCreating custom license transactions..."
-  50.times do
+  20.times do
     LicenseTransaction.create!(license_transactions.sample)
+    last_transaction = LicenseTransaction.last
+    last_transaction.add_purchase_date(last_transaction.commitment_period)
+    last_transaction.add_expiry_date(last_transaction.commitment_period)
+    last_transaction.add_owner
+  end
+  #SLACK HACK
+  500.times do
+    LicenseTransaction.create!(license_transactions[1])
     last_transaction = LicenseTransaction.last
     last_transaction.add_purchase_date(last_transaction.commitment_period)
     last_transaction.add_expiry_date(last_transaction.commitment_period)
@@ -264,6 +272,11 @@ puts "\nAdding active users to company licenses..."
     end
 
     company_license.active_users = rand(0..accumulated_licenses)
+    #SLACK HACK
+    # slack = CompanyLicense.find_by(id: License.find_by(name: "Slack"))
+    # slack.active_users = 5
+    # slack.save!
+
     company_license.save!
   end
 puts "Finished adding active users to company licenses"
