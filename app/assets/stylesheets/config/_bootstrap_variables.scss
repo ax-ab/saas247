@@ -48,3 +48,7 @@ $transition-all: all $base-transition-duration $base-transition-timing;
 .badge-pill.badge-success {
   color: $white;
 }
+
+.badge {
+  font-size: 14px !important;
+}
