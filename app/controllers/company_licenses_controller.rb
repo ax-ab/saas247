@@ -21,7 +21,8 @@ class CompanyLicensesController < ApplicationController
     ### BOTTOM CARD METRICS
     @spend_per_app = CompanyLicense.spend_per_app(current_user.company)
     @spend_per_department = CompanyLicense.spend_per_department(current_user.company)
-    @utilization_per_app = CompanyLicense.index_query(current_user.company).sort_by { |hsh| hsh[:utilization] }.slice(0,5)
+    # @utilization_per_app = CompanyLicense.index_query(current_user.company).sort_by { |hsh| hsh[:utilization] }.slice(0,5)
+    @utilization_per_app = CompanyLicense.index_query(current_user.company).sort_by { |hsh| (100 - hsh[:utilization].to_i) * hsh[:expense].to_i / 100 }.reverse.slice(0,5)
     @company = current_user.company
     @monthly_costs = @company.total_monthly_cost
   end

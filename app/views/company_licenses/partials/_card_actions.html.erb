@@ -1,0 +1,22 @@
+<div class="big-metrics-card card-actions">
+  <div class="metrics-header">
+    <div class="header-content">
+      <h4>Here is some useful information for you.</h4>
+    </div>
+  </div>
+  <div class="actions-frame">
+      <% 10.times do %>
+      <div class="action-item">
+        <div class="action-left">
+          <div class="action-status"></div>
+          <p class="action-message">You can optimize Salesforse cost by 60%.<br>Mike Peterson's license is not very used.</p>
+        </div>
+        <div class="action-button">
+          <%= link_to dashboard_path, class: "btn btn-table btn-success btn-action" do %>
+            See more
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+  </div>
+</div>

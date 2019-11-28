@@ -1,8 +1,8 @@
   <div class="big-metrics-card">
     <div class="metrics-header">
       <div class="header-content">
-        <h4>Utilization - Least used applications</h4>
-        <p>Current</p>
+        <h4>Highest Potential Savings</h4>
+        <p>Based on the licenses you're under using, you could save XXXX € this month.</p>
       </div>
 
       <%= link_to 'View All', company_licenses_path(sort: 'util') %>
@@ -12,7 +12,7 @@
 
       <div class="app-info">
         <div class="app-name no-left-margin">Application</div>
-        <div class="app-headcount app-item">Head Count</div>
+        <!-- <div class="app-headcount app-item">Head Count</div> -->
         <div class="app-utilization app-item">Utilization</div>
         <div class="app-savings app-item">Potential Saving</div>
       </div>
@@ -28,9 +28,17 @@
           <% end %>
         </div>
 
-        <div class="app-headcount app-item"><%= license[:usage] %>/<%= license[:capacity] %></div>
+        <!-- <div class="app-headcount app-item"><%#= license[:usage] %>/<%#= license[:capacity] %></div> -->
         <div class="app-utilization app-item"><%= license[:utilization] %>%</div>
-        <div class="app-savings app-item"><%= number_to_currency(((100 - license[:utilization].to_i) * license[:expense].to_i / 100), unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></div>
+        <div class="app-savings app-item">
+          <% potentialSaving = (100 - license[:utilization].to_i) * license[:expense].to_i / 100 %>
+          <% if potentialSaving > 100000 %>
+            <span class="badge badge-pill badge-danger"><%= number_to_currency(potentialSaving, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></span></div>
+          <% elsif potentialSaving > 20000 %>
+            <span class="badge badge-pill badge-warning"><%= number_to_currency(potentialSaving, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></span></div>
+          <% else %>
+            <span class="badge badge-pill badge-primary"><%= number_to_currency(potentialSaving, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></span></div>
+          <% end %>
       </div>
 
     <% end %>
