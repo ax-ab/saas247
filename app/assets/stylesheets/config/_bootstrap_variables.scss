@@ -44,3 +44,7 @@ $transition-all: all $base-transition-duration $base-transition-timing;
   background-color: #FFC107 !important;
   color: $white;
 }
+
+.badge-pill.badge-success {
+  color: $white;
+}
