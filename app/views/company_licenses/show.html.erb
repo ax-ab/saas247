@@ -117,11 +117,11 @@
 
           {
           name: "Total Spend",
-          data: {"Peter A" => 33120, "Axel L" => 38400, "Susan F" => 160000, "Carol P" => 170000}
+          data: {"Peter A" => 33120, "Axel L" => 38400, "Susan F" => 160000, "Carol A" => 170000}
           },
           {
             name: "Utilization",
-            data: {"Peter A" => 15566, "Axel L" => 21504, "Susan F" => 160000, "Carol P" => 170000}
+            data: {"Peter A" => 15566, "Axel L" => 21504, "Susan F" => 160000, "Carol A" => 170000}
           }], stacked: true
           %>
 
@@ -157,6 +157,14 @@
                 data: savings = total_licenses.map { |key, value| [ key, ((1 - (value / 100.0)) * total_prices[key]).round(2) ] }.to_h }
               ]
             %>
+
+            <%= bar_chart [
+              {
+                name: "Potential Savings",
+                data: {"Peter A" => 378, "Axel L" => 342, "Susan F" => 360, "Carol A" => 378}},
+              ]
+            %>
+
           </div>
         </div>
       </div>
