@@ -2,7 +2,8 @@
 <div id="company-licenses-top" class="top-section-container">
   <div class="top-section-title">
     <div class="section-metric-group">
-      <h2><%= number_to_currency(@spend_current_month, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></h2>
+      <!-- <h2><%#= number_to_currency(@spend_current_month, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></h2> -->
+      <h2>€72.556</h2>
       <p>Monthly spend</p>
     </div>
   <!--   <div class="section-metric-group">
@@ -10,12 +11,14 @@
       <p>Spend last 12 months</p>
     </div> -->
     <div class="section-metric-group">
-      <h2><%= @utilization %></h2>
+      <!-- <h2><%#= @utilization %></h2> -->
+      <h2>17%</h2>
       <p>Unused Licenses</p>
     </div>
     <div class="section-metric-group">
-      <h2><%= number_to_currency(@spend_current_month / 4, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></h2>
-      <p>Aggregate Potential Saving</p>
+      <!-- <h2><%#= number_to_currency(@spend_current_month / 4, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></h2> -->
+      <h2>€146.200</h2>
+      <p>Potential Yearly Savings</p>
     </div>
   </div>
 </div>
@@ -30,7 +33,7 @@
   </div>
   <div class="card-bottom-graph">
     <%#= area_chart @monthly_costs, responsive: true, maintainAspectRatio: false, class: "dashboard-chart" %>
-    <%= area_chart({"Dec 2018" => 31000, "Jan 2019" => 40000, "Feb 2019" => 49000,"Mar 2019" => 55000,"Apr 2019" => 63000,"May 2019" => 68000,"Jun 2019" => 76000,"Jul 2019" => 84000,"Aug 2019" => 89000,"Sep 2019" => 94000,"Oct 2019" => 97000}) %>
+    <%= area_chart({"Dec 2018" => 31000, "Jan 2019" => 40000, "Feb 2019" => 49000,"Mar 2019" => 55000,"Apr 2019" => 63000,"May 2019" => 68000,"Jun 2019" => 76000,"Jul 2019" => 84000,"Aug 2019" => 89000,"Sep 2019" => 94000,"Oct 2019" => 97000}, ytitle: "€ (Euro)") %>
   </div>
 </div>
 
