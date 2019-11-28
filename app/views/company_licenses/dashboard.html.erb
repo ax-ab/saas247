@@ -14,7 +14,7 @@
       <p>Unused Licenses</p>
     </div>
     <div class="section-metric-group">
-      <h2><%= number_to_currency(@spend_current_month, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></h2>
+      <h2><%= number_to_currency(@spend_current_month / 4, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></h2>
       <p>Aggregate Potential Saving</p>
     </div>
   </div>
