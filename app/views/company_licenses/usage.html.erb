@@ -11,7 +11,7 @@
       <p>Users</p>
     </div>
     <div class="section-metric-group">
-      <h2>79</h2>
+      <h2>40</h2>
       <p>Applications</p>
     </div>
   </div>
@@ -70,7 +70,7 @@
     </li>
   </ul>
   <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="all-deps" role="tabpanel" aria-labelledby="AllDeps-tab">
+    <div class="tab-pane fade" id="all-deps" role="tabpanel" aria-labelledby="AllDeps-tab">
 
       <div class="department-metrics-container">
         <div class="department-metrics">
@@ -97,28 +97,123 @@
     </div>
     <div class="tab-pane fade" id="design" role="tabpanel" aria-labelledby="Design-tab">
       <div class="department-metrics-container">
-        <h1> 1st tab content </h1>
+        <div class="department-metrics">
+          <div class="section-metric-group">
+            <h2>63</h2>
+            <p>Users</p>
+          </div>
+          <div class="section-metric-group">
+            <h2>17</h2>
+            <p>Applications Used</p>
+          </div>
+          <div class="section-metric-group">
+            <h2>0</h2>
+            <p>Missing replies</p>
+          </div>
+          <div class="section-metric-group">
+            <h2>100%</h2>
+            <p>Completion rate</p>
+          </div>
+        </div>
+        <%= link_to "Remind all non-respondents", survey_missing_path, class: "btn btn-big btn-primary" %>
       </div>
+      <%= render partial: "company_licenses/partials/table-department", locals: { users: @users } %>
     </div>
     <div class="tab-pane fade" id="dev" role="tabpanel" aria-labelledby="Dev-tab">
       <div class="department-metrics-container">
-        <h1> 3rd tab content </h1>
+        <div class="department-metrics">
+          <div class="section-metric-group">
+            <h2>210</h2>
+            <p>Users</p>
+          </div>
+          <div class="section-metric-group">
+            <h2>35</h2>
+            <p>Applications Used</p>
+          </div>
+          <div class="section-metric-group">
+            <h2>0</h2>
+            <p>Missing replies</p>
+          </div>
+          <div class="section-metric-group">
+            <h2>100%</h2>
+            <p>Completion rate</p>
+          </div>
+        </div>
+        <%= link_to "Remind all non-respondents", survey_missing_path, class: "btn btn-big btn-primary" %>
       </div>
+      <%= render partial: "company_licenses/partials/table-department", locals: { users: @users } %>
     </div>
     <div class="tab-pane fade" id="management" role="tabpanel" aria-labelledby="Management-tab">
       <div class="department-metrics-container">
-        <h1> 4th tab content </h1>
+        <div class="department-metrics">
+          <div class="section-metric-group">
+            <h2>230</h2>
+            <p>Users</p>
+          </div>
+          <div class="section-metric-group">
+            <h2>22</h2>
+            <p>Applications Used</p>
+          </div>
+          <div class="section-metric-group">
+            <h2>0</h2>
+            <p>Missing replies</p>
+          </div>
+          <div class="section-metric-group">
+            <h2>100%</h2>
+            <p>Completion rate</p>
+          </div>
+        </div>
+        <%= link_to "Remind all non-respondents", survey_missing_path, class: "btn btn-big btn-primary" %>
       </div>
+      <%= render partial: "company_licenses/partials/table-department", locals: { users: @users } %>
     </div>
-    <div class="tab-pane fade" id="sales" role="tabpanel" aria-labelledby="Sales-tab">
+    <div class="tab-pane fade show active" id="sales" role="tabpanel" aria-labelledby="Sales-tab">
       <div class="department-metrics-container">
-        <h1> 5th tab content </h1>
+        <div class="department-metrics">
+          <div class="section-metric-group">
+            <h2>5</h2>
+            <p>Users</p>
+          </div>
+          <div class="section-metric-group">
+            <h2>13</h2>
+            <p>Applications Used</p>
+          </div>
+          <div class="section-metric-group">
+            <h2><%= @users.all.where('usage_survey_completed IS NULL').count %></h2>
+            <p>Missing replies</p>
+          </div>
+          <div class="section-metric-group">
+            <h2><%= (100 - @users.all.where('usage_survey_completed IS NULL').count.to_f / @users.count.to_f * 100).round %>%</h2>
+            <p>Completion rate</p>
+          </div>
+        </div>
+        <%= link_to "Remind all non-respondents", survey_missing_path, class: "btn btn-big btn-primary" %>
       </div>
+      <%= render partial: "company_licenses/partials/table-department", locals: { users: @users } %>
     </div>
     <div class="tab-pane fade" id="support" role="tabpanel" aria-labelledby="Support-tab">
       <div class="department-metrics-container">
-        <h1> 6th tab content </h1>
+        <div class="department-metrics">
+          <div class="section-metric-group">
+            <h2>23</h2>
+            <p>Users</p>
+          </div>
+          <div class="section-metric-group">
+            <h2>13</h2>
+            <p>Applications Used</p>
+          </div>
+          <div class="section-metric-group">
+            <h2>0</h2>
+            <p>Missing replies</p>
+          </div>
+          <div class="section-metric-group">
+            <h2>100%</h2>
+            <p>Completion rate</p>
+          </div>
+        </div>
+        <%= link_to "Remind all non-respondents", survey_missing_path, class: "btn btn-big btn-primary" %>
       </div>
+      <%= render partial: "company_licenses/partials/table-department", locals: { users: @users } %>
     </div>
   </div>
 </div>

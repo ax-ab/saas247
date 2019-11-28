@@ -32,7 +32,6 @@ class CompanyLicensesController < ApplicationController
 
     @sort_header = params["sort"].nil? ? 'name' : params["sort"]
     @sort_order = params["sort"].nil? ? 'asc' : 'desc'
-
   end
 
   def show

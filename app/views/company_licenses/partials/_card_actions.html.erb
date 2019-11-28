@@ -1,15 +1,15 @@
 <div class="big-metrics-card card-actions">
   <div class="metrics-header">
     <div class="header-content">
-      <h4>Here is some useful information for you.</h4>
+      <h4>Insights</h4>
     </div>
   </div>
   <div class="actions-frame">
-      <% 10.times do %>
+      <% ["12 Dropbox licenses are being unused.", "You can optimize Salesforce cost by 60%. Mike Peterson's license is the least used.", "12 Renewals coming up next month for a total of 14.000€", "Total cost projections for 2019 are 600.000 €"].each do |insight| %>
       <div class="action-item">
         <div class="action-left">
           <div class="action-status"></div>
-          <p class="action-message">You can optimize Salesforse cost by 60%.<br>Mike Peterson's license is not very used.</p>
+          <p class="action-message"><%= insight %></p>
         </div>
         <div class="action-button">
           <%= link_to dashboard_path, class: "btn btn-table btn-success btn-action" do %>
