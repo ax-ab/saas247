@@ -7,34 +7,45 @@
       <h2 class="main-title"><%= content_for(:title) %></h2>
     </div>
     <% if user_signed_in? %>
-    <%#= link_to 'Log out', destroy_user_session_path, method: :delete %>
-      <div class="icons">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M19.5 18.2071V18.5H4.5V18.2071L6.35355 16.3536L6.5 16.2071V16V11C6.5 8.09437 8.02219 5.78092 10.6153 5.16653L11 5.07538V4.68V4C11 3.44614 11.4461 3 12 3C12.5539 3 13 3.44614 13 4V4.68V5.07506L13.3843 5.16644C15.9681 5.78076 17.5 8.10482 17.5 11V16V16.2071L17.6464 16.3536L19.5 18.2071ZM13.4135 20.5C13.2061 21.0806 12.6488 21.5 12 21.5C11.3443 21.5 10.7907 21.0813 10.5854 20.5H13.4135Z" fill="white" stroke="#C2CFE0"/>
-  <circle cx="17" cy="6" r="4.5" fill="#F7685B" stroke="white"/>
-  </svg>
-  </div>
+    <div class="dropdown">
+      <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-      <div class="icons">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M16.9337 10.918L16.8985 11.1993L17.1218 11.3739L19.2247 13.0183C19.2246 13.0206 19.2241 13.0239 19.2221 13.0282L17.227 16.4798L17.2268 16.4797L17.2257 16.4818L14.7462 15.486L14.485 15.3811L14.2598 15.55C13.7657 15.9206 13.2425 16.2369 12.6802 16.4673L12.4155 16.5758L12.3749 16.859L11.9962 19.5H8.00348L7.62478 16.859L7.58417 16.5758L7.31945 16.4673C6.75365 16.2355 6.23208 15.9286 5.74469 15.5537L5.51842 15.3796L5.2535 15.486L2.77797 16.4802C2.77744 16.4803 2.77675 16.4803 2.7759 16.4803C2.77487 16.4803 2.77387 16.4803 2.77294 16.4802L2.77272 16.4798L0.777583 13.0282C0.775612 13.0239 0.775035 13.0206 0.774939 13.0183L2.87784 11.3739L3.10114 11.1993L3.06598 10.918C3.02726 10.6082 2.99984 10.301 2.99984 10C2.99984 9.69904 3.02726 9.39178 3.06598 9.08202L3.10114 8.80074L2.87784 8.62613L0.772833 6.98003L2.77272 3.52022L2.77286 3.5203L2.774 3.5182L5.2535 4.51398L5.51468 4.61887L5.73984 4.45C6.23399 4.07939 6.75717 3.7631 7.31945 3.53265L7.58417 3.42416L7.62478 3.14097L8.00348 0.5H11.9962L12.3749 3.14097L12.4155 3.42416L12.6802 3.53265C13.246 3.76454 13.7676 4.0714 14.255 4.44631L14.4813 4.62037L14.7462 4.51398L17.2217 3.51979C17.2222 3.51973 17.2229 3.51969 17.2238 3.51968C17.2248 3.51968 17.2258 3.51974 17.2267 3.51984L17.227 3.52022L19.2221 6.97181C19.2241 6.97608 19.2246 6.97944 19.2247 6.98168L17.1218 8.62613L16.8985 8.80075L16.9337 9.08202C16.9725 9.39225 16.9998 9.68934 16.9998 10C16.9998 10.3107 16.9725 10.6077 16.9337 10.918ZM5.99984 10C5.99984 12.2061 7.7937 14 9.99984 14C12.206 14 13.9998 12.2061 13.9998 10C13.9998 7.79386 12.206 6 9.99984 6C7.7937 6 5.99984 7.79386 5.99984 10Z" stroke="#C2CFE0"/>
-  </svg>
+        <div class="icons">
+        <i class="far fa-bell"></i>
+        <span class="badge badge-pill badge-danger">1</span>
+      </div>
+      </a>
+
+      <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item flex-column" href="#">
+          <div class="d-flex justify-content-center align-items-center py-2">
+            <%= image_tag License.find_by(name: "Slack").logo_url, alt: "Slack", class: "app-logo" %>
+            <div class="ml-2">Slack - Request sent to Mike Peterson</div>
+          </div>
+        </a>
+
+
+
+      </div>
     </div>
+
+    <div class="icons">
+      <i style="font-size: 24px;" class="fas fa-cog"></i>
     </div>
-    <div class="right-items">
-      <span class="divider"></span>
-      <h3><%= "#{current_user.first_name} #{current_user.last_name}" %></h3>
-
-
-<div class="dropdown">
-  <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="" class="avatar">
-  </a>
-
-  <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="dropdownMenuLink">
-    <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
   </div>
-</div>
+  <div class="right-items">
+    <span class="divider"></span>
+    <h3><%= "#{current_user.first_name} #{current_user.last_name}" %></h3>
+
+    <div class="dropdown">
+      <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" alt="" class="avatar">
+      </a>
+
+      <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="dropdownMenuLink">
+        <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+      </div>
+    </div>
     <% end %>
   </div>
 </div>
