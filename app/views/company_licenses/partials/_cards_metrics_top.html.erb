@@ -2,22 +2,27 @@
 
   <div class="metrics-card">
     <div class="card-top-text">Applications</div>
-    <div class="card-bottom-text"><%= @total_applications %></div>
+    <!-- <div class="card-bottom-text"><%#= @total_applications %></div> -->
+    <div class="card-bottom-text"> 79 </div>
   </div>
 
   <div class="metrics-card">
     <div class="card-top-text">Monthly spend</div>
-    <div class="card-bottom-text"><%= number_to_currency(@spend_current_month, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %><span><%= @spend_trend_month %>%</span></div>
+    <!-- <div class="card-bottom-text"><%#= number_to_currency(@spend_current_month, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %><span><%#= @spend_trend_month %>%</span></div> -->
+    <div class="card-bottom-text"> € 70.000 <span> +8% </span></div>
+
   </div>
 
   <div class="metrics-card">
     <div class="card-top-text">Spend last 12 months</div>
-    <div class="card-bottom-text"><%= number_to_currency(@spend_one_year_back, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></div>
+    <!-- <div class="card-bottom-text"><%#= number_to_currency(@spend_one_year_back, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></div> -->
+    <div class="card-bottom-text"> € 840.000 </div>
   </div>
 
   <div class="metrics-card">
     <div class="card-top-text">Utilization</div>
-    <div class="card-bottom-text"><%= @utilization %>%</div>
+    <!-- <div class="card-bottom-text"><%#= @utilization %>%</div> -->
+    <div class="card-bottom-text"> 83% </div>
   </div>
 
 </div>

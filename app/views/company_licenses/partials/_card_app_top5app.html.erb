@@ -6,20 +6,47 @@
       </div>
       <%= link_to 'View All', company_licenses_path(sort: 'expense') %>
     </div>
-    <% apps.each do | app | %>
+
     <div class="app-info">
-
-      <%= image_tag("#{app.logo}", class: "app-logo") %>
-
-      <div class="app-name">
-      <%= link_to company_license_path(app.id) do %>
-        <%= app.key %>
-              <% end %></div>
-
-      <div class="app-expense"><%= number_to_currency(app.expense, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></div>
-
-
+     <%= image_tag("#{'vendor-logos/salesforce-logo.svg'}", class: "app-logo") %>
+      <div class="app-name">Salesforce</div>
+      <div class="app-expense">€ 187.000</div>
     </div>
-    <% end %>
-  </div>
+
+    <div class="app-info">
+     <%= image_tag("#{'vendor-logos/slack-logo.svg'}", class: "app-logo") %>
+      <div class="app-name">Slack</div>
+      <div class="app-expense">€ 137.000</div>
+    </div>
+
+    <div class="app-info">
+     <%= image_tag("#{'vendor-logos/dropbox-logo.svg'}", class: "app-logo") %>
+      <div class="app-name">Dropbox</div>
+      <div class="app-expense">€ 72.000</div>
+    </div>
+
+    <div class="app-info">
+     <%= image_tag("#{'vendor-logos/microsoft-office-logo.png'}", class: "app-logo") %>
+      <div class="app-name">MS Office</div>
+      <div class="app-expense">€ 58.800</div>
+    </div>
+
+    <div class="app-info">
+     <%= image_tag("#{'vendor-logos/zendesk-logo.svg'}", class: "app-logo") %>
+      <div class="app-name">Zendesk</div>
+      <div class="app-expense">€ 32.000</div>
+    </div>
+
+
+<!--     <%# apps.each do | app | %>
+    <div class="app-info">
+      <%#= image_tag("#{app.logo}", class: "app-logo") %>
+      <div class="app-name">
+      <%#= link_to company_license_path(app.id) do %>
+        <%#= app.key %>
+              <%# end %></div>
+      <div class="app-expense"><%#= number_to_currency(app.expense, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></div>
+    </div>
+    <%# end %>
+ -->  </div>
 
