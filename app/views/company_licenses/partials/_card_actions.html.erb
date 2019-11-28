@@ -5,14 +5,15 @@
     </div>
   </div>
   <div class="actions-frame">
-      <% ["12 Dropbox licenses are being unused.", "You can optimize Salesforce cost by 60%. Mike Peterson's license is the least used.", "12 Renewals coming up next month for a total of 14.000€", "Total cost projections for 2019 are 600.000 €"].each do |insight| %>
+      <% ["You can reduce the total software subscription cost with 21 %.", "You can reduce Slack license cost with 53 %. Mike Peterson's license is the least used.", "7 subscriptions are up for renewals next month for a total cost of €45.000.", "License usage data was last updated and reviewed 187 days ago.", "Engineering (56,5%) and IT (66,7%) got the licenses with the most inactive users.", "Licenses for 7 new applications has been purchased the last 30 days."].each do |insight| %>
       <div class="action-item">
         <div class="action-left">
           <div class="action-status"></div>
           <p class="action-message"><%= insight %></p>
         </div>
         <div class="action-button">
-          <%= link_to dashboard_path, class: "btn btn-table btn-success btn-action" do %>
+          <% slack = CompanyLicense.find_by(license_id: License.find_by(name: "Slack")) %>
+          <%= link_to company_license_path(slack), class: "btn btn-table btn-success btn-action" do %>
             See more
           <% end %>
         </div>

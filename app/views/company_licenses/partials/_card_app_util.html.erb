@@ -52,7 +52,7 @@
         <div class="app-name">
           <% slack = CompanyLicense.find_by(license_id: License.find_by(name: "Slack")) %>
           <%= link_to company_license_path(slack) do %>
-          Slack
+            Slack
           <% end %>
         </div>
         <!-- <div class="app-headcount app-item"> 230/420</div> -->
