@@ -56,9 +56,9 @@
   min-width: 15px;
   height: 15px;
   border-radius: 50%;
-  background: $success;
+  background: $lightest-gray;
 }
 
-.action-item:nth-of-type(2n) .action-status {
-  background: $lightest-gray;
+.action-item:nth-of-type(3n) .action-status {
+  background: $success;
 }
