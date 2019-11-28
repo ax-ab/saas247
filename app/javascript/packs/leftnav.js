@@ -5,7 +5,7 @@ export const leftNavInteractivity = () => {
   const toggleP = document.querySelector("#leftnav_toggle p");
   const toggleIcon = document.querySelector("#leftnav_toggle svg");
   const navList = document.querySelectorAll(".leftnav-links p");
-  const logo = document.querySelector(".logo-link");
+  const logo = document.querySelector(".logo-link .saas247");
 
   window.addEventListener('load', () => {
     // const navLinks = document.querySelectorAll(".leftnav-links");
@@ -24,7 +24,8 @@ export const leftNavInteractivity = () => {
     dashboardRight.classList.toggle("main-no-nav");
     dashboardRight.classList.toggle("main-nav");
     if (toggleP.style.display !== "none") {
-      logo.innerText = "S";
+      logo.style.display = "none";
+      logo.classList.remove("show-left-nav");
       toggleP.classList.add("hide");
       toggleP.classList.remove("show-left-nav");
       toggleP.style.display = "none";
@@ -43,7 +44,7 @@ export const leftNavInteractivity = () => {
         text.classList.add("show-left-nav");
       });
       setTimeout(( ) => {
-        logo.innerText = "Saas 247";
+        logo.style.display = "inline-flex";
       }, 200)
     }
   })
