@@ -45,13 +45,14 @@
         <td class="table-price">33.120</td>
         <!-- <td>€ 285 </td> -->
         <td><span class="badge badge-pill badge-success"> € 9.285 </span></td>
-        <td class="action"> <span class="btn btn-table btn-success"> Request Review</span>
+        <td class="action">
+          <button type="button" class="btn btn-table btn-success" data-toggle="modal" data-target="#exampleModal" data-email="peter@company.com" data-name="Peter"> Request Review</button>
         </td>
       </tr>
 
 
       <tr>
-        <td class="table-row-name"> Axel Lastname </td>
+        <td class="table-row-name"> Rob Morrison </td>
         <td>IT</td>
         <td>160</td>
         <td>90</td>
@@ -160,5 +161,18 @@
   </thead>
 </table>
 
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<script>
+  $('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('New message to ' + recipient)
+  modal.find('.modal-body input').val(recipient)
+})
+</script>
 
 
