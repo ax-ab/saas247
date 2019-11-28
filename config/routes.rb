@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   get '/422', to: 'errors#unacceptable'
   get '/500', to: 'errors#internal_error'
 
+  get '/log-in', to: 'pages#log-in'
+
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :events, only: [ :index ]
