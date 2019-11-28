@@ -15,7 +15,7 @@
       <th data-field="startDate" data-sortable="true">Start Date</th>
       <th data-field="renewalDate" data-sortable="true">Renewal Date</th>
       <th data-field="potentialSaving" data-sortable="true">P. Savings</th>
-      <th data-field="alert">Alert</th>
+      <th data-field="alert">Request</th>
     </tr>
     <tbody>
       <% licenseTransactions.each do |transaction| %>
@@ -34,14 +34,17 @@
         <td><%= transaction.purchase_date %></td>
         <td><%= transaction.expiry_date %></td>
         <td class="table-price"><%= transaction.total_purchase_price * (100 - utilization) / 100  %></td>
-        <td class="toggle-alert">
-          <label class="switch">
-            <input type="checkbox" <%= ['', 'checked="checked"'].sample %>>
-            <span class="slider round"></span>
-          </label>
+        <td>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-<%= transaction.id %>">
+            Launch demo modal
+          </button>
+          <%= render partial: "company_licenses/partials/modal_showpage", locals: { transaction: transaction, utilization: utilization } %>
         </td>
       </tr>
       <% end %>
     </tbody>
   </thead>
 </table>
+
+
+

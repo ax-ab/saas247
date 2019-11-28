@@ -8,6 +8,9 @@
   h2 {
     margin: 0;
   }
+  .dropdown-toggle::after {
+    display: none;
+  }
 }
 .left-items {
   font-size: 14px;
@@ -38,6 +41,19 @@
   }
   .icons {
     margin-right: 12px;
+    i {
+    color: black;
+    font-size: 24px;
+    }
+  }
+  .badge {
+    right: 24px;
+    top: -1px;
+    position: absolute;
+  }
+  .app-logo {
+    width: 20px;
+    height: 20px;
   }
 }
 .right-items {
