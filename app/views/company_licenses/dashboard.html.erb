@@ -1,6 +1,25 @@
 <% content_for(:title, "Dashboard") %>
-
-<%= render "company_licenses/partials/cards_metrics_top" %>
+<div id="company-licenses-top" class="top-section-container">
+  <div class="top-section-title">
+    <div class="section-metric-group">
+      <h2><%= number_to_currency(@spend_current_month, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></h2>
+      <p>Monthly spend</p>
+    </div>
+  <!--   <div class="section-metric-group">
+      <h2><%#= number_to_currency(@spend_one_year_back, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></h2>
+      <p>Spend last 12 months</p>
+    </div> -->
+    <div class="section-metric-group">
+      <h2><%= @utilization %></h2>
+      <p>Unused Licenses</p>
+    </div>
+    <div class="section-metric-group">
+      <h2><%= number_to_currency(@spend_current_month, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></h2>
+      <p>Aggregate Potential Saving</p>
+    </div>
+  </div>
+</div>
+<div id="company-licenses-table">
 
 <%= javascript_pack_tag "chart" %>
 <div class="big-metrics-card-full">
@@ -16,3 +35,4 @@
 </div>
 
 <%= render "company_licenses/partials/cards_metrics_bottom" %>
+</div>

@@ -1,8 +1,8 @@
   <div class="big-metrics-card">
     <div class="metrics-header">
       <div class="header-content">
-        <h4>Utilization - Least used applications</h4>
-        <p>Current</p>
+        <h4>Highest Potential Savings</h4>
+        <p>Based on the licenses you're under using, you could save XXXX € this month.</p>
       </div>
 
       <%= link_to 'View All', company_licenses_path(sort: 'util') %>
@@ -12,7 +12,7 @@
 
       <div class="app-info">
         <div class="app-name no-left-margin">Application</div>
-        <div class="app-headcount app-item">Head Count</div>
+        <!-- <div class="app-headcount app-item">Head Count</div> -->
         <div class="app-utilization app-item">Utilization</div>
         <div class="app-savings app-item">Potential Saving</div>
       </div>
@@ -46,49 +46,17 @@
           <% end %>
         </div>
 
-        <div class="app-headcount app-item"> 230/420</div>
-        <div class="app-utilization app-item">53%</div>
-        <div class="app-savings app-item"> € 51.800</div>
-      </div>
-
-
-      <div class="app-info">
-
-        <%= image_tag("#{'vendor-logos/salesforce-logo.svg'}", class: "app-logo") %>
-
-        <div class="app-name">
-          <a href="/company_licenses/59"> Salesforce </a>
-        </div>
-
-        <div class="app-headcount app-item"> 52/60</div>
-        <div class="app-utilization app-item">87%</div>
-        <div class="app-savings app-item"> € 24.310</div>
-      </div>
-
-      <div class="app-info">
-
-        <%= image_tag("#{'vendor-logos/zendesk-logo.svg'}", class: "app-logo") %>
-
-        <div class="app-name">
-         <a href="/company_licenses/56"> Zendesk </a>
-        </div>
-
-        <div class="app-headcount app-item"> 27/35</div>
-        <div class="app-utilization app-item">77%</div>
-        <div class="app-savings app-item"> € 7.314</div>
-      </div>
-
-      <div class="app-info">
-
-        <%= image_tag("#{'vendor-logos/dropbox-logo.svg'}", class: "app-logo") %>
-
-        <div class="app-name">
-          <a href="/company_licenses/54"> Dropbox </a>
-        </div>
-
-        <div class="app-headcount app-item"> 351/370</div>
-        <div class="app-utilization app-item">81%</div>
-        <div class="app-savings app-item"> € 8.030</div>
+        <!-- <div class="app-headcount app-item"><%#= license[:usage] %>/<%#= license[:capacity] %></div> -->
+        <div class="app-utilization app-item"><%= license[:utilization] %>%</div>
+        <div class="app-savings app-item">
+          <% potentialSaving = (100 - license[:utilization].to_i) * license[:expense].to_i / 100 %>
+          <% if potentialSaving > 100000 %>
+            <span class="badge badge-pill badge-danger"><%= number_to_currency(potentialSaving, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></span></div>
+          <% elsif potentialSaving > 20000 %>
+            <span class="badge badge-pill badge-warning"><%= number_to_currency(potentialSaving, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></span></div>
+          <% else %>
+            <span class="badge badge-pill badge-primary"><%= number_to_currency(potentialSaving, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></span></div>
+          <% end %>
       </div>
 
 
@@ -104,6 +72,5 @@
         <div class="app-utilization app-item">91%</div>
         <div class="app-savings app-item"> € 4.300</div>
       </div>
-
 
   </div>

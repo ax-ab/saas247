@@ -1,0 +1,59 @@
+.card-actions {
+  background: linear-gradient(120deg, #109CF1 3.3%, #10CCF1 48.56%, #11FF9B 98.79%);
+  padding: 30px !important;
+  justify-content: space-between !important;
+
+  .metrics-header {
+    padding: 0;
+  }
+
+  .header-content {
+    color: $white;
+    padding: 0;
+
+    h4 {
+      font-size: 24px;
+    }
+  }
+}
+
+.actions-frame {
+  width: 100%;
+  height: 310px;
+  overflow-y: auto;
+}
+
+.action-item {
+  overflow-y: auto;
+  width: 100%;
+  background: $white;
+  margin: 12px 0;
+  padding: 20px 15px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: space-between;
+
+  .action-message {
+    flex-grow: 1;
+    margin: 0 15px;
+  }
+}
+
+.action-left {
+  display: flex;
+  align-items: center;
+}
+
+.action-status {
+  width: 15px;
+  min-width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: $success;
+}
+
+.action-item:nth-of-type(2n) .action-status {
+  background: $lightest-gray;
+}

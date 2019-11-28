@@ -90,8 +90,12 @@
       }
 
       .app-item {
-        flex: 0 0 110px;
+        flex: 0 0 120px;
         text-align: right;
+
+        span {
+          font-size: 13px;
+        }
       }
 
       .app-name {
