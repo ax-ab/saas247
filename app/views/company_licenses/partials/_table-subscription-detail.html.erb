@@ -25,7 +25,7 @@
       <th data-field="LUsed" data-sortable="true">L. Used</th>
       <th data-field="utilization" data-sortable="true">L. Usage</th>
       <th data-field="billingCycle" data-sortable="true">Billing Cycle</th>
-      <th data-field="renewalDate" data-sortable="true">Renewal Date</th>
+      <th data-field="renewalDate" data-sortable="true">Renewal</th>
       <th data-field="expense" data-sortable="true">Expense</th>
       <th data-field="potentialSaving" data-sortable="true">P. Savings</th>
       <!-- <th data-field="potentialSaving" data-sortable="true">P. Savings</th> -->
@@ -35,6 +35,7 @@
       <%# licenseTransactions.each do |transaction| %>
 
       <tr>
+
         <td class="table-row-name"> Peter Albridge </td>
         <td>Engineering</td>
         <td>230</td>
@@ -44,14 +45,16 @@
         <td>2019-12-12</td>
         <td class="table-price">33.120</td>
         <!-- <td>€ 285 </td> -->
-        <td><span class="badge badge-pill badge-primary"> € 33.120 </span></td>
-        <td class="action"> <span class="btn btn-table btn-success"> Request Review</span>
+        
+        <td><span class="badge badge-pill badge-success"> € 9.285 </span></td>
+        <td class="action">
+          <button id="review-entry" type="button" class="btn btn-table btn-success" data-toggle="modal" data-target="#reviewModal"> Request Review</button>
         </td>
       </tr>
 
 
       <tr>
-        <td class="table-row-name"> Axel Lastname </td>
+        <td class="table-row-name"> Rob Morrison </td>
         <td>IT</td>
         <td>160</td>
         <td>91</td>
@@ -70,7 +73,7 @@
       </tr>
 
       <tr>
-        <td class="table-row-name"> Mike Peterson </td>
+        <td class="table-row-name"> Peter Albridge </td>
         <td>Marketing</td>
         <td>35</td>
         <td>25</td>
@@ -159,6 +162,33 @@
     </tbody>
   </thead>
 </table>
+<%= render partial: "company_licenses/partials/modal_showpage" %>
 
+<script>
+
+  const send_button = document.getElementById('send_review');
+  send_button.addEventListener('click', (event) => {
+
+    const review_button = document.getElementById('review-entry');
+    review_button.classList.toggle('btn-success');
+    review_button.classList.add('border');
+    review_button.style.color = "white";
+    review_button.style.background = "grey";
+    review_button.innerText = "Review pending";
+
+    const notificationFeed = document.getElementById('notification-feed');
+    notificationFeed.insertAdjacentHTML("afterbegin","<a class='dropdown-item flex-column' href='#'><div class='d-flex justify-content-center align-items-center py-2'><div class='ml-2'>Slack - Request sent to Mike Peterson</div></div></a>");
+
+    const notificationBell = document.getElementById('notification-bell');
+    notificationBell.insertAdjacentHTML("afterbegin",
+    "<span class='badge badge-pill badge-danger'>1</span>")
+
+    notificationBell.addEventListener('click', (event) => {
+      notificationBell.innerHTML = ""
+    });
+
+  });
+
+</script>
 
 

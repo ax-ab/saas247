@@ -80,9 +80,9 @@
         </div>
 
         <div class="metrics-card">
-          <div class="card-top-text">Utilization</div>
+          <div class="card-top-text">Unused licenses</div>
           <!-- <div class="card-bottom-text"><%#= utilization %>%</div> -->
-          <div class="card-bottom-text">53%</div>
+          <div class="card-bottom-text">47%</div>
         </div>
       </div>
     </div>
@@ -91,13 +91,13 @@
     <div class="graph-wrapper">
       <ul class="nav nav-tabs tabs-saassy" id="myTab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Cost over time</a>
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Licenses spend</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Utilization</a>
+          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">License usage</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Potential Savings</a>
+          <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Potential license Savings</a>
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
@@ -106,7 +106,21 @@
           <%# cost_over_time = @company_license.license_transactions.where("purchase_date BETWEEN ? AND ?", Date.today - 365.days, Date.today).group_by_month(:purchase_date).sum(:total_purchase_price) %>
           <div class="card-bottom-graph">
             <%#= area_chart cost_over_time %>
-            <%= area_chart({"Jan 2019" => 80000, "Feb 2019" => 120000, "Mar 2019" => 160000, "Apr 2019" => 170000, "May 2019" => 215000, "Jun 2019" => 240000, "Jul 2019" => 280000, "Aug 2019" => 300000, "Sep 2019" => 350000, "Oct 2019" => 390000}) %>
+            <%= area_chart [
+            {
+            name: "Actual spending",
+            data: {"Dec 2018" => 60000, "Jan 2019" => 80000, "Feb 2019" => 120000, "Mar 2019" => 160000, "Apr 2019" => 170000, "May 2019" => 215000, "Jun 2019" => 240000, "Jul 2019" => 280000, "Aug 2019" => 300000, "Sep 2019" => 350000, "Oct 2019" => 390000}
+            },
+
+            {
+            name: "Spending with potential savings",
+            data: {"Dec 2018" => 54000, "Jan 2019" => 72000, "Feb 2019" => 92000, "Mar 2019" => 122000, "Apr 2019" => 132000, "May 2019" => 172000, "Jun 2019" => 182000, "Jul 2019" => 202000, "Aug 2019" => 212000, "Sep 2019" => 232000, "Oct 2019" => 234000}
+            }
+            ], ytitle: "€ (Euro)"
+
+             %>
+
+
           </div>
         </div>
 
@@ -116,18 +130,14 @@
           <%= bar_chart [
 
           {
-          name: "Total Spend",
-          data: {"Peter A" => 33120, "Axel L" => 38400, "Susan F" => 160000, "Carol A" => 170000}
+          name: "Licenses in use",
+          data: {"Peter Albridge" => 170000, "Mike Peterson" => 160000, "Carol Anderson" => 18120, "Susan Ferguson" => 22400}
           },
           {
-            name: "Utilization",
-            data: {"Peter A" => 15566, "Axel L" => 21504, "Susan F" => 160000, "Carol A" => 170000}
-          }], stacked: true
+          name: "licenses unused",
+          data: {"Peter Albridge" => 170000, "Mike Peterson" => 160000, "Carol Anderson" => 15566, "Susan Ferguson" => 21504}
+          }], stacked: true, xtitle: "€ (Euro)"
           %>
-
-
-
-
 
            <%#= bar_chart
 

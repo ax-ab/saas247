@@ -11,21 +11,19 @@
       <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
         <div class="icons">
-        <i class="far fa-bell"></i>
-        <span class="badge badge-pill badge-danger">1</span>
+        <i id="notification-bell" class="far fa-bell"></i>
+        <!-- <span class="badge badge-pill badge-danger">1</span> -->
       </div>
       </a>
 
-      <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item flex-column" href="#">
+      <%#= image_tag License.find_by(name: "Slack").logo_url, alt: "Slack", class: "app-logo", id: "slack-icon" %>
+      <div id="notification-feed" class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="dropdownMenuLink">
+        <!-- <a class="dropdown-item flex-column" href="#">
           <div class="d-flex justify-content-center align-items-center py-2">
-            <%= image_tag License.find_by(name: "Slack").logo_url, alt: "Slack", class: "app-logo" %>
+            <%#= image_tag License.find_by(name: "Slack").logo_url, alt: "Slack", class: "app-logo" %>
             <div class="ml-2">Slack - Request sent to Mike Peterson</div>
           </div>
-        </a>
-
-
-
+        </a> -->
       </div>
     </div>
 

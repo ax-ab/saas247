@@ -40,6 +40,7 @@ function initCharts(){
             borderWidth: 1
         }]
     },
+
     options: {
         scales: {
 
