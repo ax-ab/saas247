@@ -1,6 +1,9 @@
 <nav id="dashboard-left" class="leftnav-open">
   <div class="leftnav_brand">
-    <%= link_to "Saas 247", root_path, class: "logo-link" %>
+    <%= link_to root_path, class: "logo-link" do %>
+     <%= image_tag "favicon.png", alt: "Saas24-7 icon circle", class: "logo_icon" %>
+     <%= image_tag "Saas247_logo.png", alt: "Saas24-7", class: "saas247 show-left-nav" %>
+    <% end %>
   </div>
   <div class="leftnav_bottom">
     <ul>
