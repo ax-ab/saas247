@@ -19,6 +19,48 @@
     </tr>
     <tbody>
       <% licenseTransactions.each do |transaction| %>
+
+      <tr>
+        <td class="table-row-name"> Peter Albridge </td>
+        <td>Sales</td>
+        <td class="table-price">33.120</td>
+        <td>230</td>
+
+        <td>110</td>
+        <td>47%</td>
+        <td>Yearly</td>
+        <td>2018-12-12</td>
+        <td>2019-12-12</td>
+        <td class="toggle-alert">
+          <label class="switch">
+            <input type="checkbox" <%= ['', 'checked="checked"'].sample %>>
+            <span class="slider round"></span>
+          </label>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="table-row-name"> Axel Lastname </td>
+        <td>IT</td>
+        <td class="table-price">38.400</td>
+        <td>160</td>
+
+        <td>90</td>
+        <td>56%</td>
+        <td>Monthly</td>
+        <td>2019-09-07</td>
+        <td>2019-12-07</td>
+        <td class="toggle-alert">
+          <label class="switch">
+            <input type="checkbox" <%= ['', 'checked="checked"'].sample %>>
+            <span class="slider round"></span>
+          </label>
+        </td>
+      </tr>
+
+
+
+
       <tr>
         <td class="table-row-name"><%= "#{transaction.owner.first_name} #{transaction.owner.last_name}" %></td>
         <td><%= transaction.owner.department %></td>
