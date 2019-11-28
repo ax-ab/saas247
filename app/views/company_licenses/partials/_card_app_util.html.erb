@@ -2,7 +2,7 @@
     <div class="metrics-header">
       <div class="header-content">
         <h4>Highest Potential Savings</h4>
-        <p>Based on the licenses you're under using, you could save € XXXX this month.</p>
+        <p>Based on the licenses you're under using, you could save <strong>€ 95.154</strong> this month.</p>
       </div>
 
       <%= link_to 'View All', company_licenses_path(sort: 'util') %>
@@ -17,30 +17,94 @@
         <div class="app-savings app-item">Potential Saving</div>
       </div>
 
-    <% @utilization_per_app.each_with_index do |license, index| %>
-      <div class="app-info">
+    <%# @utilization_per_app.each_with_index do |license, index| %>
+      <!-- <div class="app-info"> -->
 
-        <%= image_tag("#{license[:logo_url]}", class: "app-logo") %>
+        <%#= image_tag("#{license[:logo_url]}", class: "app-logo") %>
 
-        <div class="app-name">
-          <%= link_to company_license_path(@utilization_per_app[index][:id]) do %>
-          <%= license[:application] %>
-          <% end %>
+        <!-- <div class="app-name">
+          <%#= link_to company_license_path(@utilization_per_app[index][:id]) do %>
+          <%#= license[:application] %>
+          <%# end %>
         </div>
 
-        <!-- <div class="app-headcount app-item"><%#= license[:usage] %>/<%#= license[:capacity] %></div> -->
-        <div class="app-utilization app-item"><%= license[:utilization] %>%</div>
+        <div class="app-headcount app-item"><%#= license[:usage] %>/<%#= license[:capacity] %></div> -->
+        <!-- <div class="app-utilization app-item"><%#= license[:utilization] %>%</div>
         <div class="app-savings app-item">
-          <% potentialSaving = (100 - license[:utilization].to_i) * license[:expense].to_i / 100 %>
-          <% if potentialSaving > 100000 %>
-            <span class="badge badge-pill badge-danger"><%= number_to_currency(potentialSaving, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></span></div>
-          <% elsif potentialSaving > 20000 %>
-            <span class="badge badge-pill badge-warning"><%= number_to_currency(potentialSaving, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></span></div>
-          <% else %>
-            <span class="badge badge-pill badge-primary"><%= number_to_currency(potentialSaving, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></span></div>
-          <% end %>
+          <%# potentialSaving = (100 - license[:utilization].to_i) * license[:expense].to_i / 100 %>
+          <%# if potentialSaving > 100000 %>
+            <span class="badge badge-pill badge-danger"><%#= number_to_currency(potentialSaving, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></span></div>
+          <%# elsif potentialSaving > 20000 %>
+            <span class="badge badge-pill badge-warning"><%#= number_to_currency(potentialSaving, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></span></div>
+          <%# else %>
+            <span class="badge badge-pill badge-primary"><%#= number_to_currency(potentialSaving, unit: "€ ", separator: ",", delimiter: ".", precision: 0) %></span></div>
+          <%# end %>
       </div>
 
-    <% end %>
-  </div>
+    <%# end %>
+  </div> -->
 
+
+<!-- HARDCODING FIX FOR NOW -->
+
+<div class="app-info">
+        <%= image_tag("#{'vendor-logos/slack-logo.svg'}", class: "app-logo") %>
+        <div class="app-name">
+          <% slack = CompanyLicense.find_by(license_id: License.find_by(name: "Slack")) %>
+          <%= link_to company_license_path(slack) do %>
+          Slack
+          <% end %>
+        </div>
+        <!-- <div class="app-headcount app-item"> 230/420</div> -->
+        <div class="app-utilization app-item">53%</div>
+        <div class="app-savings app-item"><span class="badge badge-pill badge-danger">€ 51.200</span></div>
+      </div>
+      <div class="app-info">
+        <%= image_tag("#{'vendor-logos/salesforce-logo.svg'}", class: "app-logo") %>
+        <div class="app-name">
+          <% salesforce = CompanyLicense.find_by(license_id: License.find_by(name: "Salesforce")) %>
+           <%= link_to company_license_path(salesforce) do %>
+          Salesforce
+          <% end %>
+        </div>
+        <!-- <div class="app-headcount app-item"> 52/60</div> -->
+        <div class="app-utilization app-item">87%</div>
+        <div class="app-savings app-item"><span class="badge badge-pill badge-warning">€24.310</span></div>
+      </div>
+      <div class="app-info">
+        <%= image_tag("#{'vendor-logos/zendesk-logo.svg'}", class: "app-logo") %>
+        <div class="app-name">
+         <% zendesk = CompanyLicense.find_by(license_id: License.find_by(name: "Zendesk")) %>
+           <%= link_to company_license_path(zendesk) do %>
+          Zendesk
+          <% end %>
+        </div>
+        <!-- <div class="app-headcount app-item"> 27/35</div> -->
+        <div class="app-utilization app-item">91%</div>
+        <div class="app-savings app-item"><span class="badge badge-pill badge-success">€ 7.314</span></div>
+      </div>
+      <div class="app-info">
+        <%= image_tag("#{'vendor-logos/dropbox-logo.svg'}", class: "app-logo") %>
+        <div class="app-name">
+          <% dropbox = CompanyLicense.find_by(license_id: License.find_by(name: "Dropbox")) %>
+           <%= link_to company_license_path(dropbox) do %>
+          Dropbox
+          <% end %>
+        </div>
+        <!-- <div class="app-headcount app-item"> 351/370</div> -->
+        <div class="app-utilization app-item">92%</div>
+        <div class="app-savings app-item"><span class="badge badge-pill badge-success">€ 8.030</span></div>
+      </div>
+      <div class="app-info">
+        <%= image_tag("#{'vendor-logos/gsuite-logo.svg'}", class: "app-logo") %>
+        <div class="app-name">
+          <% google = CompanyLicense.find_by(license_id: License.find_by(name: "Google Suite")) %>
+           <%= link_to company_license_path(google) do %>
+          Gsuite
+          <% end %>
+        </div>
+        <!-- <div class="app-headcount app-item"> 500/510</div> -->
+        <div class="app-utilization app-item">93%</div>
+        <div class="app-savings app-item"><span class="badge badge-pill badge-success"> € 4.300</span></div>
+      </div>
+    </div>
