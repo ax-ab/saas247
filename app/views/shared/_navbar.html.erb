@@ -9,7 +9,6 @@
     <% if user_signed_in? %>
     <div class="dropdown">
       <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
         <div class="icons">
         <i id="notification-bell" class="far fa-bell"></i>
         <!-- <span class="badge badge-pill badge-danger">1</span> -->
@@ -26,6 +25,11 @@
         </a> -->
       </div>
     </div>
+    <%= link_to '../letter_opener', target: "_blank" do %>
+    <div class="icons">
+       <i style="font-size: 24px;" class="fas fa-inbox"></i>
+    </div>
+    <% end %>
 
     <div class="icons">
       <i style="font-size: 24px;" class="fas fa-cog"></i>
