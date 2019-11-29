@@ -91,13 +91,13 @@
     <div class="graph-wrapper">
       <ul class="nav nav-tabs tabs-saassy" id="myTab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Licenses spend</a>
+          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Licenses spend over time</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">License usage</a>
+          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Potential license reductions</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Potential license Savings</a>
+          <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">License usage</a>
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
@@ -106,6 +106,8 @@
           <%# cost_over_time = @company_license.license_transactions.where("purchase_date BETWEEN ? AND ?", Date.today - 365.days, Date.today).group_by_month(:purchase_date).sum(:total_purchase_price) %>
           <div class="card-bottom-graph">
             <%#= area_chart cost_over_time %>
+
+
             <%= area_chart [
             {
             name: "Actual spending",
@@ -127,17 +129,12 @@
         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
            <div class="card-bottom-graph">
 
-          <%= bar_chart [
-
-          {
-          name: "Licenses in use",
-          data: {"Peter Albridge" => 170000, "Mike Peterson" => 160000, "Carol Anderson" => 18120, "Susan Ferguson" => 22400}
-          },
-          {
-          name: "licenses unused",
-          data: {"Peter Albridge" => 170000, "Mike Peterson" => 160000, "Carol Anderson" => 15566, "Susan Ferguson" => 21504}
-          }], stacked: true, xtitle: "€ (Euro)"
-          %>
+         <%= bar_chart [
+              {
+                name: "Potential reductions",
+                data: {"Mike Peterson" => 53, "Rob Morrison" => 46, "Peter Albridge" => 28, "Carol Anderson" => 17, "Susan Saas" => 8, "Kathrine Hudson" => 3}},
+              ], xtitle: "% (as percentage)"
+            %>
 
            <%#= bar_chart
 
@@ -168,12 +165,19 @@
               ]
             %>
 
-            <%= bar_chart [
-              {
-                name: "Potential Savings",
-                data: {"Peter A" => 378, "Axel L" => 342, "Susan F" => 360, "Carol A" => 378}},
-              ]
-            %>
+             <%= bar_chart [
+
+          {
+          name: "Used licenses spend",
+          data: {"Mike Peterson" => 15500, "Rob Morrison" => 13104, "Carol Anderson" => 5600, "Peter Albridge" => 3600, "Susan Saas" => 1872, "Kathrine Hudson" => 860}
+          },
+          {
+          name: "unused licenses spend",
+          data: {"Mike Peterson" => 17568, "Rob Morrison" => 9936, "Carol Anderson" => 1152, "Peter Albridge" => 1440, "Susan Saas" => 290, "Kathrine Hudson" => 144}
+          }], stacked: true, xtitle: "€ (Euro)"
+          %>
+
+
 
           </div>
         </div>
