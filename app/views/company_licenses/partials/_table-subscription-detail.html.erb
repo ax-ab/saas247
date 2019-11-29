@@ -189,7 +189,7 @@
       review_button.style.color = "white";
       review_button.innerText = "Review pending";
 
-      notificationFeed.insertAdjacentHTML("afterbegin","<a class='dropdown-item flex-column' href='#'><div class='d-flex justify-content-center align-items-center py-2'>" + slackIconClone +
+      notificationFeed.insertAdjacentHTML("afterbegin","<a class='dropdown-item flex-column' href='#'><div class='d-flex justify-content-start align-items-center py-2'>" + slackIconClone +
         "<div class='ml-2'>Slack - Request sent to Mike Peterson</div></div></a>");
 
       notificationBell.insertAdjacentHTML("afterbegin",
@@ -208,7 +208,7 @@
 
       if (alreadyPressed === false && alreadySent === true) {
         if (key === 'm' || key === 'm' || key === 109) {
-          tableBody.insertAdjacentHTML("afterbegin","<tr><td class='table-row-name'> Mike Peterson </td><td>Engineering</td><td>115</td><td>108</td><td><p style='display: none;'>94</p><span class='badge badge-pill badge-success'> 94 % </span></td><td>Monthly</td><td>2019-12-29</td><td class='table-price'>16.550</td><td><span class='badge badge-pill badge-primary'> € 153 </span></td><td class='action'><button type='button' class='btn btn-table btn-success' data-toggle='modal' data-target='#reviewModal'> Request Review</button></td></tr>");
+          tableBody.insertAdjacentHTML("afterbegin","<tr class='fadeDown'><td class='table-row-name'> Mike Peterson </td><td>Engineering</td><td>115</td><td>108</td><td><p style='display: none;'>94</p><span class='badge badge-pill badge-success'> 94 % </span></td><td>Monthly</td><td>2019-12-29</td><td class='table-price'>16.550</td><td><span class='badge badge-pill badge-primary'> € 153 </span></td><td class='action'><button type='button' class='btn btn-table btn-success' data-toggle='modal' data-target='#reviewModal'> Request Review</button></td></tr>");
           review_button.classList.toggle('btn-success');
           review_button.style.background = "grey";
           review_button.style.color = "white";
@@ -216,7 +216,7 @@
 
           notificationBell.insertAdjacentHTML("afterbegin",
         "<span class='badge badge-pill badge-danger'>1</span>")
-        notificationFeed.insertAdjacentHTML("afterbegin","<a class='dropdown-item flex-column' href='#'><div class='d-flex justify-content-center align-items-center py-2'>" + slackIconClone +
+        notificationFeed.insertAdjacentHTML("afterbegin","<a class='dropdown-item flex-column' href='#'><div class='d-flex justify-content-start align-items-center py-2'>" + slackIconClone +
         "<div class='ml-2'>Slack - Mike Peterson updated license</div></div></a>");
 
           alreadyPressed = true;
