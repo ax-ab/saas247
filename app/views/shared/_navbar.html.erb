@@ -14,8 +14,9 @@
         <!-- <span class="badge badge-pill badge-danger">1</span> -->
       </div>
       </a>
-
-      <%#= image_tag License.find_by(name: "Slack").logo_url, alt: "Slack", class: "app-logo", id: "slack-icon" %>
+      <div id="slack-icon" hidden>
+          <%= image_tag License.find_by(name: "Slack").logo_url, alt: "Slack", class: "app-logo" %>
+      </div>
       <div id="notification-feed" class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left" aria-labelledby="dropdownMenuLink">
         <!-- <a class="dropdown-item flex-column" href="#">
           <div class="d-flex justify-content-center align-items-center py-2">

@@ -165,6 +165,10 @@
 <%= render partial: "company_licenses/partials/modal_showpage" %>
 
 <script>
+
+  const slackIcon = document.getElementById("slack-icon")
+  const slackIconClone = slackIcon.cloneNode(true).innerHTML;
+
   const tableBody = document.getElementById('table-body');
   const send_button = document.getElementById('send_review');
   const notificationFeed = document.getElementById('notification-feed');
@@ -185,7 +189,8 @@
       review_button.style.color = "white";
       review_button.innerText = "Review pending";
 
-      notificationFeed.insertAdjacentHTML("afterbegin","<a class='dropdown-item flex-column' href='#'><div class='d-flex justify-content-center align-items-center py-2'><div class='ml-2'>Slack - Request sent to Mike Peterson</div></div></a>");
+      notificationFeed.insertAdjacentHTML("afterbegin","<a class='dropdown-item flex-column' href='#'><div class='d-flex justify-content-center align-items-center py-2'>" + slackIconClone +
+        "<div class='ml-2'>Slack - Request sent to Mike Peterson</div></div></a>");
 
       notificationBell.insertAdjacentHTML("afterbegin",
       "<span class='badge badge-pill badge-danger'>1</span>")
@@ -211,7 +216,8 @@
 
           notificationBell.insertAdjacentHTML("afterbegin",
         "<span class='badge badge-pill badge-danger'>1</span>")
-        notificationFeed.insertAdjacentHTML("afterbegin","<a class='dropdown-item flex-column' href='#'><div class='d-flex justify-content-center align-items-center py-2'><div class='ml-2'>Slack - Mike Peterson updated license</div></div></a>");
+        notificationFeed.insertAdjacentHTML("afterbegin","<a class='dropdown-item flex-column' href='#'><div class='d-flex justify-content-center align-items-center py-2'>" + slackIconClone +
+        "<div class='ml-2'>Slack - Mike Peterson updated license</div></div></a>");
 
           alreadyPressed = true;
         }
